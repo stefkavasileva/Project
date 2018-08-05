@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landmarks.Web", "Landmarks.Web\Landmarks.Web.csproj", "{BBD687C2-C364-451A-B021-8A9AC7E072A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landmarks.Common", "Landmarks.Common\Landmarks.Common.csproj", "{DA68BEFC-5104-452A-8A33-AF0D0B7EE4D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landmarks.Data", "Landmarks.Data\Landmarks.Data.csproj", "{0D22402F-BA43-496A-8B74-AF8B0B7E7A01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landmarks.Models", "Landmarks.Models\Landmarks.Models.csproj", "{41502F54-60F1-4882-8450-D54D65862768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landmarks.Services", "Landmarks.Services\Landmarks.Services.csproj", "{0C6C8136-DA40-4BB8-AE04-DE896C35BEA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Landmarks.Interfaces", "Landmarks.Interfaces\Landmarks.Interfaces.csproj", "{B87500A7-C0B2-410B-98FA-C56BF5F82C33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBD687C2-C364-451A-B021-8A9AC7E072A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBD687C2-C364-451A-B021-8A9AC7E072A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBD687C2-C364-451A-B021-8A9AC7E072A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBD687C2-C364-451A-B021-8A9AC7E072A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA68BEFC-5104-452A-8A33-AF0D0B7EE4D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA68BEFC-5104-452A-8A33-AF0D0B7EE4D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA68BEFC-5104-452A-8A33-AF0D0B7EE4D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA68BEFC-5104-452A-8A33-AF0D0B7EE4D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D22402F-BA43-496A-8B74-AF8B0B7E7A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D22402F-BA43-496A-8B74-AF8B0B7E7A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D22402F-BA43-496A-8B74-AF8B0B7E7A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D22402F-BA43-496A-8B74-AF8B0B7E7A01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41502F54-60F1-4882-8450-D54D65862768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41502F54-60F1-4882-8450-D54D65862768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41502F54-60F1-4882-8450-D54D65862768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41502F54-60F1-4882-8450-D54D65862768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C6C8136-DA40-4BB8-AE04-DE896C35BEA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C6C8136-DA40-4BB8-AE04-DE896C35BEA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C6C8136-DA40-4BB8-AE04-DE896C35BEA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C6C8136-DA40-4BB8-AE04-DE896C35BEA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B87500A7-C0B2-410B-98FA-C56BF5F82C33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B87500A7-C0B2-410B-98FA-C56BF5F82C33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B87500A7-C0B2-410B-98FA-C56BF5F82C33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B87500A7-C0B2-410B-98FA-C56BF5F82C33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5245061C-D5E5-40E6-8B9A-D18178467826}
+	EndGlobalSection
+EndGlobal

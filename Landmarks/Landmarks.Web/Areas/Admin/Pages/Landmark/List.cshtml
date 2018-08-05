@@ -1,4 +1,5 @@
 ﻿@page
+@using Landmarks.Common.Resources.Admin
 @using Landmarks.Web.Areas.Admin.Pages.Landmark
 @model ListModel
 @{
@@ -6,15 +7,15 @@
 }
 
 <div class="container container-fluid text-center">
-    <h1>All Landmarks</h1>
-    <a href="/Admin/Landmark/Add" class="btn btn-indigo">Add Landmark</a>
+    <h1>@Common.lblAllLandmarks</h1>
+    <a href="/Admin/Landmark/Add" class="btn btn-indigo">@Common.lblAddLandmark</a>
     <table class="table table-striped table-responsive-md btn-table">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Region</th>
-                <th>Action</th>
+                <th>@Common.lblName</th>
+                <th>@Common.lblCategory</th>
+                <th>@Common.lblRegion</th>
+                <th>@Common.lblActions</th>
             </tr>
         </thead>
         <tbody>

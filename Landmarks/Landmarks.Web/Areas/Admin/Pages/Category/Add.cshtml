@@ -1,4 +1,5 @@
 ﻿@page
+@using Landmarks.Common.Resources.Admin
 @using Landmarks.Web.Areas.Admin.Pages.Category
 @model AddModel
 @{
@@ -6,7 +7,7 @@
 }
 
 <div class="container container-fluid text-center">
-    <h2>Add category</h2>
+    <h2>@Category.lblAddCategory</h2>
 
     @Html.EditorFor(m => m.AddCategoryBindingModel)
 </div>

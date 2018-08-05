@@ -9,11 +9,11 @@ namespace Landmarks.Web.Common
     public static class AppBuilderAuthExtensions
     {
         private const string DefaultAdminPassword = "admin_pass_123";
-
+        private const string DefaultOperatorPassword = "operator_pass_123";
         private static readonly IdentityRole[] roles =
         {
             new IdentityRole ("Administrator"),
-            new IdentityRole ("Lecturer"),
+            new IdentityRole ("DataEntryOperator"),
         };
 
         public static async void SeedDatabase(this IApplicationBuilder builder)
@@ -28,12 +28,13 @@ namespace Landmarks.Web.Common
 
                 await SeedIdentityRoles(roleManager);
                 await CreateAdmin(userManager);
+                await CreateOperator(userManager);
             }
         }
 
         private static async Task CreateAdmin(UserManager<User> userManager)
         {
-            var user = await userManager.FindByNameAsync("admin");
+            var user = await userManager.FindByNameAsync("admin@example.com");
 
             if (user == null)
             {
@@ -41,6 +42,19 @@ namespace Landmarks.Web.Common
 
                 await userManager.CreateAsync(user, DefaultAdminPassword);
                 await userManager.AddToRoleAsync(user, roles[0].Name);
+            }
+        }
+
+        private static async Task CreateOperator(UserManager<User> userManager)
+        {
+            var dbOperator = await userManager.FindByNameAsync("operator@example.com");
+
+            if (dbOperator == null)
+            {
+                dbOperator = new User { UserName = "operator@example.com", Email = "operator@example.com" };
+
+                await userManager.CreateAsync(dbOperator, DefaultOperatorPassword);
+                await userManager.AddToRoleAsync(dbOperator, roles[1].Name);
             }
         }
 

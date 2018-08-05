@@ -1,28 +1,36 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h2>Index</h2>
-<div class="container container-fluid">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a asp-area="Admin" asp-page="/Category/Add" class="nav-link">Add Category</a>
-        </li>
-        <li class="nav-item">
-            <a asp-area="Admin" asp-page="/Category/List" class="nav-link">Categiories</a>
-        </li>
-        <li class="nav-item">
-            <a asp-area="Admin" asp-page="/Region/Add" class="nav-link">Add Region</a>
-        </li>
-        <li class="nav-item">
-            <a asp-area="Admin" asp-page="/Region/List" class="nav-link">Regions</a>
-        </li>
-        <li class="nav-item">
-            <a asp-area="Admin" asp-page="/Landmark/Add" class="nav-link">Add Landmark</a>
-        </li>
-        <li class="nav-item">
-            <a asp-area="Admin" asp-page="/Landmark/List" class="nav-link">Landmarks</a>
-        </li>
-    </ul>
+﻿@using Landmarks.Common.Resources.Admin
+<div class="row">
+    <div class="card col col-md-4">
+        <img class="card-img-top" src="/images/admin-category.jpg" alt="Card image cap" style="height: 202px">
+        <div class="card-body">
+            <h4 class="card-title">@Common.titleCategory</h4>
+            <p class="card-text">@Common.descCategory</p>
+            <div class="row">
+                <a asp-area="Admin" asp-page="/Category/Add" class="btn btn-outline-success"><span class="text-black-50">@Common.lblAddCategory</span></a>
+                <a asp-area="Admin" asp-page="/Category/List" class="btn btn-outline-info"><span class="text-black-50">@Common.lblAllCategory</span></a>
+            </div>
+        </div>     
+    </div>
+    <div class="card col col-md-4">
+        <img class="card-img-top" src="/images/admin-regions.jpg" alt="Card image cap" style="height: 268px">
+        <div class="card-body">
+            <h4 class="card-title">@Common.titleRegion</h4>
+            <p class="card-text">@Common.descRegion</p>
+            <div class="row">
+                <a asp-area="Admin" asp-page="/Region/Add" class="btn btn-outline-success"><span class="text-black-50">@Common.lblAddRegion</span></a>
+                <a asp-area="Admin" asp-page="/Region/List" class="btn btn-outline-info waves-effect"><span class="text-black-50">@Common.lblAllRegions</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="card col col-md-4">
+        <img class="card-img-top" src="/images/admin-landmark.jpg" alt="Card image cap" style="height: 270px">
+        <div class="card-body">
+            <h4 class="card-title">@Common.titleLandmark</h4>
+            <p class="card-text">@Common.descLandmark</p>
+            <div class="row">
+                <a asp-area="Admin" asp-page="/Landmark/Add" class="btn btn-outline-success"><span class="text-black-50">@Common.lblAddLandmark</span></a>
+                <a asp-area="Admin" asp-page="/Landmark/List" class="btn btn-outline-info"><span class="text-black-50">@Common.lblAllLandmarks</span></a>
+            </div>
+        </div>
+    </div>
 </div>
