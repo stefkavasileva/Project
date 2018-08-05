@@ -1,0 +1,12 @@
+﻿@model CategoryConciseViewModel
+
+<tr>
+    <td><a asp-area="Admin" asp-page="/Category/Details" asp-route-id="@Model.Id">@Model.Name</a></td>
+    <td>
+        <form asp-area="Admin" asp-page-handler="Delete" asp-route-id="@Model.Id" method="post">
+            <button class="btn btn-danger btn-sm">Delete</button>       
+            <a asp-area="Admin" asp-page="/Category/Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-sm">Edit</a>
+
+        </form>
+    </td>
+</tr>

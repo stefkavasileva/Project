@@ -1,0 +1,12 @@
+﻿@model AddEditRegionBindingModel
+<form method="post">
+    @Html.FormGroupFor(m => m.Name)
+    @Html.FormGroupFor(m => m.Area)
+    @Html.FormGroupFor(m => m.Population)
+    <button type="submit" class="btn btn-indigo">Add Region</button>
+    <a asp-page="/Index" class="btn btn-light-blue">Cancel</a>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

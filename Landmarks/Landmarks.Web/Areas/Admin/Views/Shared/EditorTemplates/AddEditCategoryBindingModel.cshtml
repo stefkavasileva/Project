@@ -1,0 +1,10 @@
+﻿@model AddEditCategoryBindingModel
+<form method="post">
+    @Html.FormGroupFor(x => x.Name)
+    <button type="submit" class="btn btn-indigo">Add Category</button>
+    <a asp-page="/Index" class="btn btn-light-blue">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

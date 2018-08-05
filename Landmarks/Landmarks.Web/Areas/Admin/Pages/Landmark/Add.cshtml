@@ -1,0 +1,10 @@
+﻿@page
+@model Landmarks.Web.Areas.Admin.Pages.Landmark.AddModel
+@{
+    ViewData["Title"] = "Add";
+}
+<div class="container container-fluid text-center">
+    <h2>Add Landmark</h2>
+
+    @Html.EditorFor(m => m.AddRegionBindingModel)
+</div>

@@ -1,0 +1,12 @@
+﻿@page
+@using Landmarks.Web.Areas.Admin.Pages.Category
+@model AddModel
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div class="container container-fluid text-center">
+    <h2>Add category</h2>
+
+    @Html.EditorFor(m => m.AddCategoryBindingModel)
+</div>

@@ -1,0 +1,25 @@
+﻿@page
+@using Landmarks.Web.Areas.Admin.Pages.Landmark
+@model ListModel
+@{
+    ViewData["Title"] = "All Landmarks";
+}
+
+<div class="container container-fluid text-center">
+    <h1>All Landmarks</h1>
+    <a href="/Admin/Landmark/Add" class="btn btn-indigo">Add Landmark</a>
+    <table class="table table-striped table-responsive-md btn-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Region</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @Html.DisplayFor(m => m.Categories)
+        </tbody>
+    </table>
+</div>
+
