@@ -11,7 +11,7 @@ namespace Landmarks.Web.Areas.Admin.Pages.Category
 
         public AddModel(ICategoryService service)
         {
-            this._service = service;         
+            this._service = service;
         }
 
         [BindProperty]
@@ -21,9 +21,9 @@ namespace Landmarks.Web.Areas.Admin.Pages.Category
         {
             if (ModelState.IsValid)
             {
-                 this._service.CreateCategory(this.AddCategoryBindingModel.Name);
+                this._service.CreateCategory(this.AddCategoryBindingModel.Name);
 
-                return RedirectToPage("/Category/List", new {Area = "Admin" });
+                return RedirectToPage("/Category/List", new { Area = "Admin" });
             }
 
             return Page();

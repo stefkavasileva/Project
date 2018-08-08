@@ -12,7 +12,7 @@ namespace Landmarks.Web.Areas.Admin.Pages.Category
         private readonly ICategoryService _service;
         private readonly IMapper _mapper;
 
-        public EditModel(ICategoryService service,IMapper mapper)
+        public EditModel(ICategoryService service, IMapper mapper)
         {
             this._service = service;
             this._mapper = mapper;
@@ -46,7 +46,7 @@ namespace Landmarks.Web.Areas.Admin.Pages.Category
 
                 this._service.SaveEntity(category);
 
-                return RedirectToPage("/Category/List", new {Area = "Admin" });
+                return RedirectToPage("/Category/List", new { Area = "Admin" });
 
             }
 

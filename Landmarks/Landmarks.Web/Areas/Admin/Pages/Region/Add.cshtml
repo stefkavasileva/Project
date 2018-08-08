@@ -4,7 +4,16 @@
 @{
     ViewData["Title"] = "Add";
 }
+
 <div class="container container-fluid text-center">
     <h2>@Common.lblAddRegion</h2>
-    @Html.EditorFor(m => m.AddRegionBindingModel)
+    <form method="post">
+        @Html.EditorFor(m => m.AddRegionBindingModel)
+        <button type="submit" class="btn btn-indigo">Add Region</button>
+        <a asp-page="/Index" class="btn btn-light-blue">Cancel</a>
+    </form>
 </div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

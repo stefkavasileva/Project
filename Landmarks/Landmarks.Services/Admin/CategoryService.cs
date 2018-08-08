@@ -25,7 +25,7 @@ namespace Landmarks.Services.Admin
             return modelCategories;
         }
 
-      
+
         public void CreateCategory(string name)
         {
             var category = new Category { Name = name };
@@ -38,10 +38,15 @@ namespace Landmarks.Services.Admin
             return await this.DbContext.Categories.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
         }
 
-        public void DeleteCategoryAsync(Category category)
+        public Category GetCategory(int id)
+        {
+            return this.DbContext.Categories.AsNoTracking().FirstOrDefault(c => c.Id == id);
+        }
+
+        public void DeleteCategory(Category category)
         {
             this.DbContext.Remove(category);
-            this.DbContext.SaveChangesAsync();
+            this.DbContext.SaveChanges();
         }
 
         public Category GetCategoryByName(string name)

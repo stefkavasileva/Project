@@ -12,27 +12,27 @@ namespace Landmarks.Web.Areas.Admin.Pages.Landmark
         public AddModel(ILandmarkService service)
         {
             this._service = service;
-            this.AddRegionBindingModel = new AddEditLandmarkBindingModel();
+            this.AddLandmarkBindingModel = new AddEditLandmarkBindingModel();
         }
 
         [BindProperty]
-        public AddEditLandmarkBindingModel AddRegionBindingModel { get; set; }
+        public AddEditLandmarkBindingModel AddLandmarkBindingModel { get; set; }
 
         public void OnGet()
         {
-            this._service.FillDropDownItems(AddRegionBindingModel);
+            this._service.FillDropDownItems(AddLandmarkBindingModel);
         }
 
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
-                 this._service.CreateLandmark(this.AddRegionBindingModel);
+                 this._service.CreateLandmark(this.AddLandmarkBindingModel);
 
                 return RedirectToPage("/Landmark/List", new {Area = "Admin" });
             }
 
-            this._service.FillDropDownItems(AddRegionBindingModel);
+            this._service.FillDropDownItems(AddLandmarkBindingModel);
 
             return Page();
         }

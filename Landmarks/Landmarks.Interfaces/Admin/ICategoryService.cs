@@ -13,7 +13,9 @@ namespace Landmarks.Interfaces.Admin
 
         Task<Category> GetCategoryAsync(int id);
 
-        void DeleteCategoryAsync(Category category);
+        Category GetCategory(int id);
+
+        void DeleteCategory(Category category);
 
         Category GetCategoryByName(string name);
 

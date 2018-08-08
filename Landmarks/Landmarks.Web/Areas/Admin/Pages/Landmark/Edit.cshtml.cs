@@ -42,7 +42,7 @@ namespace Landmarks.Web.Areas.Admin.Pages.Landmark
                 this.EditLandmarkBindingModel.Id = id;
                 this._service.SaveEntity(this.EditLandmarkBindingModel);
 
-                return RedirectToPage("/Category/List", new {Area = "Admin"});
+                return RedirectToPage("/Landmark/List", new {Area = "Admin"});
             }
 
             return this.Page();

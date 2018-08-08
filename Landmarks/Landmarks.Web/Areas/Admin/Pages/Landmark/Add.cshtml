@@ -6,6 +6,13 @@
 }
 <div class="container container-fluid text-center">
     <h2>@Landmark.lblAdd</h2>
-
-    @Html.EditorFor(m => m.AddRegionBindingModel)
+    <form method="post">
+        @Html.EditorFor(m => m.AddLandmarkBindingModel)
+        <button type="submit" class="btn btn-indigo">Add Landmark</button>
+        <a asp-page="/Index" class="btn btn-light-blue">Cancel</a>
+    </form>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

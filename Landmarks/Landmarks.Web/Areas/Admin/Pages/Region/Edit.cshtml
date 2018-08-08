@@ -1,9 +1,16 @@
 ﻿@page "{id}"
-@using Landmarks.Common.Resources.Admin
-@model Landmarks.Web.Areas.Admin.Pages.Category.EditModel
+@model Landmarks.Web.Areas.Admin.Pages.Region.EditModel
 
 <div class="container container-fluid text-center">
     <h2>@Region.lblEdit</h2>
 
-    @Html.EditorFor(m => m.EditCategoryBindingModel)
+    <form method="post">
+        @Html.EditorFor(m => m.EditCategoryBindingModel)
+        <button type="submit" class="btn btn-indigo">Add Region</button>
+        <a asp-page="/Index" class="btn btn-light-blue">Cancel</a>
+    </form>
 </div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

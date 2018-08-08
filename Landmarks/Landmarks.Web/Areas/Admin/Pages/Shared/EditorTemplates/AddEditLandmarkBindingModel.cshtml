@@ -1,0 +1,5 @@
+﻿@model AddEditLandmarkBindingModel
+
+@Html.FormGroupFor(m => m.Name)
+@Html.SelectItemFor(m => m.CategoryId, Model.Categories)
+@Html.SelectItemFor(m => m.RegionId, Model.Regions)

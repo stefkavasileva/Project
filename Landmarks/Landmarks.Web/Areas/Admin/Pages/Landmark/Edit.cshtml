@@ -1,10 +1,16 @@
 ﻿@page "{id}"
-@using Landmarks.Common.Resources.Admin
-@using Landmarks.Web.Areas.Admin.Pages.Landmark
-@model EditModel
+@model Landmarks.Web.Areas.Admin.Pages.Landmark.EditModel
 
 <div class="container container-fluid text-center">
     <h2>@Landmark.lblEdit</h2>
 
-    @Html.EditorFor(m => m.EditLandmarkBindingModel)
+    <form method="post">
+        @Html.EditorFor(m => m.EditLandmarkBindingModel)
+        <button type="submit" class="btn btn-indigo">Add Landmark</button>
+        <a asp-page="/Index" class="btn btn-light-blue">Cancel</a>
+    </form>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
