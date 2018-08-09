@@ -1,12 +1,14 @@
 using AutoMapper;
 using Landmarks.Common.Models.Admin.BindingModels;
 using Landmarks.Interfaces.Admin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 
 namespace Landmarks.Web.Areas.Admin.Pages.Landmark
 {
+    [Authorize(Roles = "Administrator")]
     public class EditModel : PageModel
     {
         private readonly ILandmarkService _service;

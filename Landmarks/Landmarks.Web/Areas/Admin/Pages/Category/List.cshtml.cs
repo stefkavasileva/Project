@@ -2,11 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Landmarks.Common.Models.Admin.ViewModels;
 using Landmarks.Interfaces.Admin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Landmarks.Web.Areas.Admin.Pages.Category
 {
+    [Authorize(Roles = "Administrator")]
     public class ListModel : PageModel
     {
         private readonly ICategoryService _service;

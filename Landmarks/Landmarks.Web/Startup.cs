@@ -63,7 +63,38 @@ namespace Landmarks.Web
             services.AddScoped<IRegionService, RegionService>();
             services.AddScoped<ILandmarkService, LandmarkService>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+           
+
+            services.AddMvc()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AuthorizePage("/Add", "Administrator");
+                    options.Conventions.AuthorizeFolder("/Category", "Administrator");
+                    options.Conventions.AuthorizePage("/Edit", "Administrator");
+                    options.Conventions.AuthorizeFolder("/Category", "Administrator");
+                    options.Conventions.AuthorizePage("/List", "Administrator");
+                    options.Conventions.AuthorizeFolder("/Category", "Administrator");
+
+                    options.Conventions.AuthorizePage("/Add", "Administrator");
+                    options.Conventions.AuthorizeFolder("/Region", "Administrator");
+                    options.Conventions.AuthorizePage("/Edit", "Administrator");
+                    options.Conventions.AuthorizeFolder("/Region", "Administrator");
+                    options.Conventions.AuthorizePage("/List", "Administrator");
+                    options.Conventions.AuthorizeFolder("/Region", "Administrator");
+
+                    options.Conventions.AuthorizePage("/Add", "Administrator");
+                    options.Conventions.AuthorizeFolder("/Landmark", "Administrator");
+                    options.Conventions.AuthorizePage("/Edit", "Administrator");
+                    options.Conventions.AuthorizeFolder("/Landmark", "Administrator");
+                    options.Conventions.AuthorizePage("/List", "Administrator");
+                    options.Conventions.AuthorizeFolder("/Landmark", "Administrator");
+
+                }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
