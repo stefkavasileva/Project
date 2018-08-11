@@ -117,22 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblEdit" xml:space="preserve">
-    <value>Edit region</value>
+  <data name="btnDelete" xml:space="preserve">
+    <value>Delete</value>
   </data>
-  <data name="msgInvalidNumber" xml:space="preserve">
-    <value>Please enter valid number</value>
+  <data name="btnEdit" xml:space="preserve">
+    <value>Edit </value>
   </data>
-  <data name="msgMaxLen" xml:space="preserve">
-    <value>The maximum length of name is 200 characters</value>
+  <data name="lblActions" xml:space="preserve">
+    <value>Actions</value>
   </data>
-  <data name="msgMinLen" xml:space="preserve">
-    <value>The name must be at least five characters long</value>
+  <data name="lblAddCategory" xml:space="preserve">
+    <value>Add category</value>
   </data>
-  <data name="msgRequiredArea" xml:space="preserve">
-    <value>The area name is required</value>
+  <data name="lblListCategories" xml:space="preserve">
+    <value>All categories</value>
   </data>
-  <data name="msgRequiredName" xml:space="preserve">
-    <value>The region name is required</value>
+  <data name="lblName" xml:space="preserve">
+    <value>Name</value>
   </data>
 </root>

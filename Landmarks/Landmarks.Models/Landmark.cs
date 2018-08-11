@@ -1,7 +1,14 @@
-﻿namespace Landmarks.Models
+﻿using System.Collections.Generic;
+
+namespace Landmarks.Models
 {
     public class Landmark
     {
+        public Landmark()
+        {
+            this.Images = new List<Image>();
+        }
+
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -18,12 +25,13 @@
 
         public Region Region { get; set; }
 
+        public ICollection<Image> Images { get; set; }  
         //otzivi
 
         //komnetari
 
         //reiting
 
-        //snimka
+
     }
 }

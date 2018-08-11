@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Landmarks.Common.Constants;
 
 namespace Landmarks.Common.Models.Admin.BindingModels
 {
@@ -8,16 +9,19 @@ namespace Landmarks.Common.Models.Admin.BindingModels
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resources.Admin.Landmark), ErrorMessageResourceName = "msgRequiredName")]
-        [MinLength(5, ErrorMessageResourceType = typeof(Resources.Admin.Landmark), ErrorMessageResourceName = "msgMinLen")]
-        [MaxLength(200, ErrorMessageResourceType = typeof(Resources.Admin.Landmark), ErrorMessageResourceName = "msgMaxLen")]
+        [Required(ErrorMessage = "msgRequiredName")]
+        [MinLength(ValidationConstants.NameMinLen, ErrorMessage = "msgMinNameLen")]
+        [MaxLength(ValidationConstants.NameMaxLen, ErrorMessage = "msgMaxNameLen")]
+        [Display(Name = "lblName", AutoGenerateFilter = false)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "msgRequiredCategory")]
+        [Display(Name = "lblCategory")]
         public int CategoryId { get; set; }
 
-        [Required]
-        public int RegionId { get; set; }   
+        [Required(ErrorMessage = "msgRequiredRegion")]
+        [Display(Name = "lblRegion")]
+        public int RegionId { get; set; }
 
         public List<SelectListItem> Categories { set; get; }
 

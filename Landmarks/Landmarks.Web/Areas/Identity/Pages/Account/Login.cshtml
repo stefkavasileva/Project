@@ -48,7 +48,7 @@
             </form>
         </section>
     </div>
-    <div class="col-md-6 col-md-offset-2">
+    <div class="col-md-6 col-md-offset-2 align-content-center">
         <section>
             <h4>Use another service to log in.</h4>
             <hr />
@@ -65,12 +65,11 @@
                 else
                 {
                     <form asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
+                        <div class="align-content-center">
                             <p>
-                                @foreach (var provider in Model.ExternalLogins)
-                                {
-                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
+                                <button type="submit" class="btn btn-primary" name="provider" value="@Model.ExternalLogins[0].Name" title="Log in using your @Model.ExternalLogins[0].DisplayName account"><i class="fa fa-facebook"></i></button>
+                                <button type="submit" class="btn btn-danger" name="provider" value="@Model.ExternalLogins[1].Name" title="Log in using your @Model.ExternalLogins[1].DisplayName account"><i class="fa fa-google"></i></button>
+                                <button type="submit" class="btn btn-green" name="provider" value="@Model.ExternalLogins[2].Name" title="Log in using your @Model.ExternalLogins[2].DisplayName account"><i class="fa fa-github"></i></button>
                             </p>
                         </div>
                     </form>

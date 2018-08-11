@@ -18,11 +18,11 @@ namespace Landmarks.Web.Areas.Admin.Pages.Landmark
             this._service = service;
         }
 
-        public ICollection<LandmarkConciseViewModel> Categories { get; set; }
+        public ICollection<LandmarkConciseViewModel> Landmarks { get; set; }
 
         public void OnGet()
         {
-            this.Categories = this._service.GetLandmarks().ToList();    
+            this.Landmarks = this._service.GetLandmarks().ToList();    
         }
         public IActionResult OnPostDelete(int? id)
         {
@@ -32,7 +32,7 @@ namespace Landmarks.Web.Areas.Admin.Pages.Landmark
 
             if (region == null) return NotFound();
 
-            this._service.DeleteLandmar(region);
+            this._service.DeleteLandmark(region);
 
             return RedirectToPage("/Landmark/List");
         }

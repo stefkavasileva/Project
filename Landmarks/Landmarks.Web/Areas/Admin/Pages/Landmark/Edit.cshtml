@@ -1,13 +1,16 @@
 ﻿@page "{id}"
 @model Landmarks.Web.Areas.Admin.Pages.Landmark.EditModel
 
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Landmark.EditModel> localizer;
+
 <div class="container container-fluid text-center">
-    <h2>@Landmark.lblEdit</h2>
+    <h2>@localizer["lblEditLandmark"]</h2>
 
     <form method="post">
         @Html.EditorFor(m => m.EditLandmarkBindingModel)
-        <button type="submit" class="btn btn-indigo">Add Landmark</button>
-        <a asp-page="/Index" class="btn btn-light-blue">Cancel</a>
+        <button type="submit" class="btn btn-indigo">@localizer["lblAddLandmark"]</button>
+        <a asp-page="/Index" class="btn btn-light-blue">@localizer["btnBack"]</a>
     </form>
 </div>
 

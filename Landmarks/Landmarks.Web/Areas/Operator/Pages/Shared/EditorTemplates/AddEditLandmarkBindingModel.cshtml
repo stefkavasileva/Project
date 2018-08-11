@@ -1,0 +1,17 @@
+﻿@using Landmarks.Web.Common.Helpers
+@model Landmarks.Common.Models.Operator.BindingModels.AddEditLandmarkBindingModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@Html.FormGroupFor(m => m.Name)
+@Html.SelectItemFor(m => m.CategoryId, Model.Categories)
+@Html.SelectItemFor(m => m.RegionId, Model.Regions)
+@foreach (var path in Model.ImagesPathToDisplay)
+{
+    <div class="row">
+        <div class="col-md-3">  
+            <img src="@Url.Content(path)"/>
+        </div>
+    </div>
+}
+@Html.FormGroupFor(m => m.Name)
+

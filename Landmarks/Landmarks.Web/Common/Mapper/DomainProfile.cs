@@ -41,6 +41,14 @@ namespace Landmarks.Web.Common.Mapper
                 .ForMember(viewModel => viewModel.RegionId,
                     opt => opt.MapFrom(entity => entity.RegionId));
 
+            //CreateMap<Landmark, Landmarks.Common.Models.Operator.BindingModels.AddEditLandmarkBindingModel>()
+            //    .ForMember(viewModel => viewModel.Name,
+            //        opt => opt.MapFrom(entity => entity.Name))
+            //    .ForMember(viewModel => viewModel.CategoryId,
+            //        opt => opt.MapFrom(entity => entity.CategoryId))
+            //    .ForMember(viewModel => viewModel.RegionId,
+            //        opt => opt.MapFrom(entity => entity.RegionId));
+
             CreateMap<AddEditLandmarkBindingModel,Landmark>()
                 .ForMember(entity => entity.Name,
                     opt => opt.MapFrom(viewModel => viewModel.Name))
@@ -49,6 +57,13 @@ namespace Landmarks.Web.Common.Mapper
                 .ForMember(entity => entity.RegionId,
                     opt => opt.MapFrom(viewModel => viewModel.RegionId));
 
+            //CreateMap<Landmarks.Common.Models.Operator.BindingModels.AddEditLandmarkBindingModel, Landmark>()
+            //    .ForMember(entity => entity.Name,
+            //        opt => opt.MapFrom(viewModel => viewModel.Name))
+            //    .ForMember(entity => entity.CategoryId,
+            //        opt => opt.MapFrom(viewModel => viewModel.CategoryId))
+            //    .ForMember(entity => entity.RegionId,
+            //        opt => opt.MapFrom(viewModel => viewModel.RegionId));
         }
     }
 }

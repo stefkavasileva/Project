@@ -3,19 +3,21 @@
 @{
     ViewData["Title"] = "All Categories";
 }
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Category.ListModel> localizer;
 
 <div class="container container-fluid text-center">
-    <h1>@Common.lblAllCategory</h1>
-    <a href="/Admin/Category/Add" class="btn btn-indigo">@Common.lblAddCategory</a>
+    <h1>@localizer["lblListCategories"]</h1>
+    <a href="/Admin/Category/Add" class="btn btn-indigo">@localizer["lblAddCategory"]</a>
     <table class="table table-striped table-responsive-md btn-table">
         <thead>
-            <tr>
-                <th>@Common.lblName</th>
-                <th>@Common.lblActions</th>
-            </tr>
+        <tr>
+            <th>@localizer["lblName"]</th>
+            <th>@localizer["lblActions"]</th>
+        </tr>
         </thead>
         <tbody>
-            @Html.DisplayFor(m => m.Categories)
+        @Html.DisplayFor(m => m.Categories)
         </tbody>
     </table>
 </div>

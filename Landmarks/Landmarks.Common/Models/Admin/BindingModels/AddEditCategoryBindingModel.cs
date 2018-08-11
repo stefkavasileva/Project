@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Landmarks.Common.Constants;
+using System.ComponentModel.DataAnnotations;
 
 namespace Landmarks.Common.Models.Admin.BindingModels
 {
@@ -6,9 +7,10 @@ namespace Landmarks.Common.Models.Admin.BindingModels
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessageResourceType = typeof(Resources.Admin.Category), ErrorMessageResourceName = "msgRequiredName")]
-        [MinLength(5, ErrorMessageResourceType = typeof(Resources.Admin.Category), ErrorMessageResourceName = "msgMinLen")]
-        [MaxLength(200, ErrorMessageResourceType = typeof(Resources.Admin.Category), ErrorMessageResourceName = "msgMaxLen")]
-        public string Name { get; set; }   
+        [Required(ErrorMessage = "msgRequiredName")]
+        [MinLength(ValidationConstants.NameMinLen, ErrorMessage = "msgMinNameLen")]
+        [MaxLength(ValidationConstants.NameMaxLen, ErrorMessage = "msgMaxNameLen")]
+        [Display(Name = "lblName", AutoGenerateFilter = false)]
+        public string Name { get; set; }
     }
 }

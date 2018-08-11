@@ -1,16 +1,17 @@
 ﻿@page
-@using Landmarks.Common.Resources.Admin
 @model Landmarks.Web.Areas.Admin.Pages.Region.AddModel
+@using Microsoft.Extensions.Localization
 @{
     ViewData["Title"] = "Add";
+@inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Region.AddModel> localizer;
 }
 
 <div class="container container-fluid text-center">
-    <h2>@Common.lblAddRegion</h2>
+    <h2>@localizer["lblAddRegion"]</h2>
     <form method="post">
         @Html.EditorFor(m => m.AddRegionBindingModel)
-        <button type="submit" class="btn btn-indigo">Add Region</button>
-        <a asp-page="/Index" class="btn btn-light-blue">Cancel</a>
+        <button type="submit" class="btn btn-indigo">@localizer["lblAddRegion"]</button>
+        <a asp-page="/Index" class="btn btn-light-blue">@localizer["btnBack"]</a>
     </form>
 </div>
 

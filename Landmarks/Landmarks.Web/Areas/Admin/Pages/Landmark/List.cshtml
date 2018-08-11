@@ -1,23 +1,26 @@
 ﻿@page
 @model Landmarks.Web.Areas.Admin.Pages.Landmark.ListModel
+@using Microsoft.Extensions.Localization
 @{
     ViewData["Title"] = "All Landmarks";
+    @inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Landmark.ListModel> localizer;
+
 }
 
 <div class="container container-fluid text-center">
-    <h1>@Common.lblAllLandmarks</h1>
-    <a href="/Admin/Landmark/Add" class="btn btn-indigo">@Common.lblAddLandmark</a>
+    <h1>@localizer["lblListLandmarks"]</h1>
+    <a href="/Admin/Landmark/Add" class="btn btn-indigo">@localizer["lblAddLandmark"]</a>
     <table class="table table-striped table-responsive-md btn-table">
         <thead>
             <tr>
-                <th>@Common.lblName</th>
-                <th>@Common.lblCategory</th>
-                <th>@Common.lblRegion</th>
-                <th>@Common.lblActions</th>
+                <th>@localizer["lblName"]</th>
+                <th>@localizer["lblCategory"]</th>
+                <th>@localizer["lblRegion"]</th>
+                <th>@localizer["lblActions"]</th>
             </tr>
         </thead>
         <tbody>
-            @Html.DisplayFor(m => m.Categories)
+            @Html.DisplayFor(m => m.Landmarks)
         </tbody>
     </table>
 </div>

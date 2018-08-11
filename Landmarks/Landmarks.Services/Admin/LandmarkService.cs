@@ -58,7 +58,7 @@ namespace Landmarks.Services.Admin
 
         public Landmark GetLandmark(int id)
         {
-            return this.DbContext.Landmarks.Include(l => l.Region).Include(l => l.Region).FirstOrDefault(l => l.Id == id);
+            return this.DbContext.Landmarks.FirstOrDefault(l => l.Id == id);
         }
 
         public void SaveEntity(AddEditLandmarkBindingModel editLandmarkBindingModel)
@@ -69,7 +69,7 @@ namespace Landmarks.Services.Admin
             this.DbContext.SaveChanges();
         }
 
-        public void DeleteLandmar(Landmark landmark)
+        public void DeleteLandmark(Landmark landmark)
         {
             this.DbContext.Remove(landmark);
             this.DbContext.SaveChanges();

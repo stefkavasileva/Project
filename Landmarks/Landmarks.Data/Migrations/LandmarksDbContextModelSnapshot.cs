@@ -36,6 +36,23 @@ namespace Landmarks.Data.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("Landmarks.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("LandmarkId");
+
+                    b.Property<string>("Path");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LandmarkId");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("Landmarks.Models.Landmark", b =>
                 {
                     b.Property<int>("Id")
@@ -177,7 +194,7 @@ namespace Landmarks.Data.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.UserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -197,7 +214,7 @@ namespace Landmarks.Data.Migrations
                     b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.UserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider");
 
@@ -215,7 +232,7 @@ namespace Landmarks.Data.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.UserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId");
 
@@ -228,7 +245,7 @@ namespace Landmarks.Data.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.UserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId");
 
@@ -241,6 +258,14 @@ namespace Landmarks.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Landmarks.Models.Image", b =>
+                {
+                    b.HasOne("Landmarks.Models.Landmark")
+                        .WithMany("Images")
+                        .HasForeignKey("LandmarkId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Landmarks.Models.Landmark", b =>
@@ -264,7 +289,7 @@ namespace Landmarks.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.UserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.HasOne("Landmarks.Models.User")
                         .WithMany()
@@ -272,7 +297,7 @@ namespace Landmarks.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.UserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.HasOne("Landmarks.Models.User")
                         .WithMany()
@@ -280,7 +305,7 @@ namespace Landmarks.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.UserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
                         .WithMany()
@@ -293,7 +318,7 @@ namespace Landmarks.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.UserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.HasOne("Landmarks.Models.User")
                         .WithMany()

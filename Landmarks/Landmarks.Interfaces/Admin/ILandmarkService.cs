@@ -17,6 +17,6 @@ namespace Landmarks.Interfaces.Admin
 
         void SaveEntity(AddEditLandmarkBindingModel editLandmarkBindingModel);
 
-        void DeleteLandmar(Landmark landmark);
+        void DeleteLandmark(Landmark landmark);
     }
 }

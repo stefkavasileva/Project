@@ -1,0 +1,36 @@
+﻿@page
+@using Microsoft.Extensions.Localization
+@model Landmarks.Web.Areas.Operator.Pages.Landmark.AddModel
+@{
+    ViewData["Title"] = "Add";
+@inject IStringLocalizer<Landmarks.Web.Areas.Operator.Pages.Landmark.AddModel> localizer;
+
+}
+<div class="container container-fluid text-center">
+    <h2>@localizer["lblAddLandmark"]</h2>
+    <form method="post" enctype="multipart/form-data">
+        @Html.FormGroupFor(m => m.AddLandmarkBindingModel.Name)
+        @Html.SelectItemFor(m => m.AddLandmarkBindingModel.CategoryId, Model.AddLandmarkBindingModel.Categories)
+        @Html.SelectItemFor(m => m.AddLandmarkBindingModel.RegionId, Model.AddLandmarkBindingModel.Regions)
+        
+        <input asp-for="AddLandmarkBindingModel.Images" class="img-fluid"/>
+        @Html.FormGroupFor(m => m.AddLandmarkBindingModel.Description)
+
+        <button type="submit" class="btn btn-indigo">@localizer["btnAddLandmark"]</button>
+        <a asp-page="/Index" class="btn btn-light-blue">@localizer["btnBack"]</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    $('#image').bind('change', function () {
+        if (this.files[0].size > 4194304) {
+            //this.files[0].size gets the size of the file.
+            alert("The size of the selected image exceeds the maximum allowed size of 4 MBs.");
+            document.getElementById("image").value = "";
+        }
+    });
+</script> 

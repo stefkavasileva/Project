@@ -117,58 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="descCategory" xml:space="preserve">
-    <value>Here is a classification of landmarks. It is used in this website as well as in database.. This classification is specifically adjusted to Bulgarian situtation. In a case of other countries there would be needed corrections in composition of categories.In a case of other countries there would be needed a thorough work at adjustments of border conditions for landmarks.</value>
-  </data>
-  <data name="descLandmark" xml:space="preserve">
-    <value>Bulgaria is a land with rich history and traditions. There are many historical landmarks scattered all over the country and dating back to ancient times, the Middle Ages, the recent past socialist period and up to nowadays modern times.</value>
-  </data>
-  <data name="descRegion" xml:space="preserve">
-    <value>The provinces of Bulgaria are the first level administrative subdivisions of the country.Since 1999, Bulgaria has been divided into 28 provinces which correspond approximately to the 28 districts that existed before 1987.</value>
-  </data>
-  <data name="lblActions" xml:space="preserve">
-    <value>Actions</value>
-  </data>
-  <data name="lblAddCategory" xml:space="preserve">
-    <value>Add Category</value>
-  </data>
-  <data name="lblAddLandmark" xml:space="preserve">
-    <value>Add Landmark</value>
+  <data name="btnBack" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="lblAddRegion" xml:space="preserve">
-    <value>Add Region</value>
+    <value>Add region</value>
   </data>
-  <data name="lblAllCategory" xml:space="preserve">
-    <value>All Categories</value>
-  </data>
-  <data name="lblAllLandmarks" xml:space="preserve">
-    <value>All Landmarks</value>
-  </data>
-  <data name="lblAllRegions" xml:space="preserve">
-    <value>All Regions</value>
-  </data>
-  <data name="lblArea" xml:space="preserve">
-    <value>Area</value>
-  </data>
-  <data name="lblCategory" xml:space="preserve">
-    <value>Category namee</value>
-  </data>
-  <data name="lblName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="lblPopulation" xml:space="preserve">
-    <value>Population</value>
-  </data>
-  <data name="lblRegion" xml:space="preserve">
-    <value>Region name</value>
-  </data>
-  <data name="titleCategory" xml:space="preserve">
-    <value>Landmark category list</value>
-  </data>
-  <data name="titleLandmark" xml:space="preserve">
-    <value>Landmarks list</value>
-  </data>
-  <data name="titleRegion" xml:space="preserve">
-    <value>Bulgarian regions</value>
+  <data name="lblEditRegion" xml:space="preserve">
+    <value>Edit region</value>
   </data>
 </root>

@@ -6,19 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Areas\Identity\Services\**" />
-    <Content Remove="Areas\Identity\Services\**" />
-    <EmbeddedResource Remove="Areas\Identity\Services\**" />
-    <None Remove="Areas\Identity\Services\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\images\admin-category.jpg" />
     <None Include="wwwroot\images\admin-landmark.jpg" />
     <None Include="wwwroot\images\admin-regions.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNet.Security.OAuth.GitHub" Version="2.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="5.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" PrivateAssets="All" />
@@ -30,20 +24,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Areas\Admin\Pages\_ViewImports.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Areas\Admin\Pages\_ViewStart.cshtml">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Areas\Admin\Views\_ValidationScriptsPartial.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
+    <Folder Include="Files\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Operator\Models\" />
+    <Content Update="Areas\Operator\Pages\Landmark\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Operator\Pages\Shared\EditorTemplates\AddEditLandmarkBindingModel.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>
