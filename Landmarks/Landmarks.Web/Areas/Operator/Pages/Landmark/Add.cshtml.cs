@@ -47,7 +47,7 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
                     }
 
                     //TODO add validation for extension and qunique name
-                    //var fullFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", image.FileName.ToString().Trim('"'));
+                    //var fullFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", image.FileName.Trim('"'));
                    var fullFilePath = Path.Combine(_hostingEnvironment.WebRootPath+"/images/", Path.GetFileName(image.FileName));
 
                     using (var fileStram = new FileStream(fullFilePath, FileMode.Create))
@@ -55,7 +55,7 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
                         await image.CopyToAsync(fileStram);
                     }
                     //stupid idea to save name ... 
-                    imagesPaths.Add($"~/images/{image.FileName}");
+                    imagesPaths.Add($"~/images/{image.FileName}");            
                 }
 
                 this._service.AddLandmark(this.AddLandmarkBindingModel, imagesPaths);

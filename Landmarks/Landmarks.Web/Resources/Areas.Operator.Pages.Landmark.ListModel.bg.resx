@@ -132,6 +132,9 @@
   <data name="lblCategory" xml:space="preserve">
     <value>Категория</value>
   </data>
+  <data name="lblDesc" xml:space="preserve">
+    <value>Описание</value>
+  </data>
   <data name="lblListLandmarks" xml:space="preserve">
     <value>Всички забележителности</value>
   </data>

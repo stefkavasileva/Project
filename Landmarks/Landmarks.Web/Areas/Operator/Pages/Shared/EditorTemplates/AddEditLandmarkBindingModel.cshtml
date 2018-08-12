@@ -5,13 +5,20 @@
 @Html.FormGroupFor(m => m.Name)
 @Html.SelectItemFor(m => m.CategoryId, Model.Categories)
 @Html.SelectItemFor(m => m.RegionId, Model.Regions)
-@foreach (var path in Model.ImagesPathToDisplay)
-{
-    <div class="row">
-        <div class="col-md-3">  
-            <img src="@Url.Content(path)"/>
+@Html.FormGroupFor(m => m.Description)
+    
+<div class="row">
+    @Html.LabelFor(m => m.Images)
+
+    @foreach (var path in Model.ImagesPathToDisplay)
+    {
+        <div class="col-md-3">
+            <img src="@Url.Content(path)" width="200" height="150" />
         </div>
-    </div>
-}
-@Html.FormGroupFor(m => m.Name)
+    }
+</div>
+<div>
+    <input asp-for="@Model.Images" class="img-fluid" />
+</div>
+
 

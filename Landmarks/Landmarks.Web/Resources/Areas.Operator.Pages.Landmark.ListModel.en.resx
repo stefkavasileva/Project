@@ -132,6 +132,9 @@
   <data name="lblCategory" xml:space="preserve">
     <value>Category</value>
   </data>
+  <data name="lblDesc" xml:space="preserve">
+    <value>Description</value>
+  </data>
   <data name="lblListLandmarks" xml:space="preserve">
     <value>All landmarks</value>
   </data>

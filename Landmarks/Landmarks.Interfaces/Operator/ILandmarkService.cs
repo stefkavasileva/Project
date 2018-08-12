@@ -16,5 +16,7 @@ namespace Landmarks.Interfaces.Operator
         Landmark GetLandmark(int id);
 
         void DeleteLandmark(Landmark landmark);
+
+        void SaveEntity(AddEditLandmarkBindingModel editLandmarkBindingModel, List<string> imagesPaths);
     }
 }
