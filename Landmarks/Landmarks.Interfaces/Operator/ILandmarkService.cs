@@ -11,7 +11,7 @@ namespace Landmarks.Interfaces.Operator
 
         void AddLandmark(AddEditLandmarkBindingModel addLandmarkBindingModel, List<string> imagesPaths);
 
-        ICollection<LandmarkConciseViewModel> GetLandmarks();
+        ICollection<LandmarkConciseViewModel> GetLandmarksByCreatorId(string id);
 
         Landmark GetLandmark(int id);
 

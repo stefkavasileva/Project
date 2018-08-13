@@ -1,7 +1,17 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
+﻿@using Landmarks.Web.Areas.Operator.Controllers
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<HomeController> localizer;
 
-<h2>Index operator</h2>
-
+<div class="row flex-center">
+    <div class="card col col-md-4">
+        <img class="card-img-top" src="/images/admin-landmark.jpg" alt="Card image cap" style="height: 270px">
+        <div class="card-body">
+            <h4 class="card-title">@localizer["btnTitleLandmark"]</h4>
+            <p class="card-text">@localizer["descLandmark"]</p>
+            <div class="row">
+                <a asp-area="Operator" asp-page="/Landmark/Add" class="btn btn-outline-success"><span class="text-black-50">@localizer["lblAddLandmark"]</span></a>
+                <a asp-area="Operator" asp-page="/Landmark/List" class="btn btn-outline-info"><span class="text-black-50">@localizer["lblAllLandmark"]</span></a>
+            </div>
+        </div>
+    </div>
+</div>

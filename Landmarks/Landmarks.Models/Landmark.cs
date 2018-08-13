@@ -13,8 +13,6 @@ namespace Landmarks.Models
 
         public string Name { get; set; }
 
-        //todo добави населено мястно 
-
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
@@ -25,7 +23,11 @@ namespace Landmarks.Models
 
         public Region Region { get; set; }
 
-        public ICollection<Image> Images { get; set; }  
+        public ICollection<Image> Images { get; set; }
+
+        public string CreatorId { get; set; }
+
+        public User Creator { get; set; }
         //otzivi
 
         //komnetari

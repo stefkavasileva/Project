@@ -5,16 +5,15 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Landmarks.Common.Models.Operator.BindingModels;
 using Landmarks.Interfaces.Operator;
+using Landmarks.Web.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-
 namespace Landmarks.Web.Areas.Operator.Pages.Landmark
 {
-    [Authorize(Roles = "DataEntryOperator")]
+    [Authorize(Roles = "DataEntryOperator,Administrator")]
     public class EditModel : PageModel
     {
         private readonly ILandmarkService _service;
@@ -39,6 +38,8 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
 
             if (landmark == null) return NotFound();
 
+            var userId = this.User.GetUserId();
+            if (landmark.CreatorId != userId) return RedirectToPage("/Landmark/List", new { Area = "Operator" });
             //TODO add mapper
             //this.EditLandmarkBindingModel = this._mapper.Map<Landmarks.Models.Landmark,AddEditLandmarkBindingModel>(landmark);
             this.EditLandmarkBindingModel = new AddEditLandmarkBindingModel
@@ -59,6 +60,7 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
         {
             if (ModelState.IsValid)
             {
+                var userId = this.User.GetUserId();
                 var images = this.EditLandmarkBindingModel.Images;
 
                 var imagesPaths = new List<string>();
@@ -69,24 +71,23 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
                     {
                         continue;
                     }
-
-                    //TODO add validation for extension and qunique name
-                    //var fullFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", image.FileName.Trim('"'));
-                    var fullFilePath = Path.Combine(this._hostingEnvironment.WebRootPath + "/images/", Path.GetFileName(image.FileName));
+                    var newFileName = userId + Path.GetFileName(image.FileName);
+                    //TODO add validation for extension            
+                    var fullFilePath = Path.Combine(_hostingEnvironment.WebRootPath + "/images/", newFileName);
 
                     using (var fileStram = new FileStream(fullFilePath, FileMode.Create))
                     {
                         await image.CopyToAsync(fileStram);
                     }
-                    //stupid idea to save name ... 
-                    imagesPaths.Add($"~/images/{image.FileName}");
+
+                    imagesPaths.Add($"~/images/{newFileName}");
                 }
 
                 this.EditLandmarkBindingModel.Id = id;
-                
+
                 this._service.SaveEntity(this.EditLandmarkBindingModel, imagesPaths);
 
-                return RedirectToPage("/Landmark/List", new { Area = "Admin" });
+                return RedirectToPage("/Landmark/List", new { Area = "Operator" });
             }
 
             return this.Page();

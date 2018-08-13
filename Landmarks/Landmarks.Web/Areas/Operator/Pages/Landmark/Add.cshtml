@@ -3,7 +3,7 @@
 @model Landmarks.Web.Areas.Operator.Pages.Landmark.AddModel
 @{
     ViewData["Title"] = "Add";
-@inject IStringLocalizer<Landmarks.Web.Areas.Operator.Pages.Landmark.AddModel> localizer;
+    @inject IStringLocalizer<Landmarks.Web.Areas.Operator.Pages.Landmark.AddModel> localizer;
 
 }
 <div class="container container-fluid text-center">
@@ -12,12 +12,12 @@
         @Html.FormGroupFor(m => m.AddLandmarkBindingModel.Name)
         @Html.SelectItemFor(m => m.AddLandmarkBindingModel.CategoryId, Model.AddLandmarkBindingModel.Categories)
         @Html.SelectItemFor(m => m.AddLandmarkBindingModel.RegionId, Model.AddLandmarkBindingModel.Regions)
-        
-        <input asp-for="AddLandmarkBindingModel.Images" class="img-fluid"/>
+
+        <input asp-for="AddLandmarkBindingModel.Images" class="img-fluid" />
         @Html.FormGroupFor(m => m.AddLandmarkBindingModel.Description)
 
-        <button type="submit" class="btn btn-indigo">@localizer["btnAddLandmark"]</button>
-        <a asp-page="/Index" class="btn btn-light-blue">@localizer["btnBack"]</a>
+        <button type="submit" class="btn btn-dark-green">@localizer["btnAddLandmark"]</button>
+        <a asp-page="/Index" class="btn btn-light-green">@localizer["btnBack"]</a>
     </form>
 </div>
 

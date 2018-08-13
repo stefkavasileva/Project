@@ -5,10 +5,10 @@
 
 @inject IStringLocalizer<Landmarks.Web.Areas.Operator.Pages.Landmark.ListModel> localizer;
 <tr>
-    <td><a asp-area="Admin" asp-page="/Landmark/Details" asp-route-id="@Model.Id">@Model.Name</a></td>
+    <td>@Model.Name</td>
     <td>@Model.CategoryName</td>
     <td>@Model.RegionName</td>
-    <td>@(Model.Description != null ? Model.Description.Substring(0,Math.Min(10,Model.Description.Length))+ "..." : string.Empty)</td>
+    <td>@(Model.Description != null ? Model.Description.Substring(0, Math.Min(10, Model.Description.Length)) + "..." : string.Empty)</td>
 
     <td>
         <form asp-area="Operator" asp-page-handler="Delete" asp-route-id="@Model.Id" method="post">

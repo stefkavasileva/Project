@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Landmarks.Common.Models.Operator.ViewModels;
 using Landmarks.Interfaces.Operator;
+using Landmarks.Web.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Landmarks.Web.Areas.Operator.Pages.Landmark
 {
-    [Authorize(Roles = "DataEntryOperator")]
+    [Authorize(Roles = "DataEntryOperator,Administrator")]
     public class ListModel : PageModel
     {
         private readonly ILandmarkService _service;
@@ -22,7 +23,8 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
 
         public void OnGet()
         {
-            this.Landmarks = this._service.GetLandmarks().ToList();
+            var userId = this.User.GetUserId();
+            this.Landmarks = this._service.GetLandmarksByCreatorId(userId).ToList();
         }
 
         public IActionResult OnPostDelete(int? id)

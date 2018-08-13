@@ -12,7 +12,7 @@ namespace Landmarks.Data
 
         public DbSet<Region> Regions { get; set; }
 
-        public DbSet<Image> Image { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         public LandmarksDbContext(DbContextOptions<LandmarksDbContext> options)
             : base(options)

@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Landmarks.Common.Models.Operator.BindingModels;
 using Landmarks.Interfaces.Operator;
+using Landmarks.Web.Common;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Landmarks.Web.Areas.Operator.Pages.Landmark
 {
-    [Authorize(Roles = "DataEntryOperator")]
+    [Authorize(Roles = "DataEntryOperator,Administrator")]
     public class AddModel : PageModel
     {
         private readonly ILandmarkService _service;
@@ -35,27 +36,27 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
         {
             if (ModelState.IsValid)
             {
-                var images = this.AddLandmarkBindingModel.Images;
+                //from extension method
+                var userId = this.User.GetUserId();
+                this.AddLandmarkBindingModel.CreatorId = userId;
 
+                var images = this.AddLandmarkBindingModel.Images;
                 var imagesPaths = new List<string>();
 
                 foreach (var image in images)
                 {
-                    if (image.Length <= 0)
-                    {
-                        continue;
-                    }
+                    if (image.Length <= 0) continue;
 
-                    //TODO add validation for extension and qunique name
-                    //var fullFilePath = Path.Combine(Directory.GetCurrentDirectory(), "Files", image.FileName.Trim('"'));
-                   var fullFilePath = Path.Combine(_hostingEnvironment.WebRootPath+"/images/", Path.GetFileName(image.FileName));
+                    var newFileName = userId + Path.GetFileName(image.FileName);
+                    //TODO add validation for extension            
+                    var fullFilePath = Path.Combine(_hostingEnvironment.WebRootPath + "/images/", newFileName);
 
                     using (var fileStram = new FileStream(fullFilePath, FileMode.Create))
                     {
                         await image.CopyToAsync(fileStram);
                     }
-                    //stupid idea to save name ... 
-                    imagesPaths.Add($"~/images/{image.FileName}");            
+
+                    imagesPaths.Add($"~/images/{newFileName}");
                 }
 
                 this._service.AddLandmark(this.AddLandmarkBindingModel, imagesPaths);

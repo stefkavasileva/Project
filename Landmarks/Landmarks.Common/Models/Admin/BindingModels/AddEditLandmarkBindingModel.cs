@@ -23,6 +23,8 @@ namespace Landmarks.Common.Models.Admin.BindingModels
         [Display(Name = "lblRegion")]
         public int RegionId { get; set; }
 
+        public string CreatorId { get; set; }
+
         public List<SelectListItem> Categories { set; get; }
 
         public List<SelectListItem> Regions { set; get; }

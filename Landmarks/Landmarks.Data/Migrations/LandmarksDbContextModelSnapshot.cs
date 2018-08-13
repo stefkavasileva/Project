@@ -42,6 +42,8 @@ namespace Landmarks.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime>("CreatedDate");
+
                     b.Property<int>("LandmarkId");
 
                     b.Property<string>("Path");
@@ -61,6 +63,8 @@ namespace Landmarks.Data.Migrations
 
                     b.Property<int>("CategoryId");
 
+                    b.Property<string>("CreatorId");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("Name");
@@ -70,6 +74,8 @@ namespace Landmarks.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("CreatorId");
 
                     b.HasIndex("RegionId");
 
@@ -274,6 +280,10 @@ namespace Landmarks.Data.Migrations
                         .WithMany("Landmarks")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Landmarks.Models.User", "Creator")
+                        .WithMany("Landmarks")
+                        .HasForeignKey("CreatorId");
 
                     b.HasOne("Landmarks.Models.Region", "Region")
                         .WithMany("Landmarks")

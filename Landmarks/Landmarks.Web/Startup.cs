@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Landmarks.Data;
+using Landmarks.Interfaces;
 using Landmarks.Interfaces.Admin;
 using Landmarks.Interfaces.Operator;
 using Landmarks.Models;
+using Landmarks.Services;
 using Landmarks.Services.Admin;
 using Landmarks.Web.Common;
 using Microsoft.AspNetCore.Identity;
@@ -101,6 +103,7 @@ namespace Landmarks.Web
             });
 
             services.AddAutoMapper();
+            services.AddScoped<IMainService, MainService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IRegionService, RegionService>();
             services.AddScoped<Interfaces.Admin.ILandmarkService,LandmarkService>();

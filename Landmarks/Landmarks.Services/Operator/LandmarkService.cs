@@ -17,6 +17,7 @@ namespace Landmarks.Services.Operator
     public class LandmarkService : BaseService, ILandmarkService
     {
         private readonly IHostingEnvironment _environment;
+
         public LandmarkService(LandmarksDbContext dbContext, IMapper mapper, IHostingEnvironment environment)
             : base(dbContext, mapper)
         {
@@ -46,12 +47,15 @@ namespace Landmarks.Services.Operator
 
         public void AddLandmark(AddEditLandmarkBindingModel model, List<string> imagesPaths)
         {
+            //var landmark = this.Mapper.Map<AddEditLandmarkBindingModel, Landmark>(model);
+
             var landmark = new Landmark
             {
                 Name = model.Name,
                 CategoryId = model.CategoryId,
                 Description = model.Description,
                 RegionId = model.RegionId,
+                CreatorId = model.CreatorId,
             };
 
             this.DbContext.Landmarks.Add(landmark);
@@ -65,7 +69,7 @@ namespace Landmarks.Services.Operator
                 imagesToDb.Add(new Image { LandmarkId = landmark.Id, Path = imagesPath });
             }
 
-            this.DbContext.Image.AddRange(imagesToDb);
+            this.DbContext.Images.AddRange(imagesToDb);
             this.DbContext.SaveChanges();
 
             landmark.Images = imagesToDb;
@@ -76,11 +80,11 @@ namespace Landmarks.Services.Operator
         public void SaveEntity(AddEditLandmarkBindingModel model, List<string> imagesPaths)
         {
             var landmark = this.DbContext.Landmarks.Include(l => l.Images).FirstOrDefault(l => l.Id == model.Id);
-            
+
             //remove old picture from database and server
             RemoveImagesFromServer(landmark);
-            var imagesForDelete = this.DbContext.Image.Where(i => i.LandmarkId == model.Id);
-            this.DbContext.Image.RemoveRange(imagesForDelete);
+            var imagesForDelete = this.DbContext.Images.Where(i => i.LandmarkId == model.Id);
+            this.DbContext.Images.RemoveRange(imagesForDelete);
             this.DbContext.SaveChanges();
 
             var imagesToDb = new List<Image>();
@@ -92,7 +96,7 @@ namespace Landmarks.Services.Operator
                     imagesToDb.Add(new Image { LandmarkId = model.Id, Path = imagesPath });
                 }
 
-                this.DbContext.Image.AddRange(imagesToDb);
+                this.DbContext.Images.AddRange(imagesToDb);
                 this.DbContext.SaveChanges();
             }
 
@@ -106,9 +110,15 @@ namespace Landmarks.Services.Operator
             this.DbContext.SaveChanges();
         }
 
-        public ICollection<LandmarkConciseViewModel> GetLandmarks()
+        public ICollection<LandmarkConciseViewModel> GetLandmarksByCreatorId(string id)
         {
-            var dbLandmarks = this.DbContext.Landmarks.Include(l => l.Region).Include(l => l.Category).ToList();
+            var dbLandmarks = this.DbContext
+                .Landmarks
+                .Where(l => l.CreatorId == id)
+                .Include(l => l.Region)
+                .Include(l => l.Category)
+                .ToList();
+
             var modelCollection = new List<LandmarkConciseViewModel>();
 
             dbLandmarks.ForEach(l => modelCollection.Add(this.Mapper.Map<Landmark, LandmarkConciseViewModel>(l)));
@@ -134,7 +144,7 @@ namespace Landmarks.Services.Operator
         {
             foreach (var landmarkImage in landmark.Images)
             {
-                var image = this.DbContext.Image.FirstOrDefault(i => i.Id == landmarkImage.Id);
+                var image = this.DbContext.Images.FirstOrDefault(i => i.Id == landmarkImage.Id);
                 if (image == null) continue;
 
                 var newPath = Regex.Replace(image.Path, "/", "\\").Substring(1);
@@ -145,7 +155,7 @@ namespace Landmarks.Services.Operator
                     File.Delete(fullFilePath);
                 }
 
-                this.DbContext.Image.Remove(image);
+                this.DbContext.Images.Remove(image);
             }
         }
     }

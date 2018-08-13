@@ -5,7 +5,7 @@
 
 @inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Region.ListModel> localizer;
 <tr>
-    <td><a asp-area="Admin" asp-page="/Region/Details" asp-route-id="@Model.Id">@Model.Name</a></td>
+    <td>@Model.Name</td>
     <td>@Model.Area</td>
     <td>@Model.Population</td>
     <td>

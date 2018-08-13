@@ -40,5 +40,7 @@ namespace Landmarks.Common.Models.Operator.BindingModels
         public ICollection<IFormFile> Images { get; set; }
 
         public ICollection<string> ImagesPathToDisplay { get; set; }
+
+        public string CreatorId { get; set; }
     }
 }

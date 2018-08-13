@@ -26,21 +26,21 @@ namespace Landmarks.Data.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    EmailConfirmed = table.Column<bool>(nullable: false),
+                    LockoutEnabled = table.Column<bool>(nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(nullable: false),
                     Id = table.Column<string>(nullable: false),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(nullable: false),
                     PasswordHash = table.Column<string>(nullable: true),
                     SecurityStamp = table.Column<string>(nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
-                    LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false),
                     FullName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -191,7 +191,8 @@ namespace Landmarks.Data.Migrations
                     Name = table.Column<string>(nullable: true),
                     CategoryId = table.Column<int>(nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    RegionId = table.Column<int>(nullable: false)
+                    RegionId = table.Column<int>(nullable: false),
+                    CreatorId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -203,9 +204,36 @@ namespace Landmarks.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Landmarks_AspNetUsers_CreatorId",
+                        column: x => x.CreatorId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_Landmarks_Regions_RegionId",
                         column: x => x.RegionId,
                         principalTable: "Regions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Path = table.Column<string>(nullable: true),
+                    LandmarkId = table.Column<int>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Images_Landmarks_LandmarkId",
+                        column: x => x.LandmarkId,
+                        principalTable: "Landmarks",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -257,9 +285,19 @@ namespace Landmarks.Data.Migrations
                 filter: "[Name] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Images_LandmarkId",
+                table: "Images",
+                column: "LandmarkId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Landmarks_CategoryId",
                 table: "Landmarks",
                 column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Landmarks_CreatorId",
+                table: "Landmarks",
+                column: "CreatorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Landmarks_RegionId",
@@ -292,16 +330,19 @@ namespace Landmarks.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Landmarks");
+                name: "Images");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Landmarks");
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Regions");

@@ -20,7 +20,7 @@ namespace Landmarks.Services.Admin
 
         public void FillDropDownItems(AddEditLandmarkBindingModel model)
         {
-            //get categories and region for drop down list
+            //get categories and region for dropdown list
             var categories = this.DbContext.Categories.ToList();
             var regions = this.DbContext.Regions.ToList();
 

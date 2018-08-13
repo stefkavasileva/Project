@@ -2,93 +2,107 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run &amp; Deploy</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
-    </div>
-</div>
+Index main
+
+<div class="jsmaps-wrapper" id="world-map"></div>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#world-map').JSMaps({
+            map: 'bulgaria'
+        });
+
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        var regionKeyNames = {
+            "M50.9,127.8L45.4": { name: "Vidin", desc:"Vidin Province (Bulgarian: Област Видин) is the northwesternmost province of Bulgaria. It borders Serbia to the west and Romania to the northeast. Its administrative centre is the city of Vidin on the Danube river. The area is divided into 11 municipalities. As of December 2009, the province has a population of 108,067 inhabitants."},
+            "M78,159.3L77.9": { name: "Montana", desc: "Montana Province (Bulgarian: Област Монтана, transliterated: Oblast Montana) is a province in northwestern Bulgaria, bordering Serbia in the southwest and Romania in the north. It spreads its area between the Danube river and Balkan mountain. As of February 2011, the province has a population of 148,098 inhabitants, on territory of 3,635.5 km². It was named after its administrative centre the city of Montana." },
+            "M124,165.1L123.9": { name: "Vratsa", desc:"Vratsa Province (Bulgarian: Област Враца Oblast Vraca, former name Vraca okrug) is a Bulgarian province located in the northwestern part of the country, between Danube river in the north and Stara Planina mountain in the south. It is named after its main town - Vratsa. As of 2016, the province has a population of 170 367 inhabitants, on territory of 3,619.7 km²."},
+            "M314.3,153.6L310.4": { name: "Pleven", desc: "Pleven Province (Bulgarian: Област Плевен or Plevenska Oblast Bulgarian: Плевенска Област, former name Pleven okrug) is a province located in central northern Bulgaria, bordering the Danube river, Romania and the Bulgarian provinces of Vratsa, Veliko Tarnovo and Lovech. It is divided into 11 subdivisions, called municipalities, that embrace a territory of 4,333.54 km² with a population, as of February 2011, of 269 752 inhabitants.The province's capital is the city of Pleven" },
+            "M334.8,91.9L342.9": { name: "Veliko Tarnovo", desc: "Veliko Tarnovo (Bulgarian: Област Велико Търново) is a province in the middle of the northern part of Bulgaria. Its capital city, Veliko Tarnovo, is of historical significance as it is known as the capital of Medieval Bulgaria. The province is divided into 10 municipalities with a total population, as of December 2009, of 275,395 inhabitants." },
+            "M457.2,54.3L449": { name: "Ruse", desc: "Ruse Province (Bulgarian: Област Русе or Rusenska Oblast Bulgarian: Русенска област, former name Ruse okrug) is a province in northern Bulgaria, named after its main city - Ruse, neighbouring Romania via the Danube. It is divided into 8 municipalities with a total population, as of February 2011, of 235,252 inhabitants." },
+            "M492.7,136.1L488.1": { name: "Razgrad", desc: "Razgrad Province (Bulgarian: Област Разград (Oblast Razgrad), former name Razgrad okrug) is a province in Northeastern Bulgaria, geographically part of the Ludogorie region. It is named after its administrative and industrial centre - the town of Razgrad. As of December 2009, the Province has a total population of 132,740 inhabitants on a territory of 2,639.7 km² that is divided into 7 municipalities." },
+            "M545.3,97.1L538": { name: "Silistra", desc: "Silistra Province (Bulgarian: Област Силистра, transliterated Oblast Silistra, former name Silistra okrug) is a province of Bulgaria, named after its main city - Silistra. It is divided into seven municipalities with a total population, as of December 2009, of 127,659.Silistra Province is a traditionally agricultural province, mainly because of its fertile soil. The province is known for its pelicans and apricot brandy." },
+            "M569.4,111.8L568.3": { name: "Dobrich", desc: "Dobrich Province (Bulgarian: Област Добрич, Oblast Dobrich, former name Dobrich okrug) is a province in northeastern Bulgaria, part of Southern Dobruja geographical region. It is divided into 8 municipalities. At the 2011 census, it had a population of 186,016." },
+            "M643.4,143.8L637.5": { name: "Varna", desc: "Varna Province (Bulgarian: Област Варна, translit. Oblast Varna, former name Varna okrug) is a province in eastern Bulgaria, onе of the 28 Bulgarian provinces. It comprises 12 municipalities (общини, obshtini, sing. общинa, obshtina) with a population, in April 2016, of 494,216 inhabitants.The province is named after its administrative centre, Varna." },
+            "M536.5,205.4L525.9": { name: "Shumen", desc: "Shumen Province (Bulgarian: Област Шумен, transliterated Oblast Shumen, former name Shumen okrug) is a province in northeastern Bulgaria named after its main city Shumen. It is divided into 10 municipalities with a total population, as of December 2009, of 194,090 inhabitants." },
+            "M431.2,205.7L427.1": { name: "Targovishte", desc: "Targovishte Province (Bulgarian: Област Търговище, transliterated Oblast Tǎrgovište, former name Targovishte okrug) is a province in northeastern Bulgaria, named after its main city - Targovishte. As of December 2009, it has a population of 129,675 inhabitants." },
+            "M369.3,232.4L368.4": { name: "Gabrovo", desc: "Gabrovo Province (Bulgarian: Област Габрово (Oblast Gabrovo), former name Gabrovo okrug) is a small province lying at the geographical centre of Bulgaria. It is named after its main town - Gabrovo. In 2009 the total population of the area is 130,001" },
+            "M309.6,168.5L300": { name: "Lovech", desc: "Lovech Province (Bulgarian: Област Ловеч, transliterated Oblast Lovech, former name Lovech okrug) is one of the 28 provinces of Bulgaria, lying at the northern centre of the country. It is named after its main city - Lovech. As of December 2009, the population of the area is 151,153." },
+            "M232.7,231L228.4": { name: "Sofia", desc:"Sofia City Province (Bulgarian: Област София-град, Oblast Sofiya-grad) is a province (oblast) of Bulgaria. Its administrative center is the city of Sofia, the capital of the country.The province borders on Sofia Province and Pernik Province.It is a city-state, consisting of only 1 municipality – the Sofia Capital Municipality." },
+            "M83.1,232.1L92.6": { name: "Pernik", desc: "Pernik Province is a province in western Bulgaria, neighbouring Serbia. Its main city is Pernik, and other municipalities are Breznik, Kovachevtsi, Radomir, Tran, and Zemen." },
+            "M83.1,232.1L86.8": {name: "Sofia", desc: "Sofia City Province (Bulgarian: Област София-град, Oblast Sofiya-grad) is a province (oblast) of Bulgaria. Its administrative center is the city of Sofia, the capital of the country.The province borders on Sofia Province and Pernik Province.It is a city-state, consisting of only 1 municipality – the Sofia Capital Municipality." },
+            "M54,337.3L52": { name: "Kyustendil", desc: "Kyustendil Province (Bulgarian: Област Кюстендил, trl Oblast Kyustendil) is a province in southwestern Bulgaria, extending over an area of 3084.3 km² (constituting 2.7% of the total territory of the Republic of Bulgaria), and with a population of 163,889. It borders on the provinces of Sofia, Pernik, and Blagoevgrad; to the west, its limits coincide with the state borders between Bulgaria and the Republic of Macedonia, and between Bulgaria and the Republic of Serbia." },
+            "M204.5,413.2L200.3": { name: "Blagoevgrad", desc: "Blagoevgrad Province, also known as Pirin Macedonia, is a province of southwestern Bulgaria. It borders four other Bulgarian provinces to the north and east, to the Greek region of Macedonia to the south, and the Republic of Macedonia to the west. The province has 14 municipalities with 12 towns. Its principal city is Blagoevgrad, while other significant towns include Bansko, Gotse Delchev, Melnik, Petrich, Razlog, Sandanski, and Simitli." },
+            "M233.1,260.3L231.6": { name: "Pazardjik", desc: "Pazardzhik Province (Bulgarian: Област Пазарджик Oblast Pazardzhik, former name Pazardzhik okrug) is a province in Southern Bulgaria, named after its administrative and industrial centre - the city of Pazardzhik. The territory is 4,456.9 km that is divided into 12 municipalities with a total population of 275,548 inhabitants, as of February 2011." },
+            "M301.3,233.9L300.6": { name: "Plovdiv", desc: "Plovdiv Province (Bulgarian: Област Пловдив: Oblast Plovdiv, former name Plovdiv okrug) is a province in central southern Bulgaria. It comprises 18 municipalities (общини, obshtini, sing. общинa, obshtina) on a territory of 5,972.9 km² with a population, as of February 2011, of 683,027 inhabitants.The province is named after its administrative and industrial centre — the city of Plovdiv." },
+            "M390.6,230.4L391.7": { name: "Stara Zagora", desc: "Stara Zagora (Bulgarian: Област Стара Загора oblast Stara Zagora, former name Stara Zagora okrug) is a province of south central Bulgaria. It is named after its administrative and industrial centre—the city of Stara Zagora—the sixth-biggest town in the country. The province embraces a territory of 5,151.1 km² that is divided into 11 municipalities with a total population, as of December 2009, of 350,925 inhabitants." },
+            "M191,391.7L194.5": { name: "Smolyan", desc: "Smolyan Province (Bulgarian: Област Смолян, Oblast Smolyan; former name Smolyan okrug) is a province in Southern-central Bulgaria, located in the Rhodope Mountains, neighbouring Greece to the south. It is named after its administrative and industrial centre—the city of Smolyan. The province embraces a territory of 3,192.8 km². that is divided into 10 municipalities with a total population of 124,795 inhabitants, as of December 2009." },
+            "M322.2,362.4L320.8": { name: "Kardzhali", desc: "Kardzhali District (Bulgarian: Област Кърджали, Oblast Kǎrdžali) is a province of southern Bulgaria, neighbouring Greece with the Greek regional units of Xanthi, Rhodope and Evros to the south and east. Kardzhali Province's area is 3209.1 km². Its main city is Kardzhali." },
+            "M335,329.2L338.9": { name: "Haskovo", desc: "Haskovo Province (Bulgarian: Област Хасково - Oblast Haskovo, former name Haskovo okrug) is a province in southern Bulgaria, neighbouring Greece and Turkey to the southeast, comprising parts of the Thracian valley along the river Maritsa. It is named after its administrative and industrial centre - the city of Haskovo. The province embraces a territory of 5,533.3 km² that is divided into 11 municipalities with a total population, as of December 2009, of 256,408 inhabitants." },
+            "M390.6,230.4L400.8": { name: "Sliven", desc: "Sliven Province (Bulgarian: Област Сливен, former name Sliven okrug) is a province in southeastern Bulgaria, named after its administrative and industrial centre — the city of Sliven. It embraces a territory of 3,544.1 km² that is divided into four municipalities, with a total population, as of December 2009, of 204,887." },
+            "M485.4,244.4L491.9": { name: "Yambol", desc: "Yambol (Bulgarian: област Ямбол, oblast Yambol, former name Yambol okrug) is a province in southeastern Bulgaria, neighbouring Turkey to the south. It is named after its main city Yambol, while other towns include Straldzha, Bolyarovo and Elhovo. The province embraces a territory of 3,355.5 km² that is divided into 5 municipalities with a total population, as of December 2009, of 138,429 inhabitants." },
+            "M621.8,220.9L623.4": { name: "Burgas", desc: "Burgas Province is a province in southeastern Bulgaria, including southern Bulgarian Black Sea Coast. It is bounded on the south by Turkey. The province is named after its administrative and industrial centre - the city of Burgas - the fourth biggest town in the country. It is the largest province by area, embracing a territory of 7,748.1 km² that is divided into 13 municipalities with a total population, as of December 2009, of 422,319 inhabitants." }
+        };
+
+        $('path').on("click", function () {
+            var d = $(this).attr('d');
+            var index = d.indexOf(',', d.indexOf(',') + 1);
+            var key = '';
+            if (index > 0) {
+                key = d.substr(0, index);
+            }
+
+            var regionName = regionKeyNames[key].name;
+            var description = regionKeyNames[key].desc;
+            $.ajax({
+                url: "@(Url.Action("GetRegionInfo", "Home"))",
+                dataType: "text",
+                contentType: "application/json",
+                data: { 'regionName': regionName },
+                async: false,
+                success: function (response) {
+                    debugger;
+                    var element = $($('.jsmaps-text')[0]);
+                    var jsonObj = JSON.parse(response);
+
+                    var htmlAsString = '<div class="card col col-md-12">';
+                    htmlAsString += '<div class="view overlay">';
+                    htmlAsString += '<img class="card-img-top" src="~/images/map.png" alt="map" width="50" height="50" />';
+                    htmlAsString += '</div ><div class="card-body">';
+
+                    if (jsonObj.name) {
+                        htmlAsString += '<h4 class="card-title">' + jsonObj.name + '</h4>';
+                    } else {
+                        htmlAsString += '<h4 class="card-title">' + regionName + '</h4>';
+                    }
+
+                    htmlAsString += '<p class="card-text">' + description + '</p>';
+
+                    //if region does not exist in database
+                    if (jsonObj.name) {
+                        htmlAsString += '<button type="button" class="btn btn-light-blue btn-md">Read more</button>';
+                    }
+
+                    htmlAsString +=  '</div></div >';
+
+
+                    element.empty();
+                    element.append($.parseHTML(htmlAsString))
+
+
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    // TODO: Show error
+                }
+            });
+        });
+    });
+</script>
