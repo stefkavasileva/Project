@@ -6,12 +6,15 @@ using Landmarks.Common.Models.Admin.ViewModels;
 using Landmarks.Data;
 using Landmarks.Interfaces.Admin;
 using Landmarks.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Landmarks.Services.Admin
 {
     public class RegionService : BaseService, IRegionService
     {
+        public static readonly List<string> RegionNames = new List<string> { "Veliko Tarnovo", "Montana", "Vratsa", "Kyustendil", "Vidin", "Burgas", "Yambol", "Targovishte", "Razgrad", "Shumen", "Dobrich", "Varna", "Silistra", "Ruse", "Blagoevgrad", "Sliven", "Stara Zagora", "Haskovo", "Plovdiv", "Pazardzhik", "Smolyan", "Kardzhali", "Sofia", "Grad Sofiya", "Pernik", "Gabrovo", "Lovech", "Pleven", };
+
         public RegionService(LandmarksDbContext dbContext, IMapper mapper)
             : base(dbContext, mapper)
         {
@@ -50,6 +53,15 @@ namespace Landmarks.Services.Admin
 
             this.DbContext.Attach(region).State = EntityState.Modified;
             this.DbContext.SaveChanges();
+        }
+
+        public void FillDropDownItems(AddEditRegionBindingModel model)
+        {
+            model.Regions = new List<SelectListItem>();
+            RegionNames.ForEach(r => model.Regions.Add(new SelectListItem
+            {
+                Text = r,
+            }));
         }
     }
 }

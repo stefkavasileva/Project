@@ -1,13 +1,16 @@
 using AutoMapper;
 using Landmarks.Common.Models.Admin.BindingModels;
 using Landmarks.Interfaces.Admin;
+using Landmarks.Web.Common.Constants;
+using Landmarks.Web.Common.Extensions;
+using Landmarks.Web.Common.Helpers.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Landmarks.Web.Areas.Admin.Pages.Region
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = NamesConstants.RoleAdmin)]
     public class EditModel : PageModel
     {
         private readonly IRegionService _service;
@@ -26,11 +29,11 @@ namespace Landmarks.Web.Areas.Admin.Pages.Region
         {
             if (id == null) return NotFound();
 
-            var category = this._service.GetRegion(id.Value);
+            var region = this._service.GetRegion(id.Value);
 
-            if (category == null) return NotFound();
+            if (region == null) return NotFound();
 
-            this.EditCategoryBindingModel = this._mapper.Map<AddEditRegionBindingModel>(category);
+            this.EditCategoryBindingModel = this._mapper.Map<AddEditRegionBindingModel>(region);
 
             return this.Page();
         }
@@ -42,7 +45,13 @@ namespace Landmarks.Web.Areas.Admin.Pages.Region
                 this.EditCategoryBindingModel.Id = id;
                 this._service.SaveEntity(this.EditCategoryBindingModel);
 
-                return RedirectToPage("/Region/List", new { Area = "Admin" });
+                this.TempData.Put(MessageConstants.Name, new MessageModel()
+                {
+                    Type = MessageType.Warning,
+                    Message = MessageConstants.RegionEditSuccess
+                });
+
+                return RedirectToPage(RedirectURL.ToRegionList, new { Area = NamesConstants.AdminArea });
             }
 
             return this.Page();

@@ -2,18 +2,18 @@
 using Microsoft.AspNetCore.Identity;
 using Landmarks.Models;
 using System.Threading.Tasks;
+using Landmarks.Data;
 using Microsoft.Extensions.DependencyInjection;
+using Landmarks.Web.Common.Constants;
 
-namespace Landmarks.Web.Common
+namespace Landmarks.Web.Common.Extensions
 {
-    public static class AppBuilderAuthExtensions
+    public static class AppBuilderSeedDataExtensions
     {
-        private const string DefaultAdminPassword = "admin_pass_123";
-        private const string DefaultOperatorPassword = "operator_pass_123";
         private static readonly IdentityRole[] roles =
         {
-            new IdentityRole ("Administrator"),
-            new IdentityRole ("DataEntryOperator"),
+            new IdentityRole (SeedDbConstants.FullAdminRoleName),
+            new IdentityRole (SeedDbConstants.FullOperatorRoleName),
         };
 
         public static async void SeedDatabase(this IApplicationBuilder builder)
@@ -34,26 +34,26 @@ namespace Landmarks.Web.Common
 
         private static async Task CreateAdmin(UserManager<User> userManager)
         {
-            var user = await userManager.FindByNameAsync("admin@example.com");
+            var user = await userManager.FindByNameAsync(SeedDbConstants.AdminEmail);
 
             if (user == null)
             {
-                user = new User { UserName = "admin@example.com", Email = "admin@example.com" };
+                user = new User { UserName = SeedDbConstants.AdminEmail, Email = SeedDbConstants.AdminEmail };
 
-                await userManager.CreateAsync(user, DefaultAdminPassword);
+                await userManager.CreateAsync(user, SeedDbConstants.DefaultAdminPassword);
                 await userManager.AddToRoleAsync(user, roles[0].Name);
             }
         }
 
         private static async Task CreateOperator(UserManager<User> userManager)
         {
-            var dbOperator = await userManager.FindByNameAsync("operator@example.com");
+            var dbOperator = await userManager.FindByNameAsync(SeedDbConstants.OperatorEmail);
 
             if (dbOperator == null)
             {
-                dbOperator = new User { UserName = "operator@example.com", Email = "operator@example.com" };
+                dbOperator = new User { UserName = SeedDbConstants.OperatorEmail, Email = SeedDbConstants.OperatorEmail };
 
-                await userManager.CreateAsync(dbOperator, DefaultOperatorPassword);
+                await userManager.CreateAsync(dbOperator, SeedDbConstants.DefaultOperatorPassword);
                 await userManager.AddToRoleAsync(dbOperator, roles[1].Name);
             }
         }

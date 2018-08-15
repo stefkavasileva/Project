@@ -9,13 +9,13 @@ namespace Landmarks.Web.Common.Mapper
     {
         public DomainProfile()
         {
-            CreateMap<AddEditRegionBindingModel, Region>()
-                .ForMember(entity => entity.Name,
-                    opt => opt.MapFrom(viewModel => viewModel.Name))
-                .ForMember(entity => entity.Area,
-                    opt => opt.MapFrom(viewModel => viewModel.Area))
-                .ForMember(entity => entity.Population,
-                    opt => opt.MapFrom(viewModel => viewModel.Population));
+            //CreateMap<AddEditRegionBindingModel, Region>()
+            //    .ForMember(entity => entity.Id,
+            //        opt => opt.MapFrom(viewModel => viewModel.NameId))
+            //    .ForMember(entity => entity.Area,
+            //        opt => opt.MapFrom(viewModel => viewModel.Area))
+            //    .ForMember(entity => entity.Population,
+            //        opt => opt.MapFrom(viewModel => viewModel.Population));
 
             CreateMap<AddEditLandmarkBindingModel, Landmark>()
                 .ForMember(entity => entity.Name,

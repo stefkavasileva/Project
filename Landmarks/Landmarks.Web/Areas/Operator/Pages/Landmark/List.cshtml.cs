@@ -2,14 +2,16 @@ using System.Collections.Generic;
 using System.Linq;
 using Landmarks.Common.Models.Operator.ViewModels;
 using Landmarks.Interfaces.Operator;
-using Landmarks.Web.Common;
+using Landmarks.Web.Common.Constants;
+using Landmarks.Web.Common.Extensions;
+using Landmarks.Web.Common.Helpers.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Landmarks.Web.Areas.Operator.Pages.Landmark
 {
-    [Authorize(Roles = "DataEntryOperator,Administrator")]
+    [Authorize(Roles = NamesConstants.RoleAdminAndOperator)]
     public class ListModel : PageModel
     {
         private readonly ILandmarkService _service;
@@ -37,7 +39,13 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
 
             this._service.DeleteLandmark(landmark);
 
-            return RedirectToPage("/Landmark/List", new { Area = "Operator" });
+            this.TempData.Put(MessageConstants.Name, new MessageModel()
+            {
+                Type = MessageType.Danger,
+                Message = MessageConstants.LandmarkDeleteSuccess
+            });
+
+            return RedirectToPage(RedirectURL.ToLandmarkList, new { Area = NamesConstants.OperatorArea });
         }
     }
 }

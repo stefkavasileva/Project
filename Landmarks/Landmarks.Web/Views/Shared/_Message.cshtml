@@ -1,0 +1,8 @@
+﻿@using Landmarks.Web.Common.Extensions
+@using Landmarks.Web.Common.Helpers.Messages;
+
+@if (TempData.ContainsKey("__Message"))
+{
+    var message = TempData.Get<MessageModel>("__Message");
+    <message type="@message.Type" message="@message.Message"></message>
+}

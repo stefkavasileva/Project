@@ -1,20 +1,22 @@
 using AutoMapper;
 using Landmarks.Common.Models.Admin.BindingModels;
 using Landmarks.Interfaces.Admin;
+using Landmarks.Web.Common.Constants;
+using Landmarks.Web.Common.Extensions;
+using Landmarks.Web.Common.Helpers.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-
 namespace Landmarks.Web.Areas.Admin.Pages.Landmark
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = NamesConstants.RoleAdmin)]
     public class EditModel : PageModel
     {
         private readonly ILandmarkService _service;
         private readonly IMapper _mapper;
 
-        public EditModel(ILandmarkService service,IMapper mapper)
+        public EditModel(ILandmarkService service, IMapper mapper)
         {
             this._service = service;
             this._mapper = mapper;
@@ -31,7 +33,7 @@ namespace Landmarks.Web.Areas.Admin.Pages.Landmark
 
             if (landmark == null) return NotFound();
 
-            this.EditLandmarkBindingModel = this._mapper.Map<Landmarks.Models.Landmark,AddEditLandmarkBindingModel>(landmark);
+            this.EditLandmarkBindingModel = this._mapper.Map<Landmarks.Models.Landmark, AddEditLandmarkBindingModel>(landmark);
             this._service.FillDropDownItems(this.EditLandmarkBindingModel);
 
             return this.Page();
@@ -44,7 +46,13 @@ namespace Landmarks.Web.Areas.Admin.Pages.Landmark
                 this.EditLandmarkBindingModel.Id = id;
                 this._service.SaveEntity(this.EditLandmarkBindingModel);
 
-                return RedirectToPage("/Landmark/List", new {Area = "Admin"});
+                this.TempData.Put(MessageConstants.Name, new MessageModel()
+                {
+                    Type = MessageType.Warning,
+                    Message = MessageConstants.LandmarkEditSuccess
+                });
+
+                return RedirectToPage(RedirectURL.ToLandmarkList, new { Area = NamesConstants.AdminArea });
             }
 
             return this.Page();

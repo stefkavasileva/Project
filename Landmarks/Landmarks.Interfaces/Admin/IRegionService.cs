@@ -16,5 +16,7 @@ namespace Landmarks.Interfaces.Admin
         void DeleteRegion(Region region);
 
         void SaveEntity(AddEditRegionBindingModel model);
+
+        void FillDropDownItems(AddEditRegionBindingModel model);
     }
 }

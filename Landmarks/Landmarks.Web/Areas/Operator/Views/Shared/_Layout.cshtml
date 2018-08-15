@@ -35,6 +35,9 @@
                 <li class="nav-item active">
                     <a asp-area="Operator" asp-controller="Home" asp-action="Index" class="nav-link">Home<span class="sr-only">Home</span></a>
                 </li>
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Main page</a>
+                </li>
             </ul>
         </div>
         <partial name="_LoginPartial" class="float-right" />
@@ -43,10 +46,11 @@
     <partial name="_CookieConsentPartial" />
 
     <div class="container body-content">
+        <partial name="_Message" />
         @RenderBody()
         <hr />
         <footer>
-            <partial name="_SelectLanguage"/>
+            <partial name="_SelectLanguage" />
             <p>&copy; 2018 - Landmarks.Web</p>
         </footer>
     </div>

@@ -1,12 +1,15 @@
 using Landmarks.Common.Models.Admin.BindingModels;
 using Landmarks.Interfaces.Admin;
+using Landmarks.Web.Common.Constants;
+using Landmarks.Web.Common.Extensions;
+using Landmarks.Web.Common.Helpers.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Landmarks.Web.Areas.Admin.Pages.Category
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = NamesConstants.RoleAdmin)]
     public class AddModel : PageModel
     {
         private readonly ICategoryService _service;
@@ -25,18 +28,21 @@ namespace Landmarks.Web.Areas.Admin.Pages.Category
             {
                 this._service.CreateCategory(this.AddCategoryBindingModel.Name);
 
-                return RedirectToPage("/Category/List", new { Area = "Admin" });
+                PushNotificationMessage();
+
+                return RedirectToPage(RedirectURL.ToCategoryList, new { Area = NamesConstants.AdminArea });
             }
 
             return Page();
         }
 
-        //[HttpPost]
-        //public JsonResult IsCateggoryNameExist(string name)
-        //{
-        //    var user = this._service.GetCategoryByName(name);
-        //    return new JsonResult(user == null);
-        //}
-
+        private void PushNotificationMessage()
+        {
+            this.TempData.Put(MessageConstants.Name, new MessageModel()
+            {
+                Type = MessageType.Success,
+                Message = MessageConstants.CategorySuccess
+            });
+        }
     }
 }

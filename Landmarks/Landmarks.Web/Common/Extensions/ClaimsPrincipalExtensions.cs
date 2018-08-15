@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Claims;
 
-namespace Landmarks.Web.Common
+namespace Landmarks.Web.Common.Extensions
 {
     public static class ClaimsPrincipalExtensions
     {

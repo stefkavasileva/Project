@@ -10,11 +10,12 @@ using Microsoft.EntityFrameworkCore;
 using Landmarks.Data;
 using Landmarks.Interfaces;
 using Landmarks.Interfaces.Admin;
-using Landmarks.Interfaces.Operator;
 using Landmarks.Models;
 using Landmarks.Services;
 using Landmarks.Services.Admin;
 using Landmarks.Web.Common;
+using Landmarks.Web.Common.Constants;
+using Landmarks.Web.Common.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -36,22 +37,7 @@ namespace Landmarks.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
-            services.Configure<RequestLocalizationOptions>(
-                opts =>
-                {
-                    var supportedCultures = new List<CultureInfo>
-                    {
-                        new CultureInfo("en"),
-                        new CultureInfo("bg"),
-                    };
-
-                    opts.DefaultRequestCulture = new RequestCulture("en");
-                    // Formatting numbers, dates, etc.
-                    opts.SupportedCultures = supportedCultures;
-                    // UI strings that we have localized.
-                    opts.SupportedUICultures = supportedCultures;
-                });
+            ConfigLocalizer(services);
 
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -62,7 +48,7 @@ namespace Landmarks.Web
 
             services.AddDbContext<LandmarksDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("LandmarksConnection")));
+                    Configuration.GetConnectionString(ConfigConstants.ConnectionString)));
 
             services.AddIdentity<User, IdentityRole>()
                 .AddDefaultUI()
@@ -72,19 +58,19 @@ namespace Landmarks.Web
             services.AddAuthentication()
                 .AddFacebook(option =>
                 {
-                    option.AppId = this.Configuration.GetSection("ExternalAuthentication:Facebook:AppId").Value;
-                    option.AppSecret = this.Configuration.GetSection("ExternalAuthentication:Facebook:AppSecret").Value;
+                    option.AppId = this.Configuration.GetSection(ConfigConstants.ConfigFacebookAppId).Value;
+                    option.AppSecret = this.Configuration.GetSection(ConfigConstants.ConfigFacebookAppSecret).Value;
                 })
                 .AddGoogle(option =>
                 {
-                    option.ClientId = this.Configuration.GetSection("ExternalAuthentication:Google:ClientId").Value;
-                    option.ClientSecret = this.Configuration.GetSection("ExternalAuthentication:Google:ClientSecret")
+                    option.ClientId = this.Configuration.GetSection(ConfigConstants.ConfigGoogleClentId).Value;
+                    option.ClientSecret = this.Configuration.GetSection(ConfigConstants.ConfigGoogleClentSecret)
                         .Value;
                 })
                 .AddGitHub(option =>
                 {
-                    option.ClientId = this.Configuration.GetSection("ExternalAuthentication:GitHub:ClientId").Value;
-                    option.ClientSecret = this.Configuration.GetSection("ExternalAuthentication:GitHub:ClientSecret").Value;
+                    option.ClientId = this.Configuration.GetSection(ConfigConstants.ConfigGitHubClentId).Value;
+                    option.ClientSecret = this.Configuration.GetSection(ConfigConstants.ConfigGitHunClentSecret).Value;
                 });
 
             services.Configure<IdentityOptions>(options =>
@@ -102,18 +88,12 @@ namespace Landmarks.Web
                 //options.SignIn.RequireConfirmedEmail = true;
             });
 
-            services.AddAutoMapper();
-            services.AddScoped<IMainService, MainService>();
-            services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<IRegionService, RegionService>();
-            services.AddScoped<Interfaces.Admin.ILandmarkService,LandmarkService>();
-            services.AddScoped<Interfaces.Operator.ILandmarkService,Services.Operator.LandmarkService>();
-
+            ConfigServices(services);
 
             services.AddMvc()
                 .AddViewLocalization(
                     LanguageViewLocationExpanderFormat.Suffix,
-                    opts => { opts.ResourcesPath = "Resources"; })
+                    opts => { opts.ResourcesPath = NamesConstants.ResourcesPathName; })
                 .AddDataAnnotationsLocalization(options =>
                 {
                     options.DataAnnotationLocalizerProvider =
@@ -128,7 +108,7 @@ namespace Landmarks.Web
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
+                options.AddPolicy(NamesConstants.PolicyName, policy => policy.RequireRole(NamesConstants.RoleAdmin));
             });
         }
 
@@ -142,7 +122,7 @@ namespace Landmarks.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler(RedirectURL.ToErrorPage);
                 app.UseHsts();
             }
 
@@ -194,5 +174,34 @@ namespace Landmarks.Web
             options.Conventions.AuthorizeFolder("/Landmark", "Administrator");
         }
 
+        private static void ConfigLocalizer(IServiceCollection services)
+        {
+            services.AddLocalization(opts => { opts.ResourcesPath = NamesConstants.ResourcesPathName; });
+            services.Configure<RequestLocalizationOptions>(
+                opts =>
+                {
+                    var supportedCultures = new List<CultureInfo>
+                    {
+                        new CultureInfo(NamesConstants.CultureInfoEn),
+                        new CultureInfo(NamesConstants.CultureInfoGb),
+                    };
+
+                    opts.DefaultRequestCulture = new RequestCulture(NamesConstants.CultureInfoEn);
+                    // Formatting numbers, dates, etc.
+                    opts.SupportedCultures = supportedCultures;
+                    // UI strings that we have localized.
+                    opts.SupportedUICultures = supportedCultures;
+                });
+        }
+
+        private static void ConfigServices(IServiceCollection services)
+        {
+            services.AddAutoMapper();
+            services.AddScoped<IMainService, MainService>();
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IRegionService, RegionService>();
+            services.AddScoped<Interfaces.Admin.ILandmarkService, LandmarkService>();
+            services.AddScoped<Interfaces.Operator.ILandmarkService, Services.Operator.LandmarkService>();
+        }
     }
 }

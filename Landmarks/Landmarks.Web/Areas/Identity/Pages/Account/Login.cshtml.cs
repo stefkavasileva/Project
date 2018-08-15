@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Landmarks.Web.Common.Constants;
 
 namespace Landmarks.Web.Areas.Identity.Pages.Account
 {
@@ -17,12 +18,14 @@ namespace Landmarks.Web.Areas.Identity.Pages.Account
     public class LoginModel : PageModel
     {
         private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<User> _userManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<User> signInManager, ILogger<LoginModel> logger, UserManager<User> userManager)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -78,6 +81,21 @@ namespace Landmarks.Web.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+
+                    var user = await _userManager.FindByEmailAsync(Input.Email);
+                    // Get the roles for the user
+                    var roles = await _userManager.GetRolesAsync(user);
+
+                    //redirect to area by user role
+                    if (roles.Contains(NamesConstants.RoleAdmin))
+                    {
+                        returnUrl += NamesConstants.AdminArea;
+                    }
+                    else if (roles.Contains(NamesConstants.RoleOperator))
+                    {
+                        returnUrl += NamesConstants.OperatorArea;
+                    }
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

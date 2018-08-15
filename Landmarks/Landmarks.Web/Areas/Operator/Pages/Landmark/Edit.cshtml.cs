@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Landmarks.Common.Models.Operator.BindingModels;
 using Landmarks.Interfaces.Operator;
-using Landmarks.Web.Common;
+using Landmarks.Web.Common.Constants;
+using Landmarks.Web.Common.Extensions;
+using Landmarks.Web.Common.Helpers.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +15,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Landmarks.Web.Areas.Operator.Pages.Landmark
 {
-    [Authorize(Roles = "DataEntryOperator,Administrator")]
+    [Authorize(Roles = NamesConstants.RoleAdminAndOperator)]
     public class EditModel : PageModel
     {
         private readonly ILandmarkService _service;
@@ -39,7 +41,8 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
             if (landmark == null) return NotFound();
 
             var userId = this.User.GetUserId();
-            if (landmark.CreatorId != userId) return RedirectToPage("/Landmark/List", new { Area = "Operator" });
+            if (landmark.CreatorId != userId) return RedirectToPage(RedirectURL.ToLandmarkList, new { Area = NamesConstants.OperatorArea });
+
             //TODO add mapper
             //this.EditLandmarkBindingModel = this._mapper.Map<Landmarks.Models.Landmark,AddEditLandmarkBindingModel>(landmark);
             this.EditLandmarkBindingModel = new AddEditLandmarkBindingModel
@@ -72,6 +75,7 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
                         continue;
                     }
                     var newFileName = userId + Path.GetFileName(image.FileName);
+
                     //TODO add validation for extension            
                     var fullFilePath = Path.Combine(_hostingEnvironment.WebRootPath + "/images/", newFileName);
 
@@ -87,7 +91,14 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
 
                 this._service.SaveEntity(this.EditLandmarkBindingModel, imagesPaths);
 
-                return RedirectToPage("/Landmark/List", new { Area = "Operator" });
+                this.TempData.Put(MessageConstants.Name, new MessageModel()
+                {
+                    Type = MessageType.Warning,
+                    Message = MessageConstants.LandmarkEditSuccess
+                });
+
+
+                return RedirectToPage(RedirectURL.ToLandmarkList, new { Area = NamesConstants.OperatorArea });
             }
 
             return this.Page();

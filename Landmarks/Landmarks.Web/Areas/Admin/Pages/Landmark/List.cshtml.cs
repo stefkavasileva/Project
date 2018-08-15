@@ -2,13 +2,16 @@ using System.Collections.Generic;
 using System.Linq;
 using Landmarks.Common.Models.Admin.ViewModels;
 using Landmarks.Interfaces.Admin;
+using Landmarks.Web.Common.Constants;
+using Landmarks.Web.Common.Extensions;
+using Landmarks.Web.Common.Helpers.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Landmarks.Web.Areas.Admin.Pages.Landmark
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize(Roles = NamesConstants.RoleAdmin)]
     public class ListModel : PageModel
     {
         private readonly ILandmarkService _service;
@@ -22,19 +25,26 @@ namespace Landmarks.Web.Areas.Admin.Pages.Landmark
 
         public void OnGet()
         {
-            this.Landmarks = this._service.GetLandmarks().ToList();    
+            this.Landmarks = this._service.GetLandmarks().ToList();
         }
+
         public IActionResult OnPostDelete(int? id)
         {
             if (id == null) return NotFound();
 
-            var region = this._service.GetLandmark(id.Value);
+            var landmark = this._service.GetLandmark(id.Value);
 
-            if (region == null) return NotFound();
+            if (landmark == null) return NotFound();
 
-            this._service.DeleteLandmark(region);
+            this._service.DeleteLandmark(landmark);
 
-            return RedirectToPage("/Landmark/List");
+            this.TempData.Put(MessageConstants.Name, new MessageModel()
+            {
+                Type = MessageType.Danger,
+                Message = MessageConstants.LandmarkDeleteSuccess
+            });
+
+            return RedirectToPage(RedirectURL.ToLandmarkList, new { Area = NamesConstants.AdminArea });
         }
     }
 }

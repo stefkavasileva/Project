@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Authorization;
 
-namespace Landmarks.Web.Common.AuthorizationExtension
+namespace Landmarks.Web.Common.Extensions
 {
     public static class PageConventionCollectionExtensions
     {

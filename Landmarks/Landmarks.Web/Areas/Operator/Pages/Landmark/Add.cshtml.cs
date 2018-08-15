@@ -3,7 +3,9 @@ using System.IO;
 using System.Threading.Tasks;
 using Landmarks.Common.Models.Operator.BindingModels;
 using Landmarks.Interfaces.Operator;
-using Landmarks.Web.Common;
+using Landmarks.Web.Common.Constants;
+using Landmarks.Web.Common.Extensions;
+using Landmarks.Web.Common.Helpers.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Landmarks.Web.Areas.Operator.Pages.Landmark
 {
-    [Authorize(Roles = "DataEntryOperator,Administrator")]
+    [Authorize(Roles = NamesConstants.RoleAdminAndOperator)]
     public class AddModel : PageModel
     {
         private readonly ILandmarkService _service;
@@ -60,7 +62,14 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
                 }
 
                 this._service.AddLandmark(this.AddLandmarkBindingModel, imagesPaths);
-                return RedirectToPage("/Landmark/List", new { Area = "Operator" });
+
+                this.TempData.Put(MessageConstants.Name, new MessageModel()
+                {
+                    Type = MessageType.Success,
+                    Message = MessageConstants.LandmarkSuccess
+                });
+
+                return RedirectToPage(RedirectURL.ToLandmarkList, new { Area = NamesConstants.OperatorArea });
             }
 
             this._service.FillDropDownItems(AddLandmarkBindingModel);
