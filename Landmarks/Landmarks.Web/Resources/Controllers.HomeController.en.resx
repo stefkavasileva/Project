@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnReadMore" xml:space="preserve">
+    <value>Read more</value>
+  </data>
   <data name="descBlagoevgrad" xml:space="preserve">
     <value>Blagoevgrad Province, also known as Pirin Macedonia, is a province of southwestern Bulgaria. It borders four other Bulgarian provinces to the north and east, to the Greek region of Macedonia to the south, and the Republic of Macedonia to the west. The province has 14 municipalities with 12 towns. Its principal city is Blagoevgrad, while other significant towns include Bansko, Gotse Delchev, Melnik, Petrich, Razlog, Sandanski, and Simitli.</value>
   </data>
@@ -128,6 +131,9 @@
   </data>
   <data name="descGabrovo" xml:space="preserve">
     <value>Gabrovo Province (Bulgarian: Област Габрово (Oblast Gabrovo), former name Gabrovo okrug) is a small province lying at the geographical centre of Bulgaria. It is named after its main town - Gabrovo. In 2009 the total population of the area is 130,001.</value>
+  </data>
+  <data name="descHaskovo" xml:space="preserve">
+    <value>Haskovo (Bulgarian: Хасково, Turkish: Hasköy) is a city and the administrative centre of the Haskovo Province in southern Bulgaria, not far from the borders with Greece and Turkey. According to Operative Program Regional Development of Bulgaria, the urban area of Haskovo is the seventh largest in Bulgaria and has a population of 184,731 inhabitants.</value>
   </data>
   <data name="descKardzhali" xml:space="preserve">
     <value>Kardzhali District (Bulgarian: Област Кърджали, Oblast Kǎrdžali) is a province of southern Bulgaria, neighbouring Greece with the Greek regional units of Xanthi, Rhodope and Evros to the south and east. Kardzhali Province's area is 3209.1 km². Its main city is Kardzhali.</value>

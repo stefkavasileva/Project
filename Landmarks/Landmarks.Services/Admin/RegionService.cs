@@ -6,7 +6,6 @@ using Landmarks.Common.Models.Admin.ViewModels;
 using Landmarks.Data;
 using Landmarks.Interfaces.Admin;
 using Landmarks.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Landmarks.Services.Admin
@@ -53,15 +52,6 @@ namespace Landmarks.Services.Admin
 
             this.DbContext.Attach(region).State = EntityState.Modified;
             this.DbContext.SaveChanges();
-        }
-
-        public void FillDropDownItems(AddEditRegionBindingModel model)
-        {
-            model.Regions = new List<SelectListItem>();
-            RegionNames.ForEach(r => model.Regions.Add(new SelectListItem
-            {
-                Text = r,
-            }));
         }
     }
 }

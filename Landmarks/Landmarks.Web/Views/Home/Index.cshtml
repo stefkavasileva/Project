@@ -49,7 +49,9 @@
         "Sliven": "@localizer["descSliven"]",
         "Yambol": "@localizer["descYambol"]",
             "Burgas": "@localizer["descBurgas"]",
-        "Grad Sofiya":"@localizer["descSofia"]"
+            "Grad Sofiya": "@localizer["descSofia"]",
+                "Haskovo":"@localizer["descHaskovo"]"
+
     };
 
     $('path').on("click", function () {
@@ -65,18 +67,17 @@
             success: function (response) {
                 debugger;
                 var element = $($('.jsmaps-text')[0]);
-                var jsonObj = JSON.parse(response);
+                var regionId = JSON.parse(response);
 
                 var htmlAsString = '<div class="card col col-md-12">';
                 htmlAsString += '<div class="view overlay">';
                 htmlAsString += '</div ><div class="card-body">';
-
                 htmlAsString += '<h4 class="card-title">' + regionName + '</h4>';
 
                 htmlAsString += '<p class="card-text"> ' + regionDesc[regionName] + ' </p>';
 
-                if (jsonObj.name) {
-                    htmlAsString += '<a id="regionLink" class="btn secondary-color href="#">Read more</a>';
+                if (regionId) {
+                    htmlAsString += '<a id="regionLink" class="btn secondary-color" href="#">@localizer["btnReadMore"]</a>';
                 }
 
                 htmlAsString += '</div></div >';
@@ -85,11 +86,15 @@
                 element.empty();
                 element.append($.parseHTML(htmlAsString));
 
-                if (jsonObj.name) {
-                    var link = '@Url.Action("Index", "Ragion", new { id = "-1" })';
-                    link = link.replace("-1", jsonObj.name);
+                if (regionId) {
+                    var link = '@Url.Action("Details", "Region", new { id = "-1" })';
+                    link = link.replace("-1", regionId);
                     $('#regionLink').attr('href', link);
                 }
+            }, error: function (xhr, textStatus, errorThrown) {
+                console.log(xhr);
+                console.log(textStatus);
+                console.log(errorThrown);
             }
         });
     });

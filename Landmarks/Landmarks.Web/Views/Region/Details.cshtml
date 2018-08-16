@@ -1,0 +1,11 @@
+﻿@model Landmarks.Common.Models.Main.ViewModel.RegionDetailsViewModel
+@using Landmarks.Web.Controllers
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<RegionController> localizer;
+
+<section class="my-5">
+    <h2 class="h1-responsive font-weight-bold text-center my-5">@Html.DisplayFor(model => model.Name)</h2>
+    <div class="text-right"><strong>@localizer["lblAllLandnmarks"]: @Model.Landmarks.Count()</strong></div>
+    <p class="text-center dark-grey-text w-responsive mx-auto mb-5"></p>
+    @Html.DisplayFor(m => m.Landmarks)
+</section>

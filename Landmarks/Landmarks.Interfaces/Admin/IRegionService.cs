@@ -7,7 +7,7 @@ namespace Landmarks.Interfaces.Admin
 {
     public interface IRegionService
     {
-         void CreateRegion(AddEditRegionBindingModel addRegionBindingModel);
+        void CreateRegion(AddEditRegionBindingModel addRegionBindingModel);
 
         IEnumerable<RegionConciseViewModel> GetRegions();
 
@@ -16,7 +16,5 @@ namespace Landmarks.Interfaces.Admin
         void DeleteRegion(Region region);
 
         void SaveEntity(AddEditRegionBindingModel model);
-
-        void FillDropDownItems(AddEditRegionBindingModel model);
     }
 }

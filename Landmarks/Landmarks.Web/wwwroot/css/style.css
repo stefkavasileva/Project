@@ -1,0 +1,29 @@
+.starFade {
+    background-image: url('/images/star-empty.png');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.starFadeN {
+    background-image: url('/images/star-empty.png');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+}
+
+.starGlow {
+    background-image: url('/images/star-full.png');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.starGlowN {
+    background-image: url('/images/star-full.png');
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+}

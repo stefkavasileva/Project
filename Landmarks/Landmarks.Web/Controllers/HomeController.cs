@@ -26,8 +26,9 @@ namespace Landmarks.Web.Controllers
         {
             var regionInfo = this._service.GetRegionInfoByName(regionName);
 
-            if (regionInfo == null) return Json("There's not have information for this region");
-            return Json(regionInfo);
+            if (regionInfo == null) return Json(null);
+            var result = Json(regionInfo.Id);
+            return result;
         }
 
         public IActionResult About()

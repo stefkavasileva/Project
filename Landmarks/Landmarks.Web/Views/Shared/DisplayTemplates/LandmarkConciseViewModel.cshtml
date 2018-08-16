@@ -1,0 +1,26 @@
+﻿@model Landmarks.Common.Models.Main.ViewModel.LandmarkConciseViewModel
+@using Landmarks.Web.Controllers
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<RegionController> localizer;
+
+<div class="row">
+    <div class="col-lg-5 col-xl-4">
+        <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
+            <img class="img-fluid" src="@(Url.Content(Model.MainPagePath))" alt="Sample image">
+            <a>
+                <div class="mask rgba-white-slight"></div>
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-7 col-xl-8">       
+        <h3 class="font-weight-bold mb-3"><strong>@Model.Name</strong></h3>
+        <p class="dark-grey-text">@Model.Description</p>
+        <div class="personal-sm">
+            <div>@localizer["lblCategoryName"]: <strong>@Model.CategoryName</strong></div>
+            <div>@localizer["lblRegionName"]: <strong>@Model.RegionName</strong></div>
+        </div>
+        <p>by <a class="font-weight-bold">Jessica Clark</a>, 19/04/2018</p>
+        <a asp-area="" asp-controller="Landmark" asp-action="Details" asp-route-id="@Model.LandmarkId" class="btn secondary-color btn-sm">@localizer["btnDetails"]</a>
+    </div>
+</div>
+<hr class="my-5">

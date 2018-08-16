@@ -24,11 +24,6 @@ namespace Landmarks.Web.Areas.Admin.Pages.Region
         [BindProperty]
         public AddEditRegionBindingModel AddRegionBindingModel { get; set; }
 
-        public void OnGet()
-        {
-            this._service.FillDropDownItems(AddRegionBindingModel);
-        }
-
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)

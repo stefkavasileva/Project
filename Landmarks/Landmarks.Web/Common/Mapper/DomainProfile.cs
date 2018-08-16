@@ -2,6 +2,7 @@
 using Landmarks.Models;
 using Landmarks.Common.Models.Admin.BindingModels;
 using Landmarks.Common.Models.Admin.ViewModels;
+using Landmarks.Common.Models.Main.ViewModel;
 
 namespace Landmarks.Web.Common.Mapper
 {
@@ -9,13 +10,13 @@ namespace Landmarks.Web.Common.Mapper
     {
         public DomainProfile()
         {
-            //CreateMap<AddEditRegionBindingModel, Region>()
-            //    .ForMember(entity => entity.Id,
-            //        opt => opt.MapFrom(viewModel => viewModel.NameId))
-            //    .ForMember(entity => entity.Area,
-            //        opt => opt.MapFrom(viewModel => viewModel.Area))
-            //    .ForMember(entity => entity.Population,
-            //        opt => opt.MapFrom(viewModel => viewModel.Population));
+            CreateMap<AddEditRegionBindingModel, Region>()
+                .ForMember(entity => entity.Name,
+                    opt => opt.MapFrom(viewModel => viewModel.Name))
+                .ForMember(entity => entity.Area,
+                    opt => opt.MapFrom(viewModel => viewModel.Area))
+                .ForMember(entity => entity.Population,
+                    opt => opt.MapFrom(viewModel => viewModel.Population));
 
             CreateMap<AddEditLandmarkBindingModel, Landmark>()
                 .ForMember(entity => entity.Name,
@@ -25,31 +26,22 @@ namespace Landmarks.Web.Common.Mapper
                 .ForMember(entity => entity.RegionId,
                     opt => opt.MapFrom(viewModel => viewModel.RegionId));
 
-            CreateMap<Landmark, LandmarkConciseViewModel>()
+            CreateMap<Landmark, Landmarks.Common.Models.Admin.ViewModels.LandmarkConciseViewModel>()
                 .ForMember(viewModel => viewModel.Name,
-                    opt => opt.MapFrom(entity => entity.Name))
+                    (IMemberConfigurationExpression<Landmark, Landmarks.Common.Models.Admin.ViewModels.LandmarkConciseViewModel, string> opt) => opt.MapFrom(entity => entity.Name))
                 .ForMember(viewModel => viewModel.CategoryName,
-                    opt => opt.MapFrom(entity => entity.Category.Name))
+                    (IMemberConfigurationExpression<Landmark, Landmarks.Common.Models.Admin.ViewModels.LandmarkConciseViewModel, string> opt) => opt.MapFrom(entity => entity.Category.Name))
                 .ForMember(viewModel => viewModel.RegionName,
-                    opt => opt.MapFrom(entity => entity.Region.Name));
+                    (IMemberConfigurationExpression<Landmark, Landmarks.Common.Models.Admin.ViewModels.LandmarkConciseViewModel, string> opt) => opt.MapFrom(entity => entity.Region.Name));
 
-            CreateMap<Landmark,AddEditLandmarkBindingModel>()
+            CreateMap<Landmark, AddEditLandmarkBindingModel>()
                 .ForMember(viewModel => viewModel.Name,
                     opt => opt.MapFrom(entity => entity.Name))
                 .ForMember(viewModel => viewModel.CategoryId,
                     opt => opt.MapFrom(entity => entity.CategoryId))
                 .ForMember(viewModel => viewModel.RegionId,
                     opt => opt.MapFrom(entity => entity.RegionId));
-
-            //CreateMap<Landmark, Landmarks.Common.Models.Operator.BindingModels.AddEditLandmarkBindingModel>()
-            //    .ForMember(viewModel => viewModel.Name,
-            //        opt => opt.MapFrom(entity => entity.Name))
-            //    .ForMember(viewModel => viewModel.CategoryId,
-            //        opt => opt.MapFrom(entity => entity.CategoryId))
-            //    .ForMember(viewModel => viewModel.RegionId,
-            //        opt => opt.MapFrom(entity => entity.RegionId));
-
-            CreateMap<AddEditLandmarkBindingModel,Landmark>()
+            CreateMap<AddEditLandmarkBindingModel, Landmark>()
                 .ForMember(entity => entity.Name,
                     opt => opt.MapFrom(viewModel => viewModel.Name))
                 .ForMember(entity => entity.CategoryId,
@@ -57,13 +49,6 @@ namespace Landmarks.Web.Common.Mapper
                 .ForMember(entity => entity.RegionId,
                     opt => opt.MapFrom(viewModel => viewModel.RegionId));
 
-            //CreateMap<Landmarks.Common.Models.Operator.BindingModels.AddEditLandmarkBindingModel, Landmark>()
-            //    .ForMember(entity => entity.Name,
-            //        opt => opt.MapFrom(viewModel => viewModel.Name))
-            //    .ForMember(entity => entity.CategoryId,
-            //        opt => opt.MapFrom(viewModel => viewModel.CategoryId))
-            //    .ForMember(entity => entity.RegionId,
-            //        opt => opt.MapFrom(viewModel => viewModel.RegionId));
         }
     }
 }

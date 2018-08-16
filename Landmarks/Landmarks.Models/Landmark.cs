@@ -28,12 +28,16 @@ namespace Landmarks.Models
         public string CreatorId { get; set; }
 
         public User Creator { get; set; }
-        //otzivi
+
+        public decimal RatingSum { get; set; }
+
+        public int RatingCount { get; set; }
+
+        public decimal Rating { get; set; }
+
+        // String containing the user IDs that already rated the picture
+        public string UserIdsRatedPic { get; set; } = string.Empty;
 
         //komnetari
-
-        //reiting
-
-
     }
 }
