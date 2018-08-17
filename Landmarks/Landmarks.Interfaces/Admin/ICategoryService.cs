@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Landmarks.Common.Models.Admin.ViewModels;
 using Landmarks.Models;
@@ -7,7 +8,7 @@ namespace Landmarks.Interfaces.Admin
 {
     public interface ICategoryService
     {
-        IEnumerable<CategoryConciseViewModel> GetCategories();
+        IQueryable<CategoryConciseViewModel> GetCategories();
 
         void CreateCategory(string name);
 

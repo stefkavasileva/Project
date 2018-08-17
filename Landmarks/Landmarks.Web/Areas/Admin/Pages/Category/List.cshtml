@@ -20,5 +20,21 @@
         @Html.DisplayFor(m => m.Categories)
         </tbody>
     </table>
+    @{
+        var prevDisabled = !Model.Categories.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Categories.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-page="./List" asp-area="Admin"
+       asp-route-pageIndex="@(Model.Categories.PageIndex - 1)"
+       class="btn btn-indigo waves-effect waves-light @prevDisabled">
+        @localizer["btnPrevious"]
+    </a>
+    <a asp-page="./List" asp-area="Admin"
+       asp-route-pageIndex="@(Model.Categories.PageIndex + 1)"
+       class="btn btn-indigo waves-effect waves-light @nextDisabled">
+        @localizer["btnNext"]
+
+    </a>
 </div>
 

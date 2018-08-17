@@ -1,0 +1,21 @@
+﻿@model SubCommentsViewModel
+
+<div class="row" style="width: 100.3%; border-bottom: 1px solid #d2cece; margin-right: -14px; margin-left: -1px;">
+    <div class="col-md-3" style="width: 36%;">
+        <div class="userProfil" style="margin-left: 9px; margin-top: 12px;">
+            <p style="margin-left: 5px; font-weight: bold; font-size: 13px;"> @Model.User.Email </p>
+        </div>
+    </div>
+    <div class="col-md-6" style="width: 32%;">
+        <div class="commentDetails">
+            <p style="margin-top: 27px; font-size: 13px; color: #9c9898;"> @Model.CommentMsg </p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="commentDetails">
+            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+            <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i>@string.Format("{0:ddd, MMM d, yyyy}", Model.CommentedDate)</time>
+        </div>
+    </div>
+</div>
+

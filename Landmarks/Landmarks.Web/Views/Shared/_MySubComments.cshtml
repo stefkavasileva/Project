@@ -1,0 +1,10 @@
+﻿@using Landmarks.Common.Models.Main.ViewModel
+@model IQueryable<SubCommentsViewModel>
+
+@Html.DisplayFor(x=>x)
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        jQuery("time.timeago").timeago();
+    });
+</script>  

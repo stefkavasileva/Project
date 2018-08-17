@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Landmarks.Common.Models.Main.ViewModel
 {
@@ -7,7 +8,7 @@ namespace Landmarks.Common.Models.Main.ViewModel
         public int Id { get; set; }
 
         public string Name { get; set; }
-        
+
         public string Description { get; set; }
 
         public string CategoryName { get; set; }
@@ -16,12 +17,14 @@ namespace Landmarks.Common.Models.Main.ViewModel
 
         public double RegionArea { get; set; }
 
-        public int  RegionPopulation { get; set; }
+        public int RegionPopulation { get; set; }
 
         public ICollection<string> ImagesPath { get; set; }
 
         public decimal Rating { get; set; }
 
         public string UserIdsRatedPic { get; set; }
+
+        public DateTime PostedDate { get; set; }
     }
 }

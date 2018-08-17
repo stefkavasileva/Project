@@ -3,7 +3,6 @@ using Landmarks.Web.Common.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace Landmarks.Web.Controllers
 {
@@ -27,7 +26,7 @@ namespace Landmarks.Web.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult RateLandmark(FormCollection form)
+        public ActionResult RateLandmark(IFormCollection form)
         {
             var rating = int.Parse(form["Rating"]);
             var landmarkId = int.Parse(form["landmarkId"]);
@@ -43,10 +42,18 @@ namespace Landmarks.Web.Controllers
                 // Adding the ID to the IDs of the users that have already rated this picture
                 landmark.UserIdsRatedPic += " " + currentUserId;
 
-                this._service.SaveRate(landmark);             
+                this._service.SaveRate(landmark);
             }
 
             return RedirectToAction("Details", new { id = landmarkId });
         }
+
+        //[HttpGet]
+        //public ActionResult GetLandmarks()
+        //{
+        //    var landmarks = this._service.GetAllLandmark();
+
+        //    return View(landmarks);
+        //}
     }
 }

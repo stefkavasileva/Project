@@ -27,10 +27,10 @@ namespace Landmarks.Services.Admin
             this.DbContext.SaveChangesAsync();
         }
 
-        public IEnumerable<RegionConciseViewModel> GetRegions()
+        public IQueryable<RegionConciseViewModel> GetRegions()
         {
-            var dbRegions = this.DbContext.Regions.ToList();
-            var modelRegions = this.Mapper.Map<ICollection<RegionConciseViewModel>>(dbRegions);
+            var dbRegions = this.DbContext.Regions;
+            var modelRegions = this.Mapper.Map<ICollection<RegionConciseViewModel>>(dbRegions).AsQueryable();
 
             return modelRegions;
         }

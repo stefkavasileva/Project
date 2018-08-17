@@ -5,7 +5,18 @@
 
 <section class="my-5">
     <h2 class="h1-responsive font-weight-bold text-center my-5">@Html.DisplayFor(model => model.Name)</h2>
-    <div class="text-right"><strong>@localizer["lblAllLandnmarks"]: @Model.Landmarks.Count()</strong></div>
+    <div class="text-right">
+        <i class="fa fa-area-chart" aria-hidden="true"></i>
+        <strong>@localizer["lblArea"]:</strong> @Model.Area
+    </div>
+    <div class="text-right">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <strong>@localizer["lblPopulation"]: </strong>@Model.Population
+    </div>
+    <div class="text-right">
+        <i class="fa fa-font-awesome" aria-hidden="true"></i>
+        <strong>@localizer["lblAllLandnmarks"]: </strong>@Model.Landmarks.Count()
+    </div>
     <p class="text-center dark-grey-text w-responsive mx-auto mb-5"></p>
     @Html.DisplayFor(m => m.Landmarks)
 </section>

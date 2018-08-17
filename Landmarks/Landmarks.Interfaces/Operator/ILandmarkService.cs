@@ -2,6 +2,7 @@
 using Landmarks.Common.Models.Operator.ViewModels;
 using Landmarks.Common.Models.Operator.BindingModels;
 using Landmarks.Models;
+using System.Linq;
 
 namespace Landmarks.Interfaces.Operator
 {
@@ -11,7 +12,7 @@ namespace Landmarks.Interfaces.Operator
 
         void AddLandmark(AddEditLandmarkBindingModel addLandmarkBindingModel, List<string> imagesPaths);
 
-        ICollection<LandmarkConciseViewModel> GetLandmarksByCreatorId(string id);
+        IQueryable<LandmarkConciseViewModel> GetLandmarksByCreatorId(string id);
 
         Landmark GetLandmark(int id);
 

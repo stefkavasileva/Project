@@ -110,18 +110,15 @@ namespace Landmarks.Services.Operator
             this.DbContext.SaveChanges();
         }
 
-        public ICollection<LandmarkConciseViewModel> GetLandmarksByCreatorId(string id)
+        public IQueryable<LandmarkConciseViewModel> GetLandmarksByCreatorId(string id)
         {
             var dbLandmarks = this.DbContext
                 .Landmarks
                 .Where(l => l.CreatorId == id)
                 .Include(l => l.Region)
-                .Include(l => l.Category)
-                .ToList();
+                .Include(l => l.Category);
 
-            var modelCollection = new List<LandmarkConciseViewModel>();
-
-            dbLandmarks.ForEach(l => modelCollection.Add(this.Mapper.Map<Landmark, LandmarkConciseViewModel>(l)));
+            var modelCollection = this.Mapper.Map<ICollection<LandmarkConciseViewModel>>(dbLandmarks).AsQueryable();
 
             return modelCollection;
         }

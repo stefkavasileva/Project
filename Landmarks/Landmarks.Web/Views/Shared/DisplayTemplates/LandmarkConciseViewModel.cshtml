@@ -12,14 +12,14 @@
             </a>
         </div>
     </div>
-    <div class="col-lg-7 col-xl-8">       
+    <div class="col-lg-7 col-xl-8">
         <h3 class="font-weight-bold mb-3"><strong>@Model.Name</strong></h3>
         <p class="dark-grey-text">@Model.Description</p>
         <div class="personal-sm">
             <div>@localizer["lblCategoryName"]: <strong>@Model.CategoryName</strong></div>
             <div>@localizer["lblRegionName"]: <strong>@Model.RegionName</strong></div>
         </div>
-        <p>by <a class="font-weight-bold">Jessica Clark</a>, 19/04/2018</p>
+        <p>@localizer["lblBy"] <a class="font-weight-bold">@Model.CreatorEmail</a>, <i class="fa fa-clock-o"></i>@string.Format("{0:ddd, MMM d, yyyy}", Model.CreatedDate)</p>
         <a asp-area="" asp-controller="Landmark" asp-action="Details" asp-route-id="@Model.LandmarkId" class="btn secondary-color btn-sm">@localizer["btnDetails"]</a>
     </div>
 </div>

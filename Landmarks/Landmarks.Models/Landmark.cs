@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Landmarks.Models
 {
@@ -6,7 +7,9 @@ namespace Landmarks.Models
     {
         public Landmark()
         {
-            this.Images = new List<Image>();
+            this.Images = new HashSet<Image>();
+            this.Comments = new HashSet<Comment>();
+            this.PostedDate = DateTime.Now;
         }
 
         public int Id { get; set; }
@@ -35,9 +38,10 @@ namespace Landmarks.Models
 
         public decimal Rating { get; set; }
 
-        // String containing the user IDs that already rated the picture
         public string UserIdsRatedPic { get; set; } = string.Empty;
 
-        //komnetari
+        public ICollection<Comment> Comments { get; set; }
+
+        public DateTime PostedDate { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using Landmarks.Common.Models.Admin.ViewModels;
 using Landmarks.Interfaces.Admin;
 using Landmarks.Web.Common.Constants;
 using Landmarks.Web.Common.Extensions;
+using Landmarks.Web.Common.Helpers;
 using Landmarks.Web.Common.Helpers.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ namespace Landmarks.Web.Areas.Admin.Pages.Region
     [Authorize(Roles = NamesConstants.RoleAdmin)]
     public class ListModel : PageModel
     {
+        private const int DefaultPageSize = 3;
         private readonly IRegionService _service;
 
         public ListModel(IRegionService service)
@@ -21,11 +23,14 @@ namespace Landmarks.Web.Areas.Admin.Pages.Region
             this._service = service;
         }
 
-        public ICollection<RegionConciseViewModel> Regions { get; set; }
+        public PaginatedList<RegionConciseViewModel> Regions { get; set; }
 
-        public void OnGet()
+        public void OnGet(int? pageIndex)
         {
-            this.Regions = this._service.GetRegions().ToList();
+            var viewModel = this._service.GetRegions();
+
+            int pageSize = DefaultPageSize;
+            this.Regions = PaginatedList<RegionConciseViewModel>.Create(viewModel, pageIndex ?? 1, pageSize);
         }
 
         public IActionResult OnPostDelete(int? id)

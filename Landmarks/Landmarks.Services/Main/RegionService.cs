@@ -21,6 +21,8 @@ namespace Landmarks.Services.Main
                               from regionLands in regionLandsJoin.DefaultIfEmpty()
                               join category in this.DbContext.Categories on land.CategoryId equals category.Id into categoryLandsJoin
                               from categoryLands in categoryLandsJoin.DefaultIfEmpty()
+                              join user in this.DbContext.Users on land.CreatorId equals user.Id into userLandsJoin
+                              from userLands in userLandsJoin.DefaultIfEmpty()
                               where regionLands.Id == id
                               select new RegionDetailsViewModel
                               {
@@ -37,6 +39,8 @@ namespace Landmarks.Services.Main
                                                     LandmarkId = l.Id,
                                                     Description = l.Description,
                                                     RegionName = l.Region.Name,
+                                                    CreatedDate = l.PostedDate,
+                                                    CreatorEmail = userLands.Email,
                                                     MainPagePath = l.Images.FirstOrDefault() == null ? "" : l.Images.First().Path
                                                 }).ToList(),
                               };

@@ -1,4 +1,6 @@
-﻿namespace Landmarks.Common.Models.Main.ViewModel
+﻿using System;
+
+namespace Landmarks.Common.Models.Main.ViewModel
 {
     public class LandmarkConciseViewModel
     {
@@ -13,5 +15,9 @@
         public string Description { get; set; }
 
         public string MainPagePath { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+
+        public string CreatorEmail { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Landmarks.Common.Constants;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +12,7 @@ namespace Landmarks.Common.Models.Operator.BindingModels
         public AddEditLandmarkBindingModel()
         {
             this.Images = new List<IFormFile>();
+            this.PostedDate = DateTime.Now;
         }
 
         public int Id { get; set; }
@@ -42,5 +44,7 @@ namespace Landmarks.Common.Models.Operator.BindingModels
         public ICollection<string> ImagesPathToDisplay { get; set; }
 
         public string CreatorId { get; set; }
+
+        public DateTime PostedDate { get; set; }
     }
 }

@@ -26,8 +26,8 @@ namespace Landmarks.Services.Main
                               select new LandmarkDetailsViewModel
                               {
                                   Id = landmark.Id,
-                                  UserIdsRatedPic = string.IsNullOrWhiteSpace(landmark.UserIdsRatedPic) ? string.Empty: landmark.UserIdsRatedPic,
-                                  Rating = landmark.Rating,                                 
+                                  UserIdsRatedPic = string.IsNullOrWhiteSpace(landmark.UserIdsRatedPic) ? string.Empty : landmark.UserIdsRatedPic,
+                                  Rating = landmark.Rating,
                                   CategoryName = categoryLands.Name,
                                   Name = landmark.Name,
                                   Description = landmark.Description,
@@ -43,14 +43,28 @@ namespace Landmarks.Services.Main
         }
 
         public void SaveRate(Landmark landmark)
-        {     
+        {
             this.DbContext.Landmarks.Attach(landmark).State = EntityState.Modified;
             this.DbContext.SaveChanges();
         }
 
         public Landmark GetLandmarkFromDbById(int id)
         {
-            return  this.DbContext.Landmarks.FirstOrDefault(p => p.Id == id);
+            return this.DbContext.Landmarks.FirstOrDefault(p => p.Id == id);
+        }
+
+        public IQueryable<LandmarkViewModel> GetAllLandmark()
+        {
+            var result = this.DbContext.Landmarks
+                                         .Select(l => new LandmarkViewModel
+                                         {
+                                             Id = l.Id,
+                                             Name = l.Name,
+                                             Description = l.Description,
+                                             PostedDate = l.PostedDate
+                                         }).AsQueryable();
+
+            return result;
         }
     }
 }

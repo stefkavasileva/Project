@@ -1,0 +1,74 @@
+﻿@model IQueryable<CommentsViewModel>
+
+@Html.DisplayForModel()
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        //Get All ReplyComment
+        $('.Reply').on('click', function () {
+            var commentId = $('.Reply').attr('data-id');
+
+            debugger;
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("GetSubComments", "Comments")',
+                data: { commentId },
+                success: function (response) {
+                    debugger;
+                    if ($('div').hasClass('zoneReply_' + commentId + ''))
+                    {
+                        $('div [class=zoneReply_' + commentId + ']').remove();
+                    }
+
+                    var selReply = $("<div>").addClass('zoneReply_' + commentId);
+
+                    selReply.append(response);
+                    selReply.prependTo($('.ReplayComments_' + commentId));
+
+                    $('.ReplayComments_' + commentId).show();
+                },
+                error: function (response) {
+                    alert('something Wrong');
+                }
+            });
+        });
+
+        //Add Reply Comment
+        $('.ReplyAddComment').on('click', function () {
+
+            var commentId = $(this).attr('data-id');
+            var CommentMsg = $('#inputReplay_' + commentId).val();
+            var dateTimeNow = new Date();
+            debugger;
+            var subComment = {
+                CommentMsg: CommentMsg,
+                CommentedDate: dateTimeNow.toLocaleString()
+            };
+
+            $.ajax({
+
+                type: 'POST',
+                url: '@Url.Action("AddSubComment", "Comments")',
+                data: { subComment, commentId },
+                success: function (response) {
+                    debugger;
+                    if ($('div').hasClass('zoneReply_' + commentId + '')) {
+                        $('div [class=zoneReply_' + commentId + ']').remove();
+                    }
+
+                    var selReply = $("<div>").addClass('zoneReply_' + commentId);
+
+                    selReply.append(response);
+                    selReply.prependTo($('.ReplayComments_' + commentId));
+
+                    $('.ReplayComments_' + commentId).show();
+                    $('#inputReplay_' + commentId).val('')
+                },
+                error: function (response) {
+                    alert('something Wrong');
+                }
+            });
+        });
+        jQuery("time.timeago").timeago();
+    })
+</script>  

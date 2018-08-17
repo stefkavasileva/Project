@@ -123,8 +123,17 @@
   <data name="lblAllLandnmarks" xml:space="preserve">
     <value>All landmarks</value>
   </data>
+  <data name="lblArea" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="lblBy" xml:space="preserve">
+    <value>By</value>
+  </data>
   <data name="lblCategoryName" xml:space="preserve">
     <value>Category name</value>
+  </data>
+  <data name="lblPopulation" xml:space="preserve">
+    <value>Population</value>
   </data>
   <data name="lblRegionName" xml:space="preserve">
     <value>Region name</value>

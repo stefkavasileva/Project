@@ -1,9 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
 using Landmarks.Common.Models.Admin.ViewModels;
 using Landmarks.Interfaces.Admin;
 using Landmarks.Web.Common.Constants;
 using Landmarks.Web.Common.Extensions;
+using Landmarks.Web.Common.Helpers;
 using Landmarks.Web.Common.Helpers.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +13,7 @@ namespace Landmarks.Web.Areas.Admin.Pages.Landmark
     [Authorize(Roles = NamesConstants.RoleAdmin)]
     public class ListModel : PageModel
     {
+        private const int DefaultPageSize = 3;
         private readonly ILandmarkService _service;
 
         public ListModel(ILandmarkService service)
@@ -21,11 +21,14 @@ namespace Landmarks.Web.Areas.Admin.Pages.Landmark
             this._service = service;
         }
 
-        public ICollection<LandmarkConciseViewModel> Landmarks { get; set; }
+        public PaginatedList<LandmarkConciseViewModel> Landmarks { get; set; }
 
-        public void OnGet()
+        public void OnGet(int? pageIndex)
         {
-            this.Landmarks = this._service.GetLandmarks().ToList();
+            var viewModel = this._service.GetLandmarks();
+
+            int pageSize = DefaultPageSize;
+            this.Landmarks = PaginatedList<LandmarkConciseViewModel>.Create(viewModel, pageIndex ?? 1, pageSize);
         }
 
         public IActionResult OnPostDelete(int? id)

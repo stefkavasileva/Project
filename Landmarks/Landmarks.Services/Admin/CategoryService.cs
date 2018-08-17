@@ -17,10 +17,10 @@ namespace Landmarks.Services.Admin
         {
         }
 
-        public IEnumerable<CategoryConciseViewModel> GetCategories()
+        public IQueryable<CategoryConciseViewModel> GetCategories()
         {
-            var dbCategories = this.DbContext.Categories.ToList();
-            var modelCategories = this.Mapper.Map<ICollection<CategoryConciseViewModel>>(dbCategories);
+            var dbCategories = this.DbContext.Categories;
+            var modelCategories = this.Mapper.Map<ICollection<CategoryConciseViewModel>>(dbCategories).AsQueryable();
 
             return modelCategories;
         }

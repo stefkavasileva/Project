@@ -46,12 +46,10 @@ namespace Landmarks.Services.Admin
             this.DbContext.SaveChanges();
         }
 
-        public ICollection<LandmarkConciseViewModel> GetLandmarks()
+        public IQueryable<LandmarkConciseViewModel> GetLandmarks()
         {
-            var dbLandmarks = this.DbContext.Landmarks.Include(l => l.Region).Include(l => l.Category).ToList();
-            var modelCollection = new List<LandmarkConciseViewModel>();
-
-            dbLandmarks.ForEach(l => modelCollection.Add(this.Mapper.Map<Landmark, LandmarkConciseViewModel>(l)));
+            var dbLandmarks = this.DbContext.Landmarks.Include(l => l.Region).Include(l => l.Category);
+            var modelCollection = this.Mapper.Map<ICollection<LandmarkConciseViewModel>>(dbLandmarks).AsQueryable();
 
             return modelCollection;
         }

@@ -24,5 +24,21 @@
         @Html.DisplayFor(m => m.Landmarks)
         </tbody>
     </table>
+    @{
+        var prevDisabled = !Model.Landmarks.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Landmarks.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-page="./List" asp-area="Operator"
+       asp-route-pageIndex="@(Model.Landmarks.PageIndex - 1)"
+       class="btn btn-indigo waves-effect waves-light @prevDisabled">
+        @localizer["btnPrevious"]
+    </a>
+    <a asp-page="./List" asp-area="Operator"
+       asp-route-pageIndex="@(Model.Landmarks.PageIndex + 1)"
+       class="btn btn-indigo waves-effect waves-light @nextDisabled">
+        @localizer["btnNext"]
+
+    </a>
 </div>
 

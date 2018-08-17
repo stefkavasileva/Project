@@ -202,6 +202,7 @@ namespace Landmarks.Web
             services.AddScoped<IRegionService, RegionService>();
             services.AddScoped<Interfaces.Admin.ILandmarkService, LandmarkService>();
             services.AddScoped<Interfaces.Main.IRegionService, Services.Main.RegionService>();
+            services.AddScoped<Interfaces.Main.ICommentsService, Services.Main.CommentsService>();
             services.AddScoped<Interfaces.Main.ILandmarkService, Services.Main.LandmarkService>();
             services.AddScoped<Interfaces.Operator.ILandmarkService, Services.Operator.LandmarkService>();
         }

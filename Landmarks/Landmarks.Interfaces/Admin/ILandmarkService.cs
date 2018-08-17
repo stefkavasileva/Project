@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using Landmarks.Common.Models.Admin.BindingModels;
 using Landmarks.Common.Models.Admin.ViewModels;
 using Landmarks.Models;
@@ -11,7 +11,7 @@ namespace Landmarks.Interfaces.Admin
 
         void CreateLandmark(AddEditLandmarkBindingModel addRegionBindingModel);
 
-        ICollection<LandmarkConciseViewModel> GetLandmarks();
+        IQueryable<LandmarkConciseViewModel> GetLandmarks();
 
         Landmark GetLandmark(int id);
 

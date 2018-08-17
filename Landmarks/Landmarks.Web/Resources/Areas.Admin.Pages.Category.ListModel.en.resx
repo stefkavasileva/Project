@@ -123,6 +123,12 @@
   <data name="btnEdit" xml:space="preserve">
     <value>Edit </value>
   </data>
+  <data name="btnNext" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="btnPrevious" xml:space="preserve">
+    <value>Previous</value>
+  </data>
   <data name="lblActions" xml:space="preserve">
     <value>Actions</value>
   </data>

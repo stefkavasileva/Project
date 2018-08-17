@@ -123,8 +123,17 @@
   <data name="lblAllLandnmarks" xml:space="preserve">
     <value>Всички забележителности</value>
   </data>
+  <data name="lblArea" xml:space="preserve">
+    <value>Площ</value>
+  </data>
+  <data name="lblBy" xml:space="preserve">
+    <value>От</value>
+  </data>
   <data name="lblCategoryName" xml:space="preserve">
     <value>Име на категорията</value>
+  </data>
+  <data name="lblPopulation" xml:space="preserve">
+    <value>Население</value>
   </data>
   <data name="lblRegionName" xml:space="preserve">
     <value>Име на областта</value>

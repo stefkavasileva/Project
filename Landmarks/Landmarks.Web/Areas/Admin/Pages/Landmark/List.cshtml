@@ -3,7 +3,7 @@
 @using Microsoft.Extensions.Localization
 @{
     ViewData["Title"] = "All Landmarks";
-    @inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Landmark.ListModel> localizer;
+@inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Landmark.ListModel> localizer;
 
 }
 
@@ -12,16 +12,32 @@
     <a href="/Admin/Landmark/Add" class="btn btn-indigo">@localizer["lblAddLandmark"]</a>
     <table class="table table-striped table-responsive-md btn-table">
         <thead>
-            <tr>
-                <th>@localizer["lblName"]</th>
-                <th>@localizer["lblCategory"]</th>
-                <th>@localizer["lblRegion"]</th>
-                <th>@localizer["lblActions"]</th>
-            </tr>
+        <tr>
+            <th>@localizer["lblName"]</th>
+            <th>@localizer["lblCategory"]</th>
+            <th>@localizer["lblRegion"]</th>
+            <th>@localizer["lblActions"]</th>
+        </tr>
         </thead>
         <tbody>
-            @Html.DisplayFor(m => m.Landmarks)
+        @Html.DisplayFor(m => m.Landmarks)
         </tbody>
     </table>
+    @{
+        var prevDisabled = !Model.Landmarks.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Landmarks.HasNextPage ? "disabled" : "";
+    }
+
+    <a asp-page="./List" asp-area="Admin"
+       asp-route-pageIndex="@(Model.Landmarks.PageIndex - 1)"
+       class="btn btn-indigo waves-effect waves-light @prevDisabled">
+        @localizer["btnPrevious"]
+    </a>
+    <a asp-page="./List" asp-area="Admin"
+       asp-route-pageIndex="@(Model.Landmarks.PageIndex + 1)"
+       class="btn btn-indigo waves-effect waves-light @nextDisabled">
+        @localizer["btnNext"]
+
+    </a>
 </div>
 

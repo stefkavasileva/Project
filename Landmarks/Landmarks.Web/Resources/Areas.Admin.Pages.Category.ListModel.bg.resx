@@ -123,6 +123,12 @@
   <data name="btnEdit" xml:space="preserve">
     <value>Редакция</value>
   </data>
+  <data name="btnNext" xml:space="preserve">
+    <value>Напред</value>
+  </data>
+  <data name="btnPrevious" xml:space="preserve">
+    <value>Назад</value>
+  </data>
   <data name="lblActions" xml:space="preserve">
     <value>Действия</value>
   </data>

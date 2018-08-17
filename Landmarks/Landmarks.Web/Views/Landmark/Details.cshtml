@@ -7,37 +7,32 @@
 <div class="container container-fluid rgba-purple-slight" style="margin-top:10px; border-radius:5px">
     <div class="col-lg-7 col-xl-12">
         <div>
-            <h3 class="font-weight-bold mb-3"><strong>@Model.Name</strong></h3>
-            <div class="col-md-6">
-                <span class="float-right">
-                    <span class="float-right">
-                        @*Getting the users that already rated this picture*@
-                        @{var usersRatedThePic = Model.UserIdsRatedPic.Split(' ').ToList();}
+            <h3 class="font-weight-bold mb-3 flex-center"><strong>@Model.Name</strong></h3>
+            <div class="float-right">
+                @*Rating system*@
+                @{var usersRatedThePic = Model.UserIdsRatedPic.Split(' ').ToList();}
 
-                        @if (User.Identity.IsAuthenticated)
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (!usersRatedThePic.Contains(this.User.GetUserId()))
+                    {
+                        using (Html.BeginForm("RateLandmark", "Landmark", FormMethod.Post, new { onsubmit = "return true" }))
                         {
-                            if (!usersRatedThePic.Contains(this.User.GetUserId()))
-                            {
-                                using (Html.BeginForm("RateLandmark", "Landmark", FormMethod.Post, new { onsubmit = "return true" }))
-                                {
-                                    @Html.AntiForgeryToken()
+                            @Html.AntiForgeryToken()
 
-                                    <span onmouseout="CRateSelected()">
-                                        <span class="starFade" id="Rate1" onclick="CRate(1)" onmouseover="CRateOver(1)" onmouseout="CRateOut(1)"></span><span class="starFade" id="Rate2" onclick="CRate(2)" onmouseover="CRateOver(2)" onmouseout="CRateOut(2)"></span><span class="starFade" id="Rate3" onclick="CRate(3)" onmouseover="CRateOver(3)" onmouseout="CRateOut(3)"></span><span class="starFade" id="Rate4" onclick="CRate(4)" onmouseover="CRateOver(4)" onmouseout="CRateOut(4)"></span><span class="starFade" id="Rate5" onclick="CRate(5)" onmouseover="CRateOver(5)" onmouseout="CRateOut(5)"></span>
-                                    </span>
-                                    <input type="hidden" name="Rating" id="Rating" value="0" />
-                                    <input type="hidden" name="landmarkId" value="@Model.Id" />
-                                    <br />
-                                    <span>
-                                        <input type="submit" id="btnRate" name="btnRate" value="Rate" class="btn btn-success" />
-                                    </span>
-                                }
-                            }
+                            <span onmouseout="CRateSelected()">
+                                <span class="starFade" id="Rate1" onclick="CRate(1)" onmouseover="CRateOver(1)" onmouseout="CRateOut(1)"></span><span class="starFade" id="Rate2" onclick="CRate(2)" onmouseover="CRateOver(2)" onmouseout="CRateOut(2)"></span><span class="starFade" id="Rate3" onclick="CRate(3)" onmouseover="CRateOver(3)" onmouseout="CRateOut(3)"></span><span class="starFade" id="Rate4" onclick="CRate(4)" onmouseover="CRateOver(4)" onmouseout="CRateOut(4)"></span><span class="starFade" id="Rate5" onclick="CRate(5)" onmouseover="CRateOver(5)" onmouseout="CRateOut(5)"></span>
+                            </span>
+                            <input type="hidden" name="Rating" id="Rating" value="0" />
+                            <input type="hidden" name="landmarkId" value="@Model.Id" />
+                            <br />
+                            <span>
+                                <input type="submit" id="btnRate" name="btnRate" value="Rate" class="btn-sm secondary-color btn float-sm-right" />
+                            </span>
                         }
-                    </span>
-                </span>
+                    }
+                }
             </div>
-
         </div>
         <span>
             <span class="starFadeN" id="sRate1"></span><span class="starFadeN" id="sRate2"></span><span class="starFadeN" id="sRate3"></span><span class="starFadeN" id="sRate4"></span><span class="starFadeN" id="sRate5"></span>
@@ -45,7 +40,6 @@
         <p class="dark-grey-text"><strong>@localizer["lblLandmarkDesc"]:</strong> @Model.Description</p>
         <div class="personal-sm dark-grey-text">
             <div> <strong>@localizer["lblLandmarkCategoryName"]: </strong>@Model.CategoryName</div>
-
             <div>
                 <strong>@localizer["lblLandmarkRegion"]</strong>
                 <div><strong>@localizer["lblLandmarkRegionName"]:</strong> @Model.RegionName</div>
@@ -53,7 +47,6 @@
                 <div><strong>@localizer["lblLandmarkRegionPopulation"]:</strong> @Model.RegionPopulation</div>
             </div>
         </div>
-
     </div>
     <div class="row">
         @foreach (var path in Model.ImagesPath)
@@ -64,46 +57,96 @@
             </div>
         }
     </div>
+    <div class="panel panel-default">
+        <div class="panel-footer">
+            <h2>@localizer["lblShowComments"]</h2>
+            <button type="button" class="btn secondary-color Comment" aria-hidden="true" data-id="@Model.Id" value="Comment" style="display: none;">
+            </button>
+        </div>
+        <div id="@string.Format("{0}_{1}","commentsBlock", Model.Id)">
+
+            <div class="AddComment input-group-prepend">
+                <input type="text" id="@string.Format("{0}_{1}", "comment", Model.Id)" class="form-control col-sm-6" placeholder="Add a Comment ..." style="margin-bottom:8px; height:auto" />
+                <button type="button" class="btn secondary-color addComment" style="margin-bottom:8px;" data-id="@Model.Id"><span class="glyphicon glyphicon-comment" aria-hidden="true">@localizer["btnAddNewComment"]</span></button>
+            </div>
+        </div>
+    </div>
 </div>
 
-<script>
-    function CRate(r) {
-        $("#Rating").val(r);
-        for (var i = 1; i <= r; i++) {
-            $("#Rate" + i).attr('class', 'starGlow');
-        }
-        // unselect remaining
-        for (var i = r + 1; i <= 5; i++) {
-            $("#Rate" + i).attr('class', 'starFade');
-        }
-    }
-
-    function CRateOver(r) {
-        for (var i = 1; i <= r; i++) {
-            $("#Rate" + i).attr('class', 'starGlow');
-        }
-    }
-
-    function CRateOut(r) {
-        for (var i = 1; i <= r; i++) {
-            $("#Rate" + i).attr('class', 'starFade');
-        }
-    }
-
-    function CRateSelected() {
-        var setRating = $("#Rating").val();
-        for (var i = 1; i <= setRating; i++) {
-            $("#Rate" + i).attr('class', 'starGlow');
-        }
-    }
-
+@section Scripts{
+    <script src="~/js/rating.js"></script>
+    <script>
     function SCRate() {
         for (var i = 1; i <= @Math.Round(Model.Rating, MidpointRounding.AwayFromZero); i++) {
             $("#sRate" + i).attr('class', 'starGlowN');
         }
     }
-    $(function(){
-        SCRate();
-    });
-</script>
+    </script>
+
+    @*Comment system*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Click Comment
+
+            var id = $('.Comment').attr('data-id');
+                var allCommentsArea = $('<div>').addClass('allComments_' + id);
+            debugger;
+                //function that allow us to get all comments related to post by id
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("GetComments", "Comments")',
+                    data: { landmarkId: id },
+                    success: function (response) {
+                        debugger;
+                        if ($('div').hasClass('allComments_' + id + '')) {
+                            $('div[class=allComments_' + id + ']').remove();
+                        }
+
+                        allCommentsArea.html(response);
+                        allCommentsArea.prependTo('#commentsBlock_' + id);
+                    },
+                    error: function (response) {
+                        alert('Sorry: Comments cannot be loaded !');
+                    }
+                });
+
+
+            //Add New Comment
+            $('.addComment').on('click', function () {
+                var landmarkId = $(this).attr('data-id');
+                var commentMsg = $('#comment_' + landmarkId).val();
+                var dateTimeNow = new Date();
+
+                var comment = {
+                    CommentMsg: commentMsg,
+                    CommentedDate: dateTimeNow.toLocaleString()
+                };
+
+                $.ajax({
+
+                    type: 'POST',
+                    url: '@Url.Action("AddComment", "Comments")',
+                    data: { comment, landmarkId },
+                    success: function (response) {
+                        debugger;
+                        $('div[class=allComments_' + landmarkId + ']').remove();
+
+                        var allCommentsArea = $('<div>').addClass('allComments_' + landmarkId);
+                        allCommentsArea.html(response);
+                        allCommentsArea.prependTo('#commentsBlock_' + landmarkId);
+                        $('#comment_' + landmarkId).val('')
+                    },
+                    error: function (response) {
+                        alert('Sorry: Something Wrong');
+                    }
+
+                });
+            });
+            jQuery("time.timeago").timeago();
+
+        });
+    </script>
+}
+
+
 
