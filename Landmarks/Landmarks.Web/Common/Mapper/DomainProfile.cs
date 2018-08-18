@@ -49,6 +49,16 @@ namespace Landmarks.Web.Common.Mapper
                 .ForMember(entity => entity.RegionId,
                     opt => opt.MapFrom(viewModel => viewModel.RegionId));
 
+            CreateMap<Region, RegionDetailsViewModel>()
+                .ForMember(entity => entity.Id,
+                    opt => opt.MapFrom(viewModel => viewModel.Id))
+                .ForMember(entity => entity.Name,
+                    opt => opt.MapFrom(viewModel => viewModel.Name))
+                .ForMember(entity => entity.Area,
+                    opt => opt.MapFrom(viewModel => viewModel.Area))
+                .ForMember(entity => entity.Population,
+                    opt => opt.MapFrom(viewModel => viewModel.Population));
+
         }
     }
 }

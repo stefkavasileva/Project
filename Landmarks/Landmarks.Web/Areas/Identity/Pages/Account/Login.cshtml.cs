@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Landmarks.Web.Common.Constants;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Landmarks.Web.Areas.Identity.Pages.Account
 {

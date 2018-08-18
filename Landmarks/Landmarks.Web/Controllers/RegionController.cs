@@ -13,10 +13,14 @@ namespace Landmarks.Web.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int id)
+        public IActionResult Details(int? id)
         {
-            var viewModel = this._service.GetRegionById(id);
-            
+            if (id is null) return NotFound();
+
+            var viewModel = this._service.GetRegionById(id.Value);
+
+            if (viewModel is null) return NotFound();
+
             return View(viewModel);
         }
     }

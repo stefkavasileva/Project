@@ -17,20 +17,19 @@ namespace Landmarks.Services.Main
         public RegionDetailsViewModel GetRegionById(int id)
         {
             var queryResult = from land in this.DbContext.Landmarks
-                              join region in this.DbContext.Regions on land.RegionId equals region.Id into regionLandsJoin
-                              from regionLands in regionLandsJoin.DefaultIfEmpty()
+                              join region in this.DbContext.Regions on land.RegionId equals region.Id into landmarkRegionJoin
+                              from landmarkRegion in landmarkRegionJoin.DefaultIfEmpty()
                               join category in this.DbContext.Categories on land.CategoryId equals category.Id into categoryLandsJoin
                               from categoryLands in categoryLandsJoin.DefaultIfEmpty()
-                              join user in this.DbContext.Users on land.CreatorId equals user.Id into userLandsJoin
-                              from userLands in userLandsJoin.DefaultIfEmpty()
-                              where regionLands.Id == id
+                              join user in this.DbContext.Users on land.CreatorId equals user.Id
+                              where landmarkRegion.Id == id
                               select new RegionDetailsViewModel
                               {
-                                  Area = regionLands.Area,
-                                  Id = regionLands.Id,
-                                  Name = regionLands.Name,
-                                  Population = regionLands.Population,
-                                  Landmarks = regionLands
+                                  Area = landmarkRegion.Area,
+                                  Id = landmarkRegion.Id,
+                                  Name = landmarkRegion.Name,
+                                  Population = landmarkRegion.Population,
+                                  Landmarks = landmarkRegion
                                                 .Landmarks
                                                 .Select(l => new LandmarkConciseViewModel
                                                 {
@@ -40,14 +39,22 @@ namespace Landmarks.Services.Main
                                                     Description = l.Description,
                                                     RegionName = l.Region.Name,
                                                     CreatedDate = l.PostedDate,
-                                                    CreatorEmail = userLands.Email,
+                                                    CreatorEmail = user.Email,
                                                     MainPagePath = l.Images.FirstOrDefault() == null ? "" : l.Images.First().Path
                                                 }).ToList(),
                               };
 
             var viewModel = queryResult.FirstOrDefault();
 
+            //if region does not have landmarks, get main information about it
+            if (viewModel is null)
+            {
+                var regionDb = this.DbContext.Regions.Find(id);
+                viewModel = this.Mapper.Map<RegionDetailsViewModel>(regionDb);
+            }
+
             return viewModel;
         }
     }
 }
+

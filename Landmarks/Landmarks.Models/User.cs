@@ -10,6 +10,7 @@ namespace Landmarks.Models
             this.Landmarks = new HashSet<Landmark>();
             this.Comments = new HashSet<Comment>();
             this.SubComments = new HashSet<SubComment>();
+            this.VisitedPlaces = new HashSet<VisitedPlaces>();
         }
 
         public string FullName { get; set; }
@@ -19,5 +20,7 @@ namespace Landmarks.Models
         public ICollection<Comment> Comments { get; set; }
 
         public ICollection<SubComment> SubComments { get; set; }
+
+        public ICollection<VisitedPlaces> VisitedPlaces { get; set; }
     }
 }

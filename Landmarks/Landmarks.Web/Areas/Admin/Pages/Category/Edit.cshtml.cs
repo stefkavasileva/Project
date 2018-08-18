@@ -39,11 +39,13 @@ namespace Landmarks.Web.Areas.Admin.Pages.Category
             return this.Page();
         }
 
-        public async Task<IActionResult> OnPost(int id)
+        public async Task<IActionResult> OnPost(int? id)
         {
             if (ModelState.IsValid)
             {
-                var category = await _service.GetCategoryAsync(id);
+                if (id is null) return NotFound();
+
+                var category = await _service.GetCategoryAsync(id.Value);
 
                 if (category == null) return NotFound();
 

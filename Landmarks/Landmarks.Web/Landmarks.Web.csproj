@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\images\admin-category.jpg" />
     <None Include="wwwroot\images\admin-landmark.jpg" />
     <None Include="wwwroot\images\admin-regions.jpg" />
   </ItemGroup>
@@ -21,10 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Landmarks.Interfaces\Landmarks.Interfaces.csproj" />
     <ProjectReference Include="..\Landmarks.Services\Landmarks.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Files\" />
   </ItemGroup>
 
   <ItemGroup>

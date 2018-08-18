@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Landmarks.Common.Models.Admin.BindingModels;
 using Landmarks.Interfaces.Admin;
 using Landmarks.Web.Common.Constants;
@@ -7,7 +6,6 @@ using Landmarks.Web.Common.Helpers.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Landmarks.Web.Areas.Admin.Pages.Region
 {

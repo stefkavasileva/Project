@@ -4,14 +4,16 @@ using Landmarks.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Landmarks.Data.Migrations
 {
     [DbContext(typeof(LandmarksDbContext))]
-    partial class LandmarksDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180818115834_VisitedPlaces")]
+    partial class VisitedPlaces
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,6 +121,19 @@ namespace Landmarks.Data.Migrations
                     b.ToTable("Landmarks");
                 });
 
+            modelBuilder.Entity("Landmarks.Models.LandmarksUsers", b =>
+                {
+                    b.Property<int>("LandmarkId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("LandmarkId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("VisitedPlaces");
+                });
+
             modelBuilder.Entity("Landmarks.Models.Region", b =>
                 {
                     b.Property<int>("Id")
@@ -214,19 +229,6 @@ namespace Landmarks.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-                });
-
-            modelBuilder.Entity("Landmarks.Models.VisitedPlaces", b =>
-                {
-                    b.Property<int>("LandmarkId");
-
-                    b.Property<string>("UserId");
-
-                    b.HasKey("LandmarkId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("VisitedPlaces");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -376,19 +378,7 @@ namespace Landmarks.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Landmarks.Models.SubComment", b =>
-                {
-                    b.HasOne("Landmarks.Models.Comment", "Comment")
-                        .WithMany("SubComments")
-                        .HasForeignKey("CommentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Landmarks.Models.User", "User")
-                        .WithMany("SubComments")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("Landmarks.Models.VisitedPlaces", b =>
+            modelBuilder.Entity("Landmarks.Models.LandmarksUsers", b =>
                 {
                     b.HasOne("Landmarks.Models.Landmark", "Landmark")
                         .WithMany("Visitors")
@@ -399,6 +389,18 @@ namespace Landmarks.Data.Migrations
                         .WithMany("VisitedPlaces")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Landmarks.Models.SubComment", b =>
+                {
+                    b.HasOne("Landmarks.Models.Comment", "Comment")
+                        .WithMany("SubComments")
+                        .HasForeignKey("CommentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Landmarks.Models.User", "User")
+                        .WithMany("SubComments")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

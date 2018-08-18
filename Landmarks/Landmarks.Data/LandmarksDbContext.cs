@@ -18,6 +18,8 @@ namespace Landmarks.Data
 
         public DbSet<SubComment> SubComments { get; set; }
 
+        public DbSet<VisitedPlaces> VisitedPlaces { get; set; }    
+
         public LandmarksDbContext(DbContextOptions<LandmarksDbContext> options)
             : base(options)
         {
@@ -37,6 +39,19 @@ namespace Landmarks.Data
             builder.Entity<Landmark>()
                 .HasIndex(x => x.Name)
                 .IsUnique();
+
+            builder.Entity<VisitedPlaces>()
+                .HasKey(x => new { x.LandmarkId, x.UserId});
+
+            builder.Entity<VisitedPlaces>()
+                .HasOne(x => x.User)
+                .WithMany(x=> x.VisitedPlaces)
+                .HasForeignKey(x => x.UserId);
+
+            builder.Entity<VisitedPlaces>()
+                .HasOne(x => x.Landmark)
+                .WithMany(x => x.Visitors)
+                .HasForeignKey(x => x.LandmarkId);
 
             base.OnModelCreating(builder);
         }

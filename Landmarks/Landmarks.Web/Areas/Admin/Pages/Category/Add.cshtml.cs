@@ -38,7 +38,7 @@ namespace Landmarks.Web.Areas.Admin.Pages.Category
 
         private void PushNotificationMessage()
         {
-            this.TempData.Put(MessageConstants.Name, new MessageModel()
+            this.TempData.Put(MessageConstants.Name, new MessageModel
             {
                 Type = MessageType.Success,
                 Message = MessageConstants.CategorySuccess

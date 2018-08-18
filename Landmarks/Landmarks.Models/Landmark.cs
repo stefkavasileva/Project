@@ -10,6 +10,7 @@ namespace Landmarks.Models
             this.Images = new HashSet<Image>();
             this.Comments = new HashSet<Comment>();
             this.PostedDate = DateTime.Now;
+            this.Visitors = new List<VisitedPlaces>();
         }
 
         public int Id { get; set; }
@@ -43,5 +44,7 @@ namespace Landmarks.Models
         public ICollection<Comment> Comments { get; set; }
 
         public DateTime PostedDate { get; set; }
+
+        public ICollection<VisitedPlaces> Visitors { get; set; }
     }
 }

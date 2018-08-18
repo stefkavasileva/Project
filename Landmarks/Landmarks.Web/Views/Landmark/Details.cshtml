@@ -7,7 +7,12 @@
 <div class="container container-fluid rgba-purple-slight" style="margin-top:10px; border-radius:5px">
     <div class="col-lg-7 col-xl-12">
         <div>
-            <h3 class="font-weight-bold mb-3 flex-center"><strong>@Model.Name</strong></h3>
+            <button class="btn rgba-purple-slight float-right" style="color: black">
+                <i class="fa fa-check-square-o" aria-hidden="true">Visited</i> 
+            </button>
+            <h3 class="font-weight-bold mb-3 flex-center">
+                <strong>@Model.Name</strong>
+            </h3>
             <div class="float-right">
                 @*Rating system*@
                 @{var usersRatedThePic = Model.UserIdsRatedPic.Split(' ').ToList();}

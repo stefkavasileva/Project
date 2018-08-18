@@ -130,7 +130,6 @@ namespace Landmarks.Services.Operator
 
         public void DeleteLandmark(Landmark landmark)
         {
-            //remove child
             RemoveImagesFromServer(landmark);
 
             this.DbContext.Remove(landmark);

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Landmarks.Common.Models.Admin.ViewModels;
 using Landmarks.Interfaces.Admin;
 using Landmarks.Web.Common.Constants;

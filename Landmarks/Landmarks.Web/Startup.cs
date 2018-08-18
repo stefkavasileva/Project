@@ -10,9 +10,11 @@ using Microsoft.EntityFrameworkCore;
 using Landmarks.Data;
 using Landmarks.Interfaces;
 using Landmarks.Interfaces.Admin;
+using Landmarks.Interfaces.Main;
 using Landmarks.Models;
 using Landmarks.Services;
 using Landmarks.Services.Admin;
+using Landmarks.Services.Main;
 using Landmarks.Web.Common;
 using Landmarks.Web.Common.Constants;
 using Landmarks.Web.Common.Extensions;
@@ -22,6 +24,9 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using IRegionService = Landmarks.Interfaces.Admin.IRegionService;
+using LandmarkService = Landmarks.Services.Admin.LandmarkService;
+using RegionService = Landmarks.Services.Admin.RegionService;
 
 namespace Landmarks.Web
 {
@@ -200,6 +205,7 @@ namespace Landmarks.Web
             services.AddScoped<IMainService, MainService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IRegionService, RegionService>();
+            services.AddScoped<IVisitationService, VisitationService>();
             services.AddScoped<Interfaces.Admin.ILandmarkService, LandmarkService>();
             services.AddScoped<Interfaces.Main.IRegionService, Services.Main.RegionService>();
             services.AddScoped<Interfaces.Main.ICommentsService, Services.Main.CommentsService>();
