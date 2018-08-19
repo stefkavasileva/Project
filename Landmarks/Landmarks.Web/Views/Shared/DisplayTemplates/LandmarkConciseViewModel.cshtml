@@ -15,9 +15,6 @@
     <div class="col-lg-7 col-xl-8">
         <h3 class="font-weight-bold mb-3">
             <strong>@Model.Name </strong>
-            <button type="button" class="btn btn-warning" onclick="checkVisitation('@Url.Action("MakeVisited", "Visitation",new { landmarkId = Model.LandmarkId })','@Url.Action("RemoveFromVisited", "Visitation",new { landmarkId = Model.LandmarkId })','@localizer["lblVisited"]','@localizer["lblVisit"]');" id="visitationButton">
-                <i class="fa fa-check-square-o" aria-hidden="true"></i><span id="visitationValue" value="true"> </span>
-            </button>
         </h3>
         <p class="dark-grey-text">@Model.Description</p>
         <div class="personal-sm">
@@ -33,13 +30,3 @@
     </div>
 </div>
 <hr class="my-5">
-
-<script src="~/js/visitation.js">
-</script>
-<script>
-    $(function(){
-        onLoad('@Url.Action("IsVisited", "Visitation",new { landmarkId = Model.LandmarkId })',
-            '@localizer["lblVisited"]',
-            '@localizer["lblVisit"]');
-    });
-</script>

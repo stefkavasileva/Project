@@ -138,10 +138,4 @@
   <data name="lblRegionName" xml:space="preserve">
     <value>Region name</value>
   </data>
-  <data name="lblVisit" xml:space="preserve">
-    <value>Visit!</value>
-  </data>
-  <data name="lblVisited" xml:space="preserve">
-    <value>Visited!</value>
-  </data>
 </root>

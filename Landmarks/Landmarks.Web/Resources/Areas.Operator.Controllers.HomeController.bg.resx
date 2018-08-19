@@ -117,41 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnTitleCategories" xml:space="preserve">
-    <value>Категории</value>
-  </data>
   <data name="btnTitleLandmark" xml:space="preserve">
     <value>Забележителности</value>
-  </data>
-  <data name="btnTitleRegion" xml:space="preserve">
-    <value>Области</value>
-  </data>
-  <data name="descCategory" xml:space="preserve">
-    <value>В България съгласно Закона за защитените територии има 6 вида защитени територии – резерват, национален парк, природна забележителност, поддържан резерват, природен парк и защитена местност.
-Националните паркове и природните резервати, са изключителна държавна собственост. Обявяването на всички останали защитени територии не променя собствеността на горите, земите и водните площи в тях.</value>
   </data>
   <data name="descLandmark" xml:space="preserve">
     <value>Макар и малка по територия, България може да се похвали със завиден брой забележителности и множество красиви  места. Някои от тях сигурно сте посещавали, а други – тепърва ще влязат в плановете Ви за бъдещите екскурзии. Всъщност, има няколко кътчета у нас, които задължително трябва да видите поне веднъж в живота.</value>
   </data>
-  <data name="descRegion" xml:space="preserve">
-    <value>Областта е административно-териториална единица в съвременното административно-териториално деление на България. Съществуващите днес 28 области са образувани през 1999 г. с президентски Указ за утвърждаване границите, административните центрове на области и общини, включени в тях.</value>
-  </data>
-  <data name="lblAddCategory" xml:space="preserve">
-    <value>Добави</value>
-  </data>
   <data name="lblAddLandmark" xml:space="preserve">
     <value>Добави</value>
   </data>
-  <data name="lblAddRegion" xml:space="preserve">
-    <value>Доваби</value>
-  </data>
-  <data name="lblAllCategory" xml:space="preserve">
-    <value>Всички </value>
-  </data>
   <data name="lblAllLandmark" xml:space="preserve">
     <value>Всички </value>
-  </data>
-  <data name="lblAllRegion" xml:space="preserve">
-    <value>Всички</value>
   </data>
 </root>

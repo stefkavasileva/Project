@@ -117,40 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnTitleCategories" xml:space="preserve">
-    <value>Category</value>
-  </data>
   <data name="btnTitleLandmark" xml:space="preserve">
     <value>Landmarks</value>
   </data>
-  <data name="btnTitleRegion" xml:space="preserve">
-    <value>Regions</value>
-  </data>
-  <data name="descCategory" xml:space="preserve">
-    <value>Description of categories</value>
-  </data>
   <data name="descLandmark" xml:space="preserve">
-    <value>Description of landmarks</value>
-  </data>
-  <data name="descRegion" xml:space="preserve">
-    <value>Description of reigions</value>
-  </data>
-  <data name="lblAddCategory" xml:space="preserve">
-    <value>Add category</value>
+    <value>Even though its territory is small, Bulgaria can praise itself with enviable amount of nature landmarks and many beautiful places. Some of them you have certainly visited and others are yet to be in your future trips’ plans. Actually there are a few spots in our country which you just must see at least once in your lifetime.</value>
   </data>
   <data name="lblAddLandmark" xml:space="preserve">
     <value>Add landmark</value>
   </data>
-  <data name="lblAddRegion" xml:space="preserve">
-    <value>Add region</value>
-  </data>
-  <data name="lblAllCategory" xml:space="preserve">
-    <value>All categories</value>
-  </data>
   <data name="lblAllLandmark" xml:space="preserve">
     <value>All landmarks</value>
-  </data>
-  <data name="lblAllRegion" xml:space="preserve">
-    <value>All regions</value>
   </data>
 </root>

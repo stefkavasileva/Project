@@ -120,6 +120,12 @@
   <data name="btnAddNewComment" xml:space="preserve">
     <value>Add </value>
   </data>
+  <data name="lblDesiredVisit" xml:space="preserve">
+    <value>Want to visit!</value>
+  </data>
+  <data name="lblDesiredVisited" xml:space="preserve">
+    <value>Wanted to visit!</value>
+  </data>
   <data name="lblLandmarkCategoryName" xml:space="preserve">
     <value>Category name</value>
   </data>
@@ -139,6 +145,12 @@
     <value>Region population</value>
   </data>
   <data name="lblShowComments" xml:space="preserve">
-    <value>Show all comments</value>
+    <value>Comments</value>
+  </data>
+  <data name="lblVisit" xml:space="preserve">
+    <value>Visit!</value>
+  </data>
+  <data name="lblVisited" xml:space="preserve">
+    <value>Visited!</value>
   </data>
 </root>

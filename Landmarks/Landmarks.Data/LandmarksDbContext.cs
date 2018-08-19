@@ -1,4 +1,5 @@
-﻿using Landmarks.Models;
+﻿using System.Collections.Generic;
+using Landmarks.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,7 +19,9 @@ namespace Landmarks.Data
 
         public DbSet<SubComment> SubComments { get; set; }
 
-        public DbSet<VisitedPlaces> VisitedPlaces { get; set; }    
+        public DbSet<VisitedPlaces> VisitedPlaces { get; set; }
+
+        public DbSet<DesiredPlaces> DesiredPlaces { get; set; }
 
         public LandmarksDbContext(DbContextOptions<LandmarksDbContext> options)
             : base(options)
@@ -51,6 +54,19 @@ namespace Landmarks.Data
             builder.Entity<VisitedPlaces>()
                 .HasOne(x => x.Landmark)
                 .WithMany(x => x.Visitors)
+                .HasForeignKey(x => x.LandmarkId);
+
+            builder.Entity<DesiredPlaces>()
+                .HasKey(x => new { x.LandmarkId, x.UserId });
+
+            builder.Entity<DesiredPlaces>()
+                .HasOne(x => x.User)
+                .WithMany(x => x.DesiredPlaces)
+                .HasForeignKey(x => x.UserId);
+
+            builder.Entity<DesiredPlaces>()
+                .HasOne(x => x.Landmark)
+                .WithMany(x => x.DesiredPlaces)
                 .HasForeignKey(x => x.LandmarkId);
 
             base.OnModelCreating(builder);

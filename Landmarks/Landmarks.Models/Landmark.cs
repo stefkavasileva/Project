@@ -46,5 +46,7 @@ namespace Landmarks.Models
         public DateTime PostedDate { get; set; }
 
         public ICollection<VisitedPlaces> Visitors { get; set; }
+
+        public ICollection<DesiredPlaces> DesiredPlaces { get; set; }
     }
 }

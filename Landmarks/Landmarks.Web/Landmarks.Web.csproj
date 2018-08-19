@@ -38,7 +38,10 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Resources\Controllers.RegionController.bg.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Controllers.RegionController.en.resx">
+      <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>
 

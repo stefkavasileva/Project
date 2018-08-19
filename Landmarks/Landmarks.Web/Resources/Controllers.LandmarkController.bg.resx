@@ -120,6 +120,12 @@
   <data name="btnAddNewComment" xml:space="preserve">
     <value>Добави </value>
   </data>
+  <data name="lblDesiredVisit" xml:space="preserve">
+    <value>Желано за посещение!</value>
+  </data>
+  <data name="lblDesiredVisited" xml:space="preserve">
+    <value>Желая да посетя!</value>
+  </data>
   <data name="lblLandmarkCategoryName" xml:space="preserve">
     <value>Име на категорията</value>
   </data>
@@ -139,6 +145,12 @@
     <value>Население на областта</value>
   </data>
   <data name="lblShowComments" xml:space="preserve">
-    <value>Покажи всички коментари</value>
+    <value>Kоментари</value>
+  </data>
+  <data name="lblVisit" xml:space="preserve">
+    <value>Посети!</value>
+  </data>
+  <data name="lblVisited" xml:space="preserve">
+    <value>Посетено!</value>
   </data>
 </root>

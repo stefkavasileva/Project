@@ -127,13 +127,14 @@
     <value>Regions</value>
   </data>
   <data name="descCategory" xml:space="preserve">
-    <value>Description of categories</value>
+    <value>In Bulgaria according to the protected territories law there are 6 types of protected territories – reserve, national park, nature landmark, maintained reserve, nature park and protected area.
+The national parks and the nature reserves are exclusive national properties. The classification of all other protected territories does not change the ownership of the forests, the lands and the water areas in them.</value>
   </data>
   <data name="descLandmark" xml:space="preserve">
-    <value>Description of landmarks</value>
+    <value>Even though its territory is small, Bulgaria can praise itself with enviable amount of nature landmarks and many beautiful places. Some of them you have certainly visited and others are yet to be in your future trips’ plans. Actually there are a few spots in our country which you just must see at least once in your lifetime.</value>
   </data>
   <data name="descRegion" xml:space="preserve">
-    <value>Description of reigions</value>
+    <value>A region is an administrative territorial unit in the contemporary administrative territorial division of Bulgaria. The existing today 28 regions were established in 1999 with presidential decree for ratification of the borders, the administrative centers of regions and municipalities included in them.</value>
   </data>
   <data name="lblAddCategory" xml:space="preserve">
     <value>Add category</value>

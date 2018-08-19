@@ -6,12 +6,9 @@
 
 <div class="container container-fluid rgba-purple-slight" style="margin-top:10px; border-radius:5px">
     <div class="col-lg-7 col-xl-12">
-        <div>
-            <button class="btn rgba-purple-slight float-right" style="color: black">
-                <i class="fa fa-check-square-o" aria-hidden="true">Visited</i> 
-            </button>
+        <div>         
             <h3 class="font-weight-bold mb-3 flex-center">
-                <strong>@Model.Name</strong>
+                <strong>@Model.Name</strong>              
             </h3>
             <div class="float-right">
                 @*Rating system*@
@@ -37,6 +34,7 @@
                         }
                     }
                 }
+                
             </div>
         </div>
         <span>
@@ -53,6 +51,14 @@
             </div>
         </div>
     </div>
+    <span >
+        <button type="button" class="btn secondary-color" onclick="checkVisitation('@Url.Action("MakeVisited", "Visitation",new { landmarkId = Model.Id })','@Url.Action("RemoveFromVisited", "Visitation",new { landmarkId = Model.Id })','@localizer["lblVisited"]','@localizer["lblVisit"]');" id="visitationButton">
+            <i class="fa fa-check-square-o" aria-hidden="true"></i><span id="visitationValue" value="true"> </span>
+        </button>
+        <button type="button" class="btn secondary-color" onclick="checkDesiredVisitation('@Url.Action("MakeDesiredVisited", "Visitation",new { landmarkId = Model.Id })','@Url.Action("RemoveFromDesiredVisitation", "Visitation",new { landmarkId = Model.Id })','@localizer["lblDesiredVisited"]','@localizer["lblDesiredVisit"]');" id="desiredPlacesVisitationButton">
+            <i class="fa fa-check-square-o" aria-hidden="true"></i><span id="desiredVisitationValue" value="true"> </span>
+        </button>
+    </span>
     <div class="row">
         @foreach (var path in Model.ImagesPath)
         {
@@ -80,6 +86,22 @@
 
 @section Scripts{
     <script src="~/js/rating.js"></script>
+    <script src="~/js/visitation.js"></script>
+
+    <script>
+        $(function(){
+            onLoadVisitation('@Url.Action("IsVisited", "Visitation",new { landmarkId = Model.Id })',
+                '@localizer["lblVisited"]',
+                '@localizer["lblVisit"]');
+        });
+
+        $(function(){
+            onLoadDesiredVisitation('@Url.Action("IsDesiredPlaceVisited", "Visitation",new { landmarkId = Model.Id })',
+                '@localizer["lblDesiredVisited"]',
+                '@localizer["lblDesiredVisit"]');
+        });
+    </script>
+
     <script>
     function SCRate() {
         for (var i = 1; i <= @Math.Round(Model.Rating, MidpointRounding.AwayFromZero); i++) {

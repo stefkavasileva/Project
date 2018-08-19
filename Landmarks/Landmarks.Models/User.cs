@@ -22,5 +22,7 @@ namespace Landmarks.Models
         public ICollection<SubComment> SubComments { get; set; }
 
         public ICollection<VisitedPlaces> VisitedPlaces { get; set; }
+
+        public ICollection<DesiredPlaces> DesiredPlaces { get; set; }
     }
 }
