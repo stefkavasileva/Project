@@ -9,5 +9,7 @@
         public const string ToRegionList = "/Region/List";
 
         public const string ToErrorPage = "/Home/Error";
+
+        public const string ToLoginPage = "/Identity/Account/Login";
     }
 }

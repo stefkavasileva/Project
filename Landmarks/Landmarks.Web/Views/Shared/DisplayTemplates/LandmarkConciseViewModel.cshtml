@@ -15,7 +15,7 @@
     <div class="col-lg-7 col-xl-8">
         <h3 class="font-weight-bold mb-3">
             <strong>@Model.Name </strong>
-            <button type="button" class="btn btn-warning" onclick="checkVisitation()" id="visitationButton">
+            <button type="button" class="btn btn-warning" onclick="checkVisitation('@Url.Action("MakeVisited", "Visitation",new { landmarkId = Model.LandmarkId })','@Url.Action("RemoveFromVisited", "Visitation",new { landmarkId = Model.LandmarkId })','@localizer["lblVisited"]','@localizer["lblVisit"]');" id="visitationButton">
                 <i class="fa fa-check-square-o" aria-hidden="true"></i><span id="visitationValue" value="true"> </span>
             </button>
         </h3>
@@ -33,69 +33,13 @@
     </div>
 </div>
 <hr class="my-5">
+
+<script src="~/js/visitation.js">
+</script>
 <script>
-
-    $( document ).ready(function() {
-        $.ajax({
-            type: "GET",
-            url: '@Url.Action("IsVisited", "Visitation",new { landmarkId = Model.LandmarkId })',
-            contentType: "application/json; charset=utf-8",
-            @*data: { landmarkId: "@Model.LandmarkId" },*@
-            dataType: "json",
-            success: function (response) {
-                var isVisited = JSON.parse(response.isVisited);
-
-                if (isVisited) {
-                    $('#visitationValue').text('@localizer["lblVisited"]');
-                    $('#visitationValue').attr('value', true);
-                    $('#visitationButton').removeClass('btn-warning');
-                    $('#visitationButton').addClass('btn-success');
-
-                } else {
-                    $('#visitationValue').text('@localizer["lblWantVisit"]');
-                    $('#visitationValue').attr('value', false);
-                }
-
-                debugger;
-            }
-        });
+    $(function(){
+        onLoad('@Url.Action("IsVisited", "Visitation",new { landmarkId = Model.LandmarkId })',
+            '@localizer["lblVisited"]',
+            '@localizer["lblVisit"]');
     });
-
-    function checkVisitation() {
-        var isVisited = $('#visitationValue').attr('value') === "true";
-        debugger;
-        console.log();
-        if (!isVisited) {
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("MakeVisited", "Visitation",new { landmarkId = Model.LandmarkId })',
-                contentType: "application/json; charset=utf-8",
-                @*data: { landmarkId: "@Model.LandmarkId" },*@
-                dataType: "json",
-                success: function() {
-                    $('#visitationValue').text('@localizer["lblVisited"]');  
-                    $('#visitationValue').attr('value', true);
-                    $('#visitationButton').removeClass('btn-warning');
-                    $('#visitationButton').addClass('btn-success');
-                    debugger;
-                }
-            });
-        } else {
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("RemoveFromVisited", "Visitation",new { landmarkId = Model.LandmarkId })',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function() {
-                    $('#visitationValue').text('@localizer["lblWantVisit"]');
-                    $('#visitationValue').attr('value', false);
-                    $('#visitationButton').removeClass('btn-success'); 
-                    $('#visitationButton').addClass('btn-warning');
-                    debugger;
-                }
-            });
-
-        }
-
-    }
 </script>

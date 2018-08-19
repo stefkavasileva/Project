@@ -138,10 +138,10 @@
   <data name="lblRegionName" xml:space="preserve">
     <value>Име на областта</value>
   </data>
+  <data name="lblVisit" xml:space="preserve">
+    <value>Посети!</value>
+  </data>
   <data name="lblVisited" xml:space="preserve">
     <value>Посетено!</value>
-  </data>
-  <data name="lblWantVisit" xml:space="preserve">
-    <value>Искам да посетя!</value>
   </data>
 </root>

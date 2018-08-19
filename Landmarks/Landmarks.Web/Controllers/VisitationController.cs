@@ -1,4 +1,5 @@
 ﻿using Landmarks.Interfaces.Main;
+using Landmarks.Web.Common.Constants;
 using Landmarks.Web.Common.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ namespace Landmarks.Web.Controllers
             var userId = this.User.GetUserId();
             if (userId == null)
             {
-                return RedirectToPage("/Login");
+                return Json(new { redirectUrl = RedirectURL.ToLoginPage });
             }
 
             if (landmarkId == null) return NotFound();
@@ -26,9 +27,9 @@ namespace Landmarks.Web.Controllers
 
             if (landmark == null) return NotFound();
 
-            this._service.SaveEntity(landmark.Id,userId);
+            this._service.SaveEntity(landmark.Id, userId);
 
-            return Json(new {success = true});
+            return Json(new { success = true });
         }
 
         public IActionResult RemoveFromVisited(int? landmarkId)
@@ -36,7 +37,7 @@ namespace Landmarks.Web.Controllers
             var userId = this.User.GetUserId();
             if (userId == null)
             {
-                return RedirectToPage("/Login");
+                return Json(new { redirectUrl = RedirectURL.ToLoginPage });
             }
 
             if (landmarkId == null) return NotFound();
@@ -56,14 +57,14 @@ namespace Landmarks.Web.Controllers
             var userId = this.User.GetUserId();
             if (userId == null)
             {
-                return RedirectToPage("/Login");
+                return Json(new { isVisited = false });
             }
 
             if (landmarkId == null) return NotFound();
-            
+
             var isVisited = _service.IsVisitedByUser(landmarkId.Value, userId);
 
-            return Json(new {isVisited});
+            return Json(new { isVisited });
 
         }
     }

@@ -6,8 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\visitation.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\images\admin-landmark.jpg" />
     <None Include="wwwroot\images\admin-regions.jpg" />
+    <None Include="wwwroot\js\visitation.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +34,12 @@
     <Content Update="Areas\Operator\Pages\Shared\EditorTemplates\AddEditLandmarkBindingModel.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Controllers.RegionController.bg.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
