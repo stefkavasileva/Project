@@ -214,4 +214,61 @@
   <data name="descYambol" xml:space="preserve">
     <value>Ямбол е град в Югоизточна България. Той е административен център на област Ямбол, както и център и единствено населено място на община Ямбол. Според последното преброяване на НСИ към 31.12.2015 г. населението на града е 70 224 души.</value>
   </data>
+  <data name="lblAnotherLogIn" xml:space="preserve">
+    <value>Влез чрез</value>
+  </data>
+  <data name="lblByComents" xml:space="preserve">
+    <value>По брой коментари</value>
+  </data>
+  <data name="lblByDesiredVisitation" xml:space="preserve">
+    <value>По желани за посещение</value>
+  </data>
+  <data name="lblByRating" xml:space="preserve">
+    <value>По гласове</value>
+  </data>
+  <data name="lblByVisitation" xml:space="preserve">
+    <value>По посещения</value>
+  </data>
+  <data name="lblCreateNew" xml:space="preserve">
+    <value>Създай нов профил</value>
+  </data>
+  <data name="lblForgotPass" xml:space="preserve">
+    <value>Забравена парола</value>
+  </data>
+  <data name="lblHome" xml:space="preserve">
+    <value>Начало</value>
+  </data>
+  <data name="lblLandmarks" xml:space="preserve">
+    <value>Забележителности</value>
+  </data>
+  <data name="lblLogin" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="lblLoginTitle" xml:space="preserve">
+    <value>Използвай локален акаунт за вход</value>
+  </data>
+  <data name="lblLogout" xml:space="preserve">
+    <value>Изход</value>
+  </data>
+  <data name="lblMainPage" xml:space="preserve">
+    <value>Заглавна страница</value>
+  </data>
+  <data name="lblOperatorPanel" xml:space="preserve">
+    <value>Операторски панел</value>
+  </data>
+  <data name="lblRegAsNew" xml:space="preserve">
+    <value>Регистрирай се като нов потребител</value>
+  </data>
+  <data name="lblRegister" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="lblTopTen" xml:space="preserve">
+    <value>ТОП ДЕСЕТ</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Вход </value>
+  </data>
+  <data name="lblAminPanel" xml:space="preserve">
+    <value>Администраторски панел</value>
+  </data>
 </root>

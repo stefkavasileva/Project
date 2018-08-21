@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html>
+﻿@using Landmarks.Web.Controllers
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<HomeController> localizer
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Landmarks.Web</title>
+    <title>@ViewData["Title"] Landmarks</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -33,25 +36,22 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a asp-area="Operator" asp-controller="Home" asp-action="Index" class="nav-link">Home<span class="sr-only">Home</span></a>
+                    <a asp-area="Operator" asp-controller="Home" asp-action="Index" class="nav-link">Home<span class="sr-only">@localizer["lblHome"]</span></a>
                 </li>
                 <li class="nav-item">
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Main page</a>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">@localizer["lblMainPage"]</a>
                 </li>
             </ul>
         </div>
         <partial name="_LoginPartial" class="float-right" />
     </nav>
-
-    <partial name="_CookieConsentPartial" />
-
     <div class="container body-content">
         <partial name="_Message" />
         @RenderBody()
         <hr />
         <footer>
             <partial name="_SelectLanguage" />
-            <p>&copy; 2018 - Landmarks.Web</p>
+            <p>&copy; 2018 - Landmarks</p>
         </footer>
     </div>
 

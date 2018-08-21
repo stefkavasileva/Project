@@ -13,7 +13,7 @@ namespace Landmarks.Web.Areas.Admin.Pages.Landmark
     [Authorize(Roles = NamesConstants.RoleAdmin)]
     public class ListModel : PageModel
     {
-        private const int DefaultPageSize = 3;
+        private const int DefaultPageSize = 5;
         private readonly ILandmarkService _service;
 
         public ListModel(ILandmarkService service)

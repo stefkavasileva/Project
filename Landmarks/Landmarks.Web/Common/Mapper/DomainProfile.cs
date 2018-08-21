@@ -41,6 +41,25 @@ namespace Landmarks.Web.Common.Mapper
                     opt => opt.MapFrom(entity => entity.CategoryId))
                 .ForMember(viewModel => viewModel.RegionId,
                     opt => opt.MapFrom(entity => entity.RegionId));
+
+             CreateMap<Landmark, LandmarkRankingViewModel>()
+                .ForMember(viewModel => viewModel.Name,
+                    opt => opt.MapFrom(entity => entity.Name))
+                .ForMember(viewModel => viewModel.Name,
+                    opt => opt.MapFrom(entity => entity.Category.Name))
+                .ForMember(viewModel => viewModel.RegionName,
+                    opt => opt.MapFrom(entity => entity.Region.Name))
+                    .ForMember(viewModel => viewModel.Id,
+                     opt => opt.MapFrom(entity => entity.Id))
+                 .ForMember(viewModel => viewModel.Description,
+                     opt => opt.MapFrom(entity => entity.Description))
+                 .ForMember(viewModel => viewModel.DesireToVisitCount,
+                     opt => opt.MapFrom(entity => entity.DesiredPlaces.Count))
+                 .ForMember(viewModel => viewModel.PostedDate,
+                     opt => opt.MapFrom(entity => entity.PostedDate))
+                 .ForMember(viewModel => viewModel.VisitorsCount,
+                     opt => opt.MapFrom(entity => entity.Visitors.Count)).ReverseMap();
+
             CreateMap<AddEditLandmarkBindingModel, Landmark>()
                 .ForMember(entity => entity.Name,
                     opt => opt.MapFrom(viewModel => viewModel.Name))

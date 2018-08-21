@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
-using System.Text.Unicode;
 using AutoMapper;
 using Landmarks.Common.Resources;
 using Microsoft.AspNetCore.Builder;
@@ -16,7 +15,6 @@ using Landmarks.Models;
 using Landmarks.Services;
 using Landmarks.Services.Admin;
 using Landmarks.Services.Main;
-using Landmarks.Web.Common;
 using Landmarks.Web.Common.Constants;
 using Landmarks.Web.Common.Extensions;
 using Microsoft.AspNetCore.Identity;
@@ -207,6 +205,7 @@ namespace Landmarks.Web
             services.AddScoped<IMainService, MainService>();
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IRegionService, RegionService>();
+            services.AddScoped<IRankingService, RankingService>();
             services.AddScoped<IVisitationService, VisitationService>();
             services.AddScoped<Interfaces.Admin.ILandmarkService, LandmarkService>();
             services.AddScoped<Interfaces.Main.IRegionService, Services.Main.RegionService>();

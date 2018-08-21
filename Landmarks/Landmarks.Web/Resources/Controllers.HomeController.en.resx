@@ -201,4 +201,61 @@
   <data name="descYambol" xml:space="preserve">
     <value>Yambol (Bulgarian: област Ямбол, oblast Yambol, former name Yambol okrug) is a province in southeastern Bulgaria, neighbouring Turkey to the south. It is named after its main city Yambol, while other towns include Straldzha, Bolyarovo and Elhovo. The province embraces a territory of 3,355.5 km² that is divided into 5 municipalities with a total population, as of December 2009, of 138,429 inhabitants.</value>
   </data>
+  <data name="lblAnotherLogIn" xml:space="preserve">
+    <value>Use another service to log in</value>
+  </data>
+  <data name="lblByComents" xml:space="preserve">
+    <value>By Comments</value>
+  </data>
+  <data name="lblByDesiredVisitation" xml:space="preserve">
+    <value>By Desired Visitation</value>
+  </data>
+  <data name="lblByRating" xml:space="preserve">
+    <value>By Rating</value>
+  </data>
+  <data name="lblByVisitation" xml:space="preserve">
+    <value>By Visitation</value>
+  </data>
+  <data name="lblCreateNew" xml:space="preserve">
+    <value>Create a new account</value>
+  </data>
+  <data name="lblForgotPass" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
+  <data name="lblHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="lblLandmarks" xml:space="preserve">
+    <value>Landmarks</value>
+  </data>
+  <data name="lblLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="lblLoginTitle" xml:space="preserve">
+    <value>Use a local account to log in</value>
+  </data>
+  <data name="lblLogout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="lblMainPage" xml:space="preserve">
+    <value>Main Page</value>
+  </data>
+  <data name="lblOperatorPanel" xml:space="preserve">
+    <value>Operator panel</value>
+  </data>
+  <data name="lblRegAsNew" xml:space="preserve">
+    <value>Register as a new user</value>
+  </data>
+  <data name="lblRegister" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="lblTopTen" xml:space="preserve">
+    <value>TOP TEN</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="lblAminPanel" xml:space="preserve">
+    <value>Admin panel</value>
+  </data>
 </root>

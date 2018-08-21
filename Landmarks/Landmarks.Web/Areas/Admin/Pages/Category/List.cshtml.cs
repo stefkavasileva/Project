@@ -14,7 +14,7 @@ namespace Landmarks.Web.Areas.Admin.Pages.Category
     [Authorize(Roles = NamesConstants.RoleAdmin)]
     public class ListModel : PageModel
     {
-        private const int DefaultPageSize = 3;
+        private const int DefaultPageSize = 5;
         private readonly ICategoryService _service;
 
         public ListModel(ICategoryService service)

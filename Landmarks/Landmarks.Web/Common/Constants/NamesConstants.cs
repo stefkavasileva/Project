@@ -19,5 +19,7 @@
         public const string ResourcesPathName = "Resources";
 
         public const string PolicyName = "RequireAdministratorRole";
+
+        public const string RankingViewName = "TopTenByRating";
     }
 }

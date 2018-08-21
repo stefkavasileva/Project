@@ -2,7 +2,7 @@
 {
     public static class ValidationConstants
     {
-        public const int NameMinLen = 5;
+        public const int NameMinLen = 4;
         public const int NameMaxLen = 200;
         public const double AreaMinValue = 0;
         public const double AreaMaxValue = double.MaxValue;

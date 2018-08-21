@@ -1,0 +1,16 @@
+﻿@using Landmarks.Web.Controllers
+@using Microsoft.Extensions.Localization
+@model LandmarkRankingViewModel
+
+@inject IStringLocalizer<RankingController> localizer;
+<tr>
+    <td>@Model.Name</td>
+    <td>@Model.CategoryName</td>
+    <td>@Model.RegionName</td>
+    <td>@Model.PostedDate</td>
+    <td>@Model.VisitorsCount @localizer["lblPeople"]</td>
+    <td>@Model.DesireToVisitCount @localizer["lblPeople"]</td>
+    <td>
+        <a asp-area="" asp-controller="Landmark" asp-action="Details" asp-route-id="@Model.Id" class="btn secondary-color btn-sm">@localizer["btnDetails"]</a>
+    </td>
+</tr>

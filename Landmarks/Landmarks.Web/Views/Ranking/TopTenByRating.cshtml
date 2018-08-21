@@ -1,0 +1,25 @@
+﻿@using Landmarks.Web.Controllers
+@using Microsoft.Extensions.Localization
+@model ICollection<LandmarkRankingViewModel>
+@inject IStringLocalizer<RankingController> localizer;
+
+<div class="container container-fluid text-center">
+    <h1> <i class="fa fa-thumbs-o-up" aria-hidden="true"> </i>@localizer["lblTopTen"]</h1>
+    <table class="table table-striped table-responsive-md btn-table">
+        <thead>
+        <tr>
+            <th>@localizer["lblName"] <i class="fa fa-info" aria-hidden="true"></i></th>
+            <th>@localizer["lblCategory"]<i class="fa fa-list-alt" aria-hidden="true"></i></th>
+            <th>@localizer["lblRegion"] <i class="fa fa-map-signs" aria-hidden="true"></i></th>
+            <th>@localizer["lblPostedDate"] <i class="fa fa-clock-o" aria-hidden="true"></i></th>
+            <th><span>@localizer["lblVisitorsCount"] <i class="fa fa-child" aria-hidden="true"></i></span></th>
+            <th><span>@localizer["lblDesireToVisitCount"]<i class="fa fa-child" aria-hidden="true"></i></span></th>
+            <th><i class="fa fa-share" aria-hidden="true"></i></th>
+        </tr>
+        </thead>
+        <tbody>
+        @Html.DisplayForModel()
+        </tbody>
+    </table>
+</div>
+
