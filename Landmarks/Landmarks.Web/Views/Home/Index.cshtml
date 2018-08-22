@@ -1,9 +1,7 @@
-﻿@using Landmarks.Web.Controllers
-@using Microsoft.Extensions.Localization
-@inject IStringLocalizer<HomeController> localizer;
+﻿@inject IStringLocalizer<HomeController> Localizer;
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Localizer["lblHome"];
 }
 
 <div class="jsmaps-wrapper" id="world-map"></div>
@@ -23,34 +21,34 @@
     $(document).ready(function () {
 
         var regionDesc = {
-        "Vidin": "@localizer["descVidin"]",
-        "Montana":"@localizer["descMontana"]" ,
-        "Vratsa": "@localizer["descVratsa"]",
-        "Pleven": "@localizer["descPleven"]",
-        "Veliko Tarnovo": "@localizer["descVelikoTarnovo"]",
-        "Ruse": "@localizer["descRuse"]",
-        "Razgrad": "@localizer["descRazgrad"]",
-        "Silistra": "@localizer["descSilistra"]",
-        "Dobrich": "@localizer["descDobrich"]",
-        "Varna": "@localizer["descVarna"]",
-        "Shumen": "@localizer["descShumen"]",
-        "Targovishte": "@localizer["descTargovishte"]",
-        "Gabrovo": "@localizer["descGabrovo"]",
-        "Lovech": "@localizer["descLovech"]",
-        "Sofia": "@localizer["descSofia"]",
-        "Pernik": "@localizer["descPernik"]",
-        "Kyustendil": "@localizer["descKyustendil"]",
-        "Blagoevgrad": "@localizer["descBlagoevgrad"]",
-        "Pazardzhik": "@localizer["descPazardzhik"]",
-        "Plovdiv": "@localizer["descPlovdiv"]",
-        "Stara Zagora": "@localizer["descStaraZagora"]",
-        "Smolyan": "@localizer["descSmolyan"]",
-        "Kardzhali": "@localizer["descKardzhali"]",
-        "Sliven": "@localizer["descSliven"]",
-        "Yambol": "@localizer["descYambol"]",
-            "Burgas": "@localizer["descBurgas"]",
-            "Grad Sofiya": "@localizer["descSofia"]",
-                "Haskovo":"@localizer["descHaskovo"]"
+        "Vidin": "@Localizer["descVidin"]",
+        "Montana":"@Localizer["descMontana"]" ,
+        "Vratsa": "@Localizer["descVratsa"]",
+        "Pleven": "@Localizer["descPleven"]",
+        "Veliko Tarnovo": "@Localizer["descVelikoTarnovo"]",
+        "Ruse": "@Localizer["descRuse"]",
+        "Razgrad": "@Localizer["descRazgrad"]",
+        "Silistra": "@Localizer["descSilistra"]",
+        "Dobrich": "@Localizer["descDobrich"]",
+        "Varna": "@Localizer["descVarna"]",
+        "Shumen": "@Localizer["descShumen"]",
+        "Targovishte": "@Localizer["descTargovishte"]",
+        "Gabrovo": "@Localizer["descGabrovo"]",
+        "Lovech": "@Localizer["descLovech"]",
+        "Sofia": "@Localizer["descSofia"]",
+        "Pernik": "@Localizer["descPernik"]",
+        "Kyustendil": "@Localizer["descKyustendil"]",
+        "Blagoevgrad": "@Localizer["descBlagoevgrad"]",
+        "Pazardzhik": "@Localizer["descPazardzhik"]",
+        "Plovdiv": "@Localizer["descPlovdiv"]",
+        "Stara Zagora": "@Localizer["descStaraZagora"]",
+        "Smolyan": "@Localizer["descSmolyan"]",
+        "Kardzhali": "@Localizer["descKardzhali"]",
+        "Sliven": "@Localizer["descSliven"]",
+        "Yambol": "@Localizer["descYambol"]",
+        "Burgas": "@Localizer["descBurgas"]",
+        "Grad Sofiya": "@Localizer["descSofia"]",
+        "Haskovo":"@Localizer["descHaskovo"]"
 
     };
 
@@ -77,11 +75,10 @@
                 htmlAsString += '<p class="card-text"> ' + regionDesc[regionName] + ' </p>';
 
                 if (regionId) {
-                    htmlAsString += '<a id="regionLink" class="btn secondary-color" href="#">@localizer["btnReadMore"]</a>';
+                    htmlAsString += '<a id="regionLink" class="btn secondary-color" href="#">@Localizer["btnReadMore"]</a>';
                 }
 
                 htmlAsString += '</div></div >';
-
 
                 element.empty();
                 element.append($.parseHTML(htmlAsString));

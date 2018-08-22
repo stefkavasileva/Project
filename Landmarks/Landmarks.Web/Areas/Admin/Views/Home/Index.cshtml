@@ -1,38 +1,36 @@
-﻿@using Landmarks.Web.Areas.Admin.Controllers
-@using Microsoft.Extensions.Localization
-@inject IStringLocalizer<HomeController> localizer;
+﻿@inject IStringLocalizer<HomeController> Localizer;
 
 <div class="row">
     <div class="card col col-md-4">
         <img class="card-img-top" src="/images/admin-category.jpg" alt="Card image cap" style="height: 202px">
         <div class="card-body">
-            <h4 class="card-title">@localizer["btnTitleCategories"]</h4>
-            <p class="card-text">@localizer["descCategory"]</p>
+            <h4 class="card-title">@Localizer["btnTitleCategories"]</h4>
+            <p class="card-text">@Localizer["descCategory"]</p>
             <div class="row">
-                <a asp-area="Admin" asp-page="/Category/Add" class="btn btn-outline-success"><span class="text-black-50">@localizer["lblAddCategory"]</span></a>
-                <a asp-area="Admin" asp-page="/Category/List" class="btn btn-outline-info"><span class="text-black-50">@localizer["lblAllCategory"]</span></a>
+                <a asp-area="Admin" asp-page="/Category/Add" class="btn btn-outline-success"><span class="text-black-50">@Localizer["lblAddCategory"]</span></a>
+                <a asp-area="Admin" asp-page="/Category/List" class="btn btn-outline-info"><span class="text-black-50">@Localizer["lblAllCategory"]</span></a>
             </div>
         </div>
     </div>
     <div class="card col col-md-4">
         <img class="card-img-top" src="/images/admin-regions.jpg" alt="Card image cap" style="height: 268px">
         <div class="card-body">
-            <h4 class="card-title">@localizer["btnTitleRegion"]</h4>
-            <p class="card-text">@localizer["descRegion"]</p>
+            <h4 class="card-title">@Localizer["btnTitleRegion"]</h4>
+            <p class="card-text">@Localizer["descRegion"]</p>
             <div class="row">
-                <a asp-area="Admin" asp-page="/Region/Add" class="btn btn-outline-success"><span class="text-black-50">@localizer["lblAddRegion"]</span></a>
-                <a asp-area="Admin" asp-page="/Region/List" class="btn btn-outline-info waves-effect"><span class="text-black-50">@localizer["lblAllRegion"]</span></a>
+                <a asp-area="Admin" asp-page="/Region/Add" class="btn btn-outline-success"><span class="text-black-50">@Localizer["lblAddRegion"]</span></a>
+                <a asp-area="Admin" asp-page="/Region/List" class="btn btn-outline-info waves-effect"><span class="text-black-50">@Localizer["lblAllRegion"]</span></a>
             </div>
         </div>
     </div>
     <div class="card col col-md-4">
         <img class="card-img-top" src="/images/admin-landmark.jpg" alt="Card image cap" style="height: 270px">
         <div class="card-body">
-            <h4 class="card-title">@localizer["btnTitleLandmark"]</h4>
-            <p class="card-text">@localizer["descLandmark"]</p>
+            <h4 class="card-title">@Localizer["btnTitleLandmark"]</h4>
+            <p class="card-text">@Localizer["descLandmark"]</p>
             <div class="row">
-                <a asp-area="Admin" asp-page="/Landmark/Add" class="btn btn-outline-success"><span class="text-black-50">@localizer["lblAddLandmark"]</span></a>
-                <a asp-area="Admin" asp-page="/Landmark/List" class="btn btn-outline-info"><span class="text-black-50">@localizer["lblAllLandmark"]</span></a>
+                <a asp-area="Admin" asp-page="/Landmark/Add" class="btn btn-outline-success"><span class="text-black-50">@Localizer["lblAddLandmark"]</span></a>
+                <a asp-area="Admin" asp-page="/Landmark/List" class="btn btn-outline-info"><span class="text-black-50">@Localizer["lblAllLandmark"]</span></a>
             </div>
         </div>
     </div>

@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using Landmarks.Models;
 using Landmarks.Common.Models.Admin.BindingModels;
-using Landmarks.Common.Models.Admin.ViewModels;
-using Landmarks.Common.Models.Main.ViewModel;
+using Landmarks.Common.Models.Main.ViewModels;
 
 namespace Landmarks.Web.Common.Mapper
 {
@@ -78,6 +77,12 @@ namespace Landmarks.Web.Common.Mapper
                 .ForMember(entity => entity.Population,
                     opt => opt.MapFrom(viewModel => viewModel.Population));
 
+            CreateMap<ListCategoriesViewModel, Category>()
+                .ForMember(entity => entity.Id,
+                    opt => opt.MapFrom(viewModel => viewModel.Id))
+                .ForMember(entity => entity.Name,
+                    opt => opt.MapFrom(viewModel => viewModel.Name))
+                    .ReverseMap();
         }
     }
 }

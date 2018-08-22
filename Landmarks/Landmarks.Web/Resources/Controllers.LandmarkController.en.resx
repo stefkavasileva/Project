@@ -126,6 +126,9 @@
   <data name="lblDesiredVisited" xml:space="preserve">
     <value>Wanted to visit!</value>
   </data>
+  <data name="lblDetails" xml:space="preserve">
+    <value>Details</value>
+  </data>
   <data name="lblLandmarkCategoryName" xml:space="preserve">
     <value>Category name</value>
   </data>

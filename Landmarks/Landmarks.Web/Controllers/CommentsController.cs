@@ -1,4 +1,4 @@
-﻿using Landmarks.Common.Models.Main.ViewModel;
+﻿using Landmarks.Common.Models.Main.ViewModels;
 using Landmarks.Interfaces.Main;
 using Landmarks.Web.Common.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -14,14 +14,11 @@ namespace Landmarks.Web.Controllers
             this._service = service;
         }
 
-
-        [HttpGet]
         public ActionResult GetUsers()
         {
             return View();
         }
 
-        [HttpPost]
         public ActionResult GetUsers(string email)
         {
             var user = this._service.GetUserByEmail(email);
@@ -45,7 +42,6 @@ namespace Landmarks.Web.Controllers
             return RedirectToAction("GetComments", "Comments", new { landmarkId = landmarkId });
         }
 
-        [HttpGet]
         public PartialViewResult GetSubComments(int commentId)
         {
             var subComments = this._service.GetSubComments(commentId);

@@ -1,0 +1,35 @@
+﻿@model PaginatedList<ListCategoriesViewModel>
+@inject IStringLocalizer<CategoryController> Localizer
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    ViewData["Title"] = Localizer["lblListCategories"];
+}
+
+<div class="container container-fluid text-center">
+    <h1>@Localizer["lblListCategories"]</h1>
+    <table class="table table-striped table-responsive-md btn-table">
+        <thead>
+            <tr>
+                <th>@Localizer["lblName"]</th>
+                <th>@Localizer["lblLandmarksCount"]</th>
+                <th>@Localizer["lblAction"]</th>
+            </tr>    
+        </thead>
+        <tbody>
+            @Html.DisplayForModel()
+        </tbody>
+    </table>
+    <a asp-controller="Category" asp-action="List" asp-area=""
+       asp-route-pageIndex="@(Model.PageIndex - 1)"
+       class="btn btn-indigo waves-effect waves-light @prevDisabled">
+        @Localizer["btnPrevious"]
+    </a>
+    <a asp-controller="Category" asp-action="List" asp-area=""
+       asp-route-pageIndex="@(Model.PageIndex + 1)"
+       class="btn btn-indigo waves-effect waves-light @nextDisabled">
+        @Localizer["btnNext"]
+    </a>
+</div>
+

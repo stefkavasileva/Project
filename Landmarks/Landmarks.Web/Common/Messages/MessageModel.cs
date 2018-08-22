@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Landmarks.Web.Common.Helpers.Messages
+namespace Landmarks.Web.Common.Messages
 {
     [Serializable]
     public class MessageModel

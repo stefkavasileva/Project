@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
-using Landmarks.Common.Models.Main;
-using Landmarks.Common.Models.Main.ViewModel;
+using Landmarks.Common.Models.Main.ViewModels;
 using Landmarks.Data;
 using Landmarks.Interfaces.Main;
 using Landmarks.Models;
@@ -65,22 +64,18 @@ namespace Landmarks.Services.Main
             var post = this.DbContext.Landmarks.FirstOrDefault(p => p.Id == landmarkId);
 
             if (comment != null)
-            {
-
+            {       
                 commentEntity = new Comment
                 {
                     CommentMsg = comment.CommentMsg,
                     CommentedDate = comment.CommentedDate,
                 };
 
-
                 if (user != null && post != null)
                 {
                     post.Comments.Add(commentEntity);
                     user.Comments.Add(commentEntity);
-
-                    this.DbContext.SaveChanges();
-                    //result = true;  
+                    this.DbContext.SaveChanges();  
                 }
             }
         }
@@ -100,14 +95,12 @@ namespace Landmarks.Services.Main
                     CommentedDate = subComment.CommentedDate,
                 };
 
-
                 if (user != null && comment != null)
                 {
                     comment.SubComments.Add(subCommentEntity);
                     user.SubComments.Add(subCommentEntity);
 
-                   this.DbContext.SaveChanges();
-                    //result = true;  
+                   this.DbContext.SaveChanges(); 
                 }
             }
         }

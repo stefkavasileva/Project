@@ -1,14 +1,15 @@
-﻿@model Landmarks.Common.Models.Main.ViewModel.LandmarkDetailsViewModel
-@using Landmarks.Web.Common.Extensions
-@using Landmarks.Web.Controllers
-@using Microsoft.Extensions.Localization
-@inject IStringLocalizer<LandmarkController> localizer;
+﻿@model LandmarkDetailsViewModel
 
+@inject IStringLocalizer<LandmarkController> Localizer
+
+@{
+    ViewData["Title"] = Localizer["lblDedatils"];
+}
 <div class="container container-fluid rgba-purple-slight" style="margin-top:10px; border-radius:5px">
     <div class="col-lg-7 col-xl-12">
-        <div>         
+        <div>
             <h3 class="font-weight-bold mb-3 flex-center">
-                <strong>@Model.Name</strong>              
+                <strong>@Model.Name</strong>
             </h3>
             <div class="float-right">
                 @*Rating system*@
@@ -34,28 +35,28 @@
                         }
                     }
                 }
-                
+
             </div>
         </div>
         <span>
             <span class="starFadeN" id="sRate1"></span><span class="starFadeN" id="sRate2"></span><span class="starFadeN" id="sRate3"></span><span class="starFadeN" id="sRate4"></span><span class="starFadeN" id="sRate5"></span>
         </span>
-        <p class="dark-grey-text"><strong>@localizer["lblLandmarkDesc"]:</strong> @Model.Description</p>
+        <p class="dark-grey-text"><strong>@Localizer["lblLandmarkDesc"]:</strong> @Model.Description</p>
         <div class="personal-sm dark-grey-text">
-            <div> <strong>@localizer["lblLandmarkCategoryName"]: </strong>@Model.CategoryName</div>
+            <div> <strong>@Localizer["lblLandmarkCategoryName"]: </strong>@Model.CategoryName</div>
             <div>
-                <strong>@localizer["lblLandmarkRegion"]</strong>
-                <div><strong>@localizer["lblLandmarkRegionName"]:</strong> @Model.RegionName</div>
-                <div><strong>@localizer["lblLandmarkRegionArea"]:</strong> @Model.RegionArea</div>
-                <div><strong>@localizer["lblLandmarkRegionPopulation"]:</strong> @Model.RegionPopulation</div>
+                <strong>@Localizer["lblLandmarkRegion"]</strong>
+                <div><strong>@Localizer["lblLandmarkRegionName"]:</strong> @Model.RegionName</div>
+                <div><strong>@Localizer["lblLandmarkRegionArea"]:</strong> @Model.RegionArea</div>
+                <div><strong>@Localizer["lblLandmarkRegionPopulation"]:</strong> @Model.RegionPopulation</div>
             </div>
         </div>
     </div>
-    <span >
-        <button type="button" class="btn secondary-color" onclick="checkVisitation('@Url.Action("MakeVisited", "Visitation",new { landmarkId = Model.Id })','@Url.Action("RemoveFromVisited", "Visitation",new { landmarkId = Model.Id })','@localizer["lblVisited"]','@localizer["lblVisit"]');" id="visitationButton">
+    <span>
+        <button type="button" class="btn secondary-color" onclick="checkVisitation('@Url.Action("MakeVisited", "Visitation",new { landmarkId = Model.Id })','@Url.Action("RemoveFromVisited", "Visitation",new { landmarkId = Model.Id })','@Localizer["lblVisited"]','@Localizer["lblVisit"]');" id="visitationButton">
             <i class="fa fa-check-square-o" aria-hidden="true"></i><span id="visitationValue" value="true"> </span>
         </button>
-        <button type="button" class="btn secondary-color" onclick="checkDesiredVisitation('@Url.Action("MakeDesiredVisited", "Visitation",new { landmarkId = Model.Id })','@Url.Action("RemoveFromDesiredVisitation", "Visitation",new { landmarkId = Model.Id })','@localizer["lblDesiredVisited"]','@localizer["lblDesiredVisit"]');" id="desiredPlacesVisitationButton">
+        <button type="button" class="btn secondary-color" onclick="checkDesiredVisitation('@Url.Action("MakeDesiredVisited", "Visitation",new { landmarkId = Model.Id })','@Url.Action("RemoveFromDesiredVisitation", "Visitation",new { landmarkId = Model.Id })','@Localizer["lblDesiredVisited"]','@Localizer["lblDesiredVisit"]');" id="desiredPlacesVisitationButton">
             <i class="fa fa-check-square-o" aria-hidden="true"></i><span id="desiredVisitationValue" value="true"> </span>
         </button>
     </span>
@@ -70,15 +71,14 @@
     </div>
     <div class="panel panel-default">
         <div class="panel-footer">
-            <h2>@localizer["lblShowComments"]</h2>
-            <button type="button" class="btn secondary-color Comment" aria-hidden="true" data-id="@Model.Id" value="Comment" style="display: none;">
-            </button>
+            <h2>@Localizer["lblShowComments"]</h2>
+            <button type="button" class="btn secondary-color Comment" aria-hidden="true" data-id="@Model.Id" value="Comment" style="display: none;"></button>
         </div>
         <div id="@string.Format("{0}_{1}","commentsBlock", Model.Id)">
 
             <div class="AddComment input-group-prepend">
                 <input type="text" id="@string.Format("{0}_{1}", "comment", Model.Id)" class="form-control col-sm-6" placeholder="Add a Comment ..." style="margin-bottom:8px; height:auto" />
-                <button type="button" class="btn secondary-color addComment" style="margin-bottom:8px;" data-id="@Model.Id"><span class="glyphicon glyphicon-comment" aria-hidden="true">@localizer["btnAddNewComment"]</span></button>
+                <button type="button" class="btn secondary-color addComment" style="margin-bottom:8px;" data-id="@Model.Id"><span class="glyphicon glyphicon-comment" aria-hidden="true">@Localizer["btnAddNewComment"]</span></button>
             </div>
         </div>
     </div>
@@ -91,14 +91,14 @@
     <script>
         $(function(){
             onLoadVisitation('@Url.Action("IsVisited", "Visitation",new { landmarkId = Model.Id })',
-                '@localizer["lblVisited"]',
-                '@localizer["lblVisit"]');
+                '@Localizer["lblVisited"]',
+                '@Localizer["lblVisit"]');
         });
 
         $(function(){
             onLoadDesiredVisitation('@Url.Action("IsDesiredPlaceVisited", "Visitation",new { landmarkId = Model.Id })',
-                '@localizer["lblDesiredVisited"]',
-                '@localizer["lblDesiredVisit"]');
+                '@Localizer["lblDesiredVisited"]',
+                '@Localizer["lblDesiredVisit"]');
         });
     </script>
 

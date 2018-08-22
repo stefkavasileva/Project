@@ -28,17 +28,17 @@ namespace Landmarks.Common.Models.Operator.BindingModels
         public int CategoryId { get; set; }
 
         [Required(ErrorMessage = "msgRequiredRegion")]
-        [Display(Name = "lblRegion")]
+        [Display(Name = "lblRegion", AutoGenerateFilter = false)]
         public int RegionId { get; set; }
 
-        [Display(Name = "lblDesrption")]
+        [Display(Name = "lblDesrption", AutoGenerateFilter = false)]
         public string Description { get; set; }
 
         public List<SelectListItem> Categories { set; get; }
 
         public List<SelectListItem> Regions { set; get; }
 
-        [Display(Name = "lblImages")]
+        [Display(Name = "lblImages", AutoGenerateFilter = false)]
         public ICollection<IFormFile> Images { get; set; }
 
         public ICollection<string> ImagesPathToDisplay { get; set; }

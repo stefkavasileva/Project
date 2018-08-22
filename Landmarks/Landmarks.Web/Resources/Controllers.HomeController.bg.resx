@@ -271,4 +271,7 @@
   <data name="lblAminPanel" xml:space="preserve">
     <value>Администраторски панел</value>
   </data>
+  <data name="lblCategories" xml:space="preserve">
+    <value>Категории</value>
+  </data>
 </root>

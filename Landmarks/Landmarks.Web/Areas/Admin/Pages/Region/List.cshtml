@@ -1,42 +1,39 @@
 ﻿@page
 @model Landmarks.Web.Areas.Admin.Pages.Region.ListModel
+@inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Region.ListModel> Localizer
+
 @{
-    ViewData["Title"] = "All Regions";
+    ViewData["Title"] = Localizer["lblListRegions"];
+    var prevDisabled = !Model.Regions.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.Regions.HasNextPage ? "disabled" : "";
 }
-@using Microsoft.Extensions.Localization
-@inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Region.ListModel> localizer;
 
 <div class="container container-fluid text-center">
-    <h1>@localizer["lblListRegions"]</h1>
-    <a href="/Admin/Region/Add" class="btn btn-indigo">@localizer["lblAddRegion"]</a>
+    <h1>@Localizer["lblListRegions"]</h1>
+    <a href="/Admin/Region/Add" class="btn btn-indigo">@Localizer["lblAddRegion"]</a>
     <table class="table table-striped table-responsive-md btn-table">
         <thead>
         <tr>
-            <th>@localizer["lblName"]</th>
-            <th>@localizer["lblArea"]</th>
-            <th>@localizer["lblPopulation"]</th>
-            <th>@localizer["lblActions"]</th>
+            <th>@Localizer["lblName"]</th>
+            <th>@Localizer["lblArea"]</th>
+            <th>@Localizer["lblPopulation"]</th>
+            <th>@Localizer["lblActions"]</th>
         </tr>
         </thead>
         <tbody>
         @Html.DisplayFor(m => m.Regions)
         </tbody>
     </table>
-    @{
-        var prevDisabled = !Model.Regions.HasPreviousPage ? "disabled" : "";
-        var nextDisabled = !Model.Regions.HasNextPage ? "disabled" : "";
-    }
 
     <a asp-page="./List" asp-area="Admin"
        asp-route-pageIndex="@(Model.Regions.PageIndex - 1)"
        class="btn btn-indigo waves-effect waves-light @prevDisabled">
-        @localizer["btnPrevious"]
+        @Localizer["btnPrevious"]
     </a>
     <a asp-page="./List" asp-area="Admin"
        asp-route-pageIndex="@(Model.Regions.PageIndex + 1)"
        class="btn btn-indigo waves-effect waves-light @nextDisabled">
-        @localizer["btnNext"]
-
+        @Localizer["btnNext"]
     </a>
 </div>
 

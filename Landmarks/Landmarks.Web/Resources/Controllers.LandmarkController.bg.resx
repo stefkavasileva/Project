@@ -126,6 +126,9 @@
   <data name="lblDesiredVisited" xml:space="preserve">
     <value>Желая да посетя!</value>
   </data>
+  <data name="lblDetails" xml:space="preserve">
+    <value>Детайли</value>
+  </data>
   <data name="lblLandmarkCategoryName" xml:space="preserve">
     <value>Име на категорията</value>
   </data>

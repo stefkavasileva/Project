@@ -54,8 +54,6 @@ namespace Landmarks.Services.Admin
             this.DbContext.SaveChanges();
         }
 
-
-
         public void SaveEntity(AddEditRegionBindingModel model)
         {
             var region = this.Mapper.Map<Landmarks.Models.Region>(model);

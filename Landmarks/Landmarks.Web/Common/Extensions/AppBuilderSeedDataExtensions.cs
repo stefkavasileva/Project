@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Landmarks.Models;
 using System.Threading.Tasks;
-using Landmarks.Data;
 using Microsoft.Extensions.DependencyInjection;
 using Landmarks.Web.Common.Constants;
 

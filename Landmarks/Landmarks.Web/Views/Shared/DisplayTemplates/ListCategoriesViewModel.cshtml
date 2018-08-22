@@ -1,0 +1,10 @@
+﻿@model ListCategoriesViewModel
+
+@inject IStringLocalizer<CategoryController> Localizer
+<tr>
+    <td>@Model.Name</td>
+    <td>@Model.LandmarksCount</td>
+    <td>
+        <a asp-area="" asp-controller="Category" asp-action="LandmarksByCategory" asp-route-id="@Model.Id" class="btn btn-warning btn-sm">@Localizer["btnAll"]</a>
+    </td>
+</tr>

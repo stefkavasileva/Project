@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Landmarks.Common.Models.Main.ViewModel
+namespace Landmarks.Common.Models.Main.ViewModels
 {
     public class LandmarkDetailsViewModel
     {

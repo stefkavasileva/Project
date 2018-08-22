@@ -1,4 +1,4 @@
-﻿namespace Landmarks.Common.Models.Main
+﻿namespace Landmarks.Common.Models.Main.ViewModels
 {
     public class UserViewModel
     {

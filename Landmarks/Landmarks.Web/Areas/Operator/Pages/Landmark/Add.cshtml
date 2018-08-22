@@ -1,13 +1,13 @@
 ﻿@page
-@using Microsoft.Extensions.Localization
 @model Landmarks.Web.Areas.Operator.Pages.Landmark.AddModel
-@{
-    ViewData["Title"] = "Add";
-    @inject IStringLocalizer<Landmarks.Web.Areas.Operator.Pages.Landmark.AddModel> localizer;
+@inject IStringLocalizer<Landmarks.Web.Areas.Operator.Pages.Landmark.AddModel> Localizer;
 
+@{
+    ViewData["Title"] = Localizer["lblAddLandmark"];
 }
+
 <div class="container container-fluid text-center">
-    <h2>@localizer["lblAddLandmark"]</h2>
+    <h2>@Localizer["lblAddLandmark"]</h2>
     <form method="post" enctype="multipart/form-data">
         @Html.FormGroupFor(m => m.AddLandmarkBindingModel.Name)
         @Html.SelectItemFor(m => m.AddLandmarkBindingModel.CategoryId, Model.AddLandmarkBindingModel.Categories)
@@ -16,8 +16,8 @@
         <input asp-for="AddLandmarkBindingModel.Images" class="img-fluid" />
         @Html.FormGroupFor(m => m.AddLandmarkBindingModel.Description)
 
-        <button type="submit" class="btn btn-dark-green">@localizer["btnAddLandmark"]</button>
-        <a asp-page="/Index" class="btn btn-light-green">@localizer["btnBack"]</a>
+        <button type="submit" class="btn btn-dark-green">@Localizer["btnAddLandmark"]</button>
+        <a asp-page="/Index" class="btn btn-light-green">@Localizer["btnBack"]</a>
     </form>
 </div>
 
@@ -25,7 +25,7 @@
     <partial name="_ValidationScriptsPartial" />
 }
 
-<script>
+@*<script>
     $('#image').bind('change', function () {
         if (this.files[0].size > 4194304) {
             //this.files[0].size gets the size of the file.
@@ -33,4 +33,4 @@
             document.getElementById("image").value = "";
         }
     });
-</script> 
+</script>*@ 

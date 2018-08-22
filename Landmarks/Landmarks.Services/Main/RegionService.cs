@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
-using Landmarks.Common.Models.Main.ViewModel;
+using Landmarks.Common.Models.Main.ViewModels;
 using Landmarks.Data;
 using Landmarks.Interfaces.Main;
 using System.Linq;
-
 
 namespace Landmarks.Services.Main
 {

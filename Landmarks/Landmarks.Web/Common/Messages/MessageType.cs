@@ -1,4 +1,4 @@
-﻿namespace Landmarks.Web.Common.Helpers.Messages
+﻿namespace Landmarks.Web.Common.Messages
 {
     public enum MessageType
     {

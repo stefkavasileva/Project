@@ -1,4 +1,4 @@
-﻿using Landmarks.Common.Models.Main.ViewModel;
+﻿using Landmarks.Common.Models.Main.ViewModels;
 using Landmarks.Models;
 using System.Linq;
 
@@ -10,9 +10,9 @@ namespace Landmarks.Interfaces.Main
 
         IQueryable<CommentsViewModel> GetLandmarksComment(int landmarkId);
 
-        void SaveComment(string userId, int landmarkId, CommentsViewModel comment);
-
         IQueryable<SubCommentsViewModel> GetSubComments(int commentId);
+
+        void SaveComment(string userId, int landmarkId, CommentsViewModel comment);
 
         void SaveSubComment(string userId, SubCommentsViewModel subComment, int commetnId);
     }

@@ -22,11 +22,11 @@ namespace Landmarks.Common.Models.Admin.BindingModels
         public string Name { get; set; }
 
         [Required(ErrorMessage = "msgRequiredCategory")]
-        [Display(Name = "lblCategory")]
+        [Display(Name = "lblCategory", AutoGenerateFilter = false)]
         public int CategoryId { get; set; }
 
         [Required(ErrorMessage = "msgRequiredRegion")]
-        [Display(Name = "lblRegion")]
+        [Display(Name = "lblRegion", AutoGenerateFilter = false)]
         public int RegionId { get; set; }
 
         public string CreatorId { get; set; }

@@ -1,4 +1,4 @@
-﻿using Landmarks.Common.Models.Main.ViewModel;
+﻿using Landmarks.Common.Models.Main.ViewModels;
 
 namespace Landmarks.Interfaces.Main
 {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using System.Text;
 
-namespace Landmarks.Web.Common.Helpers.Messages
+namespace Landmarks.Web.Common.Messages
 {
     public class MessageTagHelper : TagHelper
     {

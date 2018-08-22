@@ -1,9 +1,5 @@
-﻿@using Landmarks.Web.Controllers
-@using Microsoft.Extensions.Localization
-
-@model CommentsViewModel
-
-@inject IStringLocalizer<LandmarkController> localizer;
+﻿@model CommentsViewModel
+@inject IStringLocalizer<LandmarkController> Localizer
 
 <article class="row">
     <div class="col-md-10 col-sm-10" style="margin:20px">
@@ -18,12 +14,12 @@
                         @Model.CommentMsg
                     </p>
                 </div>
-                <p class="text-right"><button type="button" class="Reply btn secondary-color  btn-sm" data-id="@Model.Id"><i class="fa fa-reply"></i>@localizer["btnAddNewComment"]</button></p>
+                <p class="text-right"><button type="button" class="Reply btn secondary-color  btn-sm" data-id="@Model.Id"><i class="fa fa-reply"></i>@Localizer["btnAddNewComment"]</button></p>
                 
                 <div class="@string.Format("{0}_{1}", "ReplayComments", Model.Id)" style="display:none;">
                     <div class="ReplayCommentInput" style="margin-left: 3%;  margin-bottom: 5px; margin-top: 8px;">
                         <input type="text" id="@string.Format("{0}_{1}", "inputReplay", Model.Id)" class="form-control" placeholder="Add a Comment ..." style="display: inline;" />
-                        <button type="button" class="btn btn-sm secondary-color ReplyAddComment" data-id="@Model.Id"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>@localizer["btnAddNewComment"]</button>
+                        <button type="button" class="btn btn-sm secondary-color ReplyAddComment" data-id="@Model.Id"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span>@Localizer["btnAddNewComment"]</button>
                     </div>
                 </div>
             </div>

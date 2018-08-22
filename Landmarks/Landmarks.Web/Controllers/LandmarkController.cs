@@ -15,7 +15,6 @@ namespace Landmarks.Web.Controllers
             this._service = service;
         }
 
-        [HttpGet]
         public IActionResult Details(int id)
         {
             var viewModel = this._service.GetLandmarkById(id);
@@ -47,13 +46,5 @@ namespace Landmarks.Web.Controllers
 
             return RedirectToAction("Details", new { id = landmarkId });
         }
-
-        //[HttpGet]
-        //public ActionResult GetLandmarks()
-        //{
-        //    var landmarks = this._service.GetAllLandmark();
-
-        //    return View(landmarks);
-        //}
     }
 }

@@ -7,11 +7,11 @@ namespace Landmarks.Interfaces.Admin
 {
     public interface IRegionService
     {
-        void CreateRegion(AddEditRegionBindingModel addRegionBindingModel);
-
         IQueryable<RegionConciseViewModel> GetRegions();
 
         Region GetRegion(int id);
+
+        void CreateRegion(AddEditRegionBindingModel addRegionBindingModel);
 
         void DeleteRegion(Region region);
 

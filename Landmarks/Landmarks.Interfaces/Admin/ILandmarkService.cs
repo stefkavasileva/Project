@@ -7,13 +7,13 @@ namespace Landmarks.Interfaces.Admin
 {
     public interface ILandmarkService
     {
-        void FillDropDownItems(AddEditLandmarkBindingModel model);
-
-        void CreateLandmark(AddEditLandmarkBindingModel addRegionBindingModel);
-
         IQueryable<LandmarkConciseViewModel> GetLandmarks();
 
         Landmark GetLandmark(int id);
+
+        void FillDropDownItems(AddEditLandmarkBindingModel model);
+
+        void CreateLandmark(AddEditLandmarkBindingModel addRegionBindingModel);
 
         void SaveEntity(AddEditLandmarkBindingModel editLandmarkBindingModel);
 

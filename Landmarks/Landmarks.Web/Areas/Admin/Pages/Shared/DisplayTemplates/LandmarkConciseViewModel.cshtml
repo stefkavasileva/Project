@@ -1,17 +1,14 @@
-﻿@using Landmarks.Common.Models.Admin.ViewModels
-@using Microsoft.Extensions.Localization
-@model Landmarks.Common.Models.Admin.ViewModels.LandmarkConciseViewModel
+﻿@model LandmarkConciseViewModel
+@inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Landmark.ListModel> Localizer
 
-
-@inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Landmark.ListModel> localizer;
 <tr>
     <td>@Model.Name</td>
     <td>@Model.CategoryName</td>
     <td>@Model.RegionName</td>
     <td>
         <form asp-area="Admin" asp-page-handler="Delete" asp-route-id="@Model.Id" method="post">
-            <button class="btn btn-danger btn-sm">@localizer["btnDelete"]</button>
-            <a asp-area="Admin" asp-page="/Landmark/Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-sm">@localizer["btnEdit"]</a>
+            <button class="btn btn-danger btn-sm">@Localizer["btnDelete"]</button>
+            <a asp-area="Admin" asp-page="/Landmark/Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-sm">@Localizer["btnEdit"]</a>
         </form>
     </td>
 </tr>

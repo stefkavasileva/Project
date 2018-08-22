@@ -1,11 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
 using Landmarks.Common.Models.Operator.ViewModels;
 using Landmarks.Interfaces.Operator;
 using Landmarks.Web.Common.Constants;
 using Landmarks.Web.Common.Extensions;
 using Landmarks.Web.Common.Helpers;
-using Landmarks.Web.Common.Helpers.Messages;
+using Landmarks.Web.Common.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -15,7 +13,7 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
     [Authorize(Roles = NamesConstants.RoleAdminAndOperator)]
     public class ListModel : PageModel
     {
-        private const int DefaultPageSize = 3;
+        private const int DefaultPageSize = 5;
         private readonly ILandmarkService _service;
 
         public ListModel(ILandmarkService service)

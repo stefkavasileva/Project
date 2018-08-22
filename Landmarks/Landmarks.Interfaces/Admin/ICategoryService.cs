@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Landmarks.Common.Models.Admin.ViewModels;
 using Landmarks.Models;
@@ -8,18 +7,18 @@ namespace Landmarks.Interfaces.Admin
 {
     public interface ICategoryService
     {
-        IQueryable<CategoryConciseViewModel> GetCategories();
-
         void CreateCategory(string name);
+
+        void DeleteCategory(Category category);
+
+        void SaveEntity(Category category);
+
+        IQueryable<CategoryConciseViewModel> GetCategories();
 
         Task<Category> GetCategoryAsync(int id);
 
         Category GetCategory(int id);
 
-        void DeleteCategory(Category category);
-
         Category GetCategoryByName(string name);
-
-        void SaveEntity(Category category);
     }
 }

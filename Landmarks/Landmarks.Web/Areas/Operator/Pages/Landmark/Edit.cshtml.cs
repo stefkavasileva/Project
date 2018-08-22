@@ -7,7 +7,7 @@ using Landmarks.Common.Models.Operator.BindingModels;
 using Landmarks.Interfaces.Operator;
 using Landmarks.Web.Common.Constants;
 using Landmarks.Web.Common.Extensions;
-using Landmarks.Web.Common.Helpers.Messages;
+using Landmarks.Web.Common.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -43,8 +43,6 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
             var userId = this.User.GetUserId();
             if (landmark.CreatorId != userId) return RedirectToPage(RedirectURL.ToLandmarkList, new { Area = NamesConstants.OperatorArea });
 
-            //TODO add mapper
-            //this.EditLandmarkBindingModel = this._mapper.Map<Landmarks.Models.Landmark,AddEditLandmarkBindingModel>(landmark);
             this.EditLandmarkBindingModel = new AddEditLandmarkBindingModel
             {
                 Name = landmark.Name,
@@ -75,8 +73,7 @@ namespace Landmarks.Web.Areas.Operator.Pages.Landmark
                         continue;
                     }
                     var newFileName = userId + Path.GetFileName(image.FileName);
-
-                    //TODO add validation for extension            
+         
                     var fullFilePath = Path.Combine(_hostingEnvironment.WebRootPath + "/images/", newFileName);
 
                     using (var fileStram = new FileStream(fullFilePath, FileMode.Create))

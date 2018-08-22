@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Landmarks.Models;
+﻿using Landmarks.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

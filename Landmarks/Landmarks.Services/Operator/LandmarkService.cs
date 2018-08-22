@@ -46,9 +46,7 @@ namespace Landmarks.Services.Operator
         }
 
         public void AddLandmark(AddEditLandmarkBindingModel model, List<string> imagesPaths)
-        {
-            //var landmark = this.Mapper.Map<AddEditLandmarkBindingModel, Landmark>(model);
-
+        { 
             var landmark = new Landmark
             {
                 Name = model.Name,

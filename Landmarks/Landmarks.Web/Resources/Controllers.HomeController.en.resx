@@ -258,4 +258,7 @@
   <data name="lblAminPanel" xml:space="preserve">
     <value>Admin panel</value>
   </data>
+  <data name="lblCategories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
 </root>

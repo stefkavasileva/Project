@@ -12,7 +12,6 @@ namespace Landmarks.Web.Controllers
             this._service = service;
         }
 
-        [HttpGet]
         public IActionResult Details(int? id)
         {
             if (id is null) return NotFound();

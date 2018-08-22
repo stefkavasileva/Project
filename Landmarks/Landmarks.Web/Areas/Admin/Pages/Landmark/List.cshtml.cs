@@ -3,7 +3,7 @@ using Landmarks.Interfaces.Admin;
 using Landmarks.Web.Common.Constants;
 using Landmarks.Web.Common.Extensions;
 using Landmarks.Web.Common.Helpers;
-using Landmarks.Web.Common.Helpers.Messages;
+using Landmarks.Web.Common.Messages;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;

@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Landmarks.Common.Models.Main.ViewModel
+namespace Landmarks.Common.Models.Main.ViewModels
 {
-    public class SubCommentsViewModel
+   public class CommentsViewModel
     {
-        public SubCommentsViewModel()
+        public CommentsViewModel()
         {
             this.CommentedDate = DateTime.Now;
         }
@@ -15,8 +15,8 @@ namespace Landmarks.Common.Models.Main.ViewModel
 
         public DateTime CommentedDate { get; set; }
 
-        public CommentsViewModel Comment { get; set; }
+        public LandmarkViewModel Posts { get; set; }
 
-        public UserViewModel User { get; set; }
+        public UserViewModel Users { get; set; }
     }
 }

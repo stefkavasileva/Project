@@ -1,7 +1,5 @@
 ﻿@using Landmarks.Web.Common.Constants
-@using Landmarks.Web.Controllers
-@using Microsoft.Extensions.Localization
-@inject IStringLocalizer<HomeController> localizer;
+@inject IStringLocalizer<HomeController> Localizer
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +37,7 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark secondary-color">
-        <a class="navbar-brand" asp-controller="Home" asp-action="Index">@localizer["lblLandmarks"]</a>
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">@Localizer["lblLandmarks"]</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -47,30 +45,32 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Home<span class="sr-only">@localizer["lblHome"]</span></a>
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Home<span class="sr-only">@Localizer["lblHome"]</span></a>
                 </li>
                 @if (this.User.IsInRole(NamesConstants.RoleAdmin))
                 {
                     <li class="nav-item">
-                        <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-link">@localizer["lblAminPanel"]</a>
+                        <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="nav-link">@Localizer["lblAminPanel"]</a>
                     </li>
                 }
                 else if (this.User.IsInRole(NamesConstants.RoleOperator))
                 {
                     <li class="nav-item">
-                        <a asp-area="Operator" asp-controller="Home" asp-action="Index" class="nav-link">@localizer["lblOperatorPanel"]</a>
+                        <a asp-area="Operator" asp-controller="Home" asp-action="Index" class="nav-link">@Localizer["lblOperatorPanel"]</a>
                     </li>
                 }
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@localizer["lblTopTen"]</a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Localizer["lblTopTen"]</a>
                     <div class="dropdown-menu secondary-color" aria-labelledby="navbarDropdownMenuLink">
-                        <a asp-area="" asp-controller="Ranking" asp-action="TopTenByRating" class="nav-link">@localizer["lblByRating"]</a>
-                        <a asp-area="" asp-controller="Ranking" asp-action="TopTenByComments" class="nav-link">@localizer["lblByComents"]</a>
-                        <a asp-area="" asp-controller="Ranking" asp-action="TopTenByVisitation" class="nav-link">@localizer["lblByVisitation"]</a>
-                        <a asp-area="" asp-controller="Ranking" asp-action="TopTenByDesiredVisitation" class="nav-link">@localizer["lblByDesiredVisitation"]</a>
-
+                        <a asp-area="" asp-controller="Ranking" asp-action="TopTenByRating" class="nav-link">@Localizer["lblByRating"]</a>
+                        <a asp-area="" asp-controller="Ranking" asp-action="TopTenByComments" class="nav-link">@Localizer["lblByComents"]</a>
+                        <a asp-area="" asp-controller="Ranking" asp-action="TopTenByVisitation" class="nav-link">@Localizer["lblByVisitation"]</a>
+                        <a asp-area="" asp-controller="Ranking" asp-action="TopTenByDesiredVisitation" class="nav-link">@Localizer["lblByDesiredVisitation"]</a>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Category" asp-action="List" class="nav-link">@Localizer["lblCategories"]</a>
                 </li>
             </ul>
         </div>

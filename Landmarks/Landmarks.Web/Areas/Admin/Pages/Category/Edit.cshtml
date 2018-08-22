@@ -1,15 +1,17 @@
 ﻿@page "{id}"
 @model Landmarks.Web.Areas.Admin.Pages.Category.EditModel
+@inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Category.EditModel> Localizer
 
-@using Microsoft.Extensions.Localization
-@inject IStringLocalizer<Landmarks.Web.Areas.Admin.Pages.Category.EditModel> localizer;
+@{
+    ViewData["Title"] = Localizer["lblEditCategory"];
+}
 
 <div class="container container-fluid text-center">
-    <h2>@localizer["lblEditCategory"]</h2>
+    <h2>@Localizer["lblEditCategory"]</h2>
     <form method="post">
         @Html.EditorFor(m => m.EditCategoryBindingModel)
-        <button type="submit" class="btn btn-indigo">@localizer["lblAddCategory"]</button>
-        <a asp-page="/Index" class="btn btn-light-blue">@localizer["btnBack"]</a>
+        <button type="submit" class="btn btn-indigo">@Localizer["lblAddCategory"]</button>
+        <a asp-page="/Index" class="btn btn-light-blue">@Localizer["btnBack"]</a>
     </form>
 </div>
 

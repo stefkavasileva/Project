@@ -13,7 +13,6 @@ namespace Landmarks.Services.Main
         {
         }
 
-
         public void SaveEntity(int landmarkId, string userId)
         {
            var result = new VisitedPlaces { LandmarkId = landmarkId,UserId = userId};
@@ -29,6 +28,7 @@ namespace Landmarks.Services.Main
             this.DbContext.DesiredPlaces.Add(result);
             this.DbContext.SaveChanges();
         }
+
         public Landmark GetLatmarkById(int landmarkId)
         {
             return this.DbContext.Landmarks.Find(landmarkId);
