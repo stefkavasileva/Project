@@ -2,7 +2,7 @@
 @inject IStringLocalizer<RegionController> Localizer;
 
 @{
-    ViewBag["Title"] = Localizer["btnDetails"];
+    ViewData["Title"] = Localizer["btnDetails"];
 }
 <section class="my-5">
     <h2 class="h1-responsive font-weight-bold text-center my-5">@Html.DisplayFor(model => model.Name)</h2>

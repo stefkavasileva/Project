@@ -80,11 +80,13 @@
                 <input type="text" id="@string.Format("{0}_{1}", "comment", Model.Id)" class="form-control col-sm-6" placeholder="Add a Comment ..." style="margin-bottom:8px; height:auto" />
                 <button type="button" class="btn secondary-color addComment" style="margin-bottom:8px;" data-id="@Model.Id"><span class="glyphicon glyphicon-comment" aria-hidden="true">@Localizer["btnAddNewComment"]</span></button>
             </div>
+            <span id="validation" class="text-danger"></span>
         </div>
     </div>
 </div>
 
 @section Scripts{
+    <partial name="_ValidationScriptsPartial" />
     <script src="~/js/rating.js"></script>
     <script src="~/js/visitation.js"></script>
 
@@ -148,6 +150,10 @@
                     CommentMsg: commentMsg,
                     CommentedDate: dateTimeNow.toLocaleString()
                 };
+
+                if (commentMsg === "") {                                   
+                    return;
+                }
 
                 $.ajax({
 

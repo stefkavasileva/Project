@@ -147,6 +147,9 @@
   <data name="lblLandmarkRegionPopulation" xml:space="preserve">
     <value>Region population</value>
   </data>
+  <data name="lblRequiredMsg" xml:space="preserve">
+    <value>Please add comment</value>
+  </data>
   <data name="lblShowComments" xml:space="preserve">
     <value>Comments</value>
   </data>

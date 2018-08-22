@@ -45,6 +45,10 @@
                 CommentedDate: dateTimeNow.toLocaleString()
             };
 
+            if (CommentMsg === "") {                                   
+                return;
+            }
+
             $.ajax({
 
                 type: 'POST',

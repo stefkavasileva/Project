@@ -1,4 +1,5 @@
-﻿using Landmarks.Common.Models.Main.ViewModels;
+﻿using System.Linq;
+using Landmarks.Common.Models.Main.ViewModels;
 using Landmarks.Interfaces.Main;
 using Landmarks.Web.Common.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +30,7 @@ namespace Landmarks.Web.Controllers
         public PartialViewResult GetComments(int landmarkId)
         {
             var comments = this._service.GetLandmarksComment(landmarkId);
-           
+
             return PartialView("~/Views/Shared/_MyComments.cshtml", comments);
         }
 
@@ -45,7 +46,7 @@ namespace Landmarks.Web.Controllers
         public PartialViewResult GetSubComments(int commentId)
         {
             var subComments = this._service.GetSubComments(commentId);
-        
+
             return PartialView("~/Views/Shared/_MySubComments.cshtml", subComments);
         }
 
@@ -54,7 +55,7 @@ namespace Landmarks.Web.Controllers
         {
             var userId = this.User.GetUserId();
             this._service.SaveSubComment(userId, subComment, commentId);
-                
+
             return RedirectToAction("GetSubComments", "Comments", new { commentId = commentId });
 
         }

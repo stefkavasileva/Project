@@ -147,6 +147,9 @@
   <data name="lblLandmarkRegionPopulation" xml:space="preserve">
     <value>Население на областта</value>
   </data>
+  <data name="lblRequiredMsg" xml:space="preserve">
+    <value>Полето коментар е задължително</value>
+  </data>
   <data name="lblShowComments" xml:space="preserve">
     <value>Kоментари</value>
   </data>
