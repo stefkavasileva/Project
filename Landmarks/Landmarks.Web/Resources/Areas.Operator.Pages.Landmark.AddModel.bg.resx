@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnAddLandmark" xml:space="preserve">
-    <value>Добавяне на категория</value>
+    <value>Добавяне на забележителност</value>
   </data>
   <data name="btnBack" xml:space="preserve">
     <value>Назад</value>
