@@ -12,5 +12,6 @@ namespace Landmarks.Common.Models.Admin.BindingModels
         [MaxLength(ValidationConstants.NameMaxLen, ErrorMessage = "msgMaxNameLen")]
         [Display(Name = "lblName", AutoGenerateFilter = false)]
         public string Name { get; set; }
+		
     }
 }
