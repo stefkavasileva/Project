@@ -44,7 +44,7 @@ namespace Landmarks.Web.Common.Mapper
              CreateMap<Landmark, LandmarkRankingViewModel>()
                 .ForMember(viewModel => viewModel.Name,
                     opt => opt.MapFrom(entity => entity.Name))
-                .ForMember(viewModel => viewModel.Name,
+                .ForMember(viewModel => viewModel.CategoryName,
                     opt => opt.MapFrom(entity => entity.Category.Name))
                 .ForMember(viewModel => viewModel.RegionName,
                     opt => opt.MapFrom(entity => entity.Region.Name))
